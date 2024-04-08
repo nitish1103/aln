@@ -1,0 +1,201 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$aln-primary: mat.define-palette(mat.$indigo-palette);
+$aln-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$aln-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$aln-theme: mat.define-light-theme((color: (primary: $aln-primary,
+        accent: $aln-accent,
+        warn: $aln-warn,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($aln-theme);
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--app-body-bg-color);
+
+  @media (max-width: 959px) {
+    overflow-y: auto;
+  }
+}
+
+app-root,
+app-error {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+//media query.
+@media(max-width: 559px) {
+  .logo {
+    img {
+      max-width: 10rem;
+    }
+  }
+}
+
+h4 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.mat-dialog-actions> {
+  button.mat-button-base+button.mat-button-base {
+    margin-left: 1rem;
+  }
+}
+
+.custom-dialog-container {
+  position: relative;
+  overflow: auto;
+  width: 45rem;
+  max-width: 100% !important;
+
+  @media (max-width: 767px) {
+    width: 90%;
+  }
+}
+
+.user-history-dialog {
+  max-width: 90%;
+  width: 90%;
+}
+
+.custom-dialog-container-small {
+  position: relative;
+  //overflow: auto;
+  width: 35rem;
+  max-width: 100% !important;
+  overflow: visible;
+
+  .mat-dialog-container {
+    position: relative;
+    overflow: visible;
+  }
+
+  @media (max-width: 767px) {
+    width: 90%;
+  }
+}
+
+.default-image-modal {
+  .mat-dialog-container {
+    max-width: 100%;
+    position: relative;
+    width: 950px;
+  }
+}
+
+.tbl-data.user table>thead,
+.tbl-data.tbl-user-history table>thead,
+.tbl-data.dataset table>thead,
+.tbl-data.status-check table>thead {
+  background: var(--table-header);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+body {
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0;
+  }
+}
+
+body:hover {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--table-header);
+    border-radius: 8px;
+  }
+}
+
+.preview-error {
+  font-size: 20px;
+  color: var(--primary-red);
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.w-100 {
+  width: 100%;
+}
+
+::ng-deep {
+  .mat-form-field-label-wrapper {
+    top: -0.5rem;
+    padding-top: 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-label {
+    top: 1rem;
+    margin-top: 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.5rem 0 0.5rem 0;
+    margin-top: -1rem;
+    border: 0;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    top: 0;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

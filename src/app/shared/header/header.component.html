@@ -1,0 +1,35 @@
+<mat-toolbar color="primary" class="toolbar-header">
+  <mat-toolbar-row>
+    <div class="logo">
+      <a>
+        <img src="" />
+      </a>
+    </div>
+    <span class="toolbar-spacer"></span>
+    <button mat-button class="toolbar-button" [matMenuTriggerFor]="beforeMenu">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle"></mat-icon>
+      Demo User
+    </button>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <mat-label class="username">
+        <mat-icon aria-hidden="false" aria-label="person" class="user-icon icon"> email </mat-icon>
+        demogmail.com
+      </mat-label>
+      <button mat-menu-item class="logout">
+        <mat-icon aria-hidden="false" aria-label="person">logout</mat-icon> Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+
+  <!--<mat-toolbar-row class="navigation web-menu">
+    <span class="toolbar-spacer">
+    </span>
+    <a mat-button routerLink="/user" [routerLinkActive]="['is-active']">Users</a>
+    <a mat-button routerLink="/intake" [routerLinkActive]="['is-active']">Data Catalog</a>
+    <a mat-button routerLink="/datasets" [routerLinkActive]="['is-active']">Datasets</a>
+    <a mat-button routerLink="/topics" [routerLinkActive]="['is-active']">Topics</a>
+    <a mat-button routerLink="/content" [routerLinkActive]="['is-active']">Content</a>
+    <a mat-button routerLink="/preview-publish" [routerLinkActive]="['is-active']">Preview
+      Publish</a>
+  </mat-toolbar-row>-->
+</mat-toolbar>

@@ -1,0 +1,76 @@
+$cap-primary-dark-text: var(--cap-primary-dark-text);
+$cap-primary-light-text:var(--cap-primary-light-text);
+
+$cap-primary-palette: (
+  100 : var(--primary-color),
+  200 : var(--primary-color),
+  300 : var(--primary-color),
+  400 : var(--primary-color),
+  500 : var(--primary-color),
+  600 : var(--primary-color),
+  700 : var(--primary-color),
+  800 : var(--primary-color),
+  900 : var(--primary-color),
+  contrast: (
+    100 : var(--primary-text-color),
+    200 : var(--primary-color),
+    300 : var(--primary-color),
+    400 : var(--primary-color),
+    500 : var(--primary-color),
+
+  ),
+);
+
+$cap-red-palette: (
+    100 : var(--primary-button-bg-10),
+    contrast: (
+      100 : var(--primary-text-color),
+    )
+);
+
+$cap-yellow-palette: (
+  100 : var(--tab-acive-border-color),
+  contrast: (
+    100 : var(--primary-text-color),
+  )
+);
+
+* {
+  --primary-button-bg-1: #005db4;
+  --primary-button-bg-10: #009BD6;
+  --dropdown-arrow-color: #fecf0a;
+  --primary-color: #11436f;
+  --secondary-color: #fecf0a;
+  --secondary-text-color: #58b4f5;
+  --font-icon-color: #007ac5;
+  --primary-grad-bg-shade-1: #fecf0a;
+  --primary-grad-bg-shade-2: #025297;
+  --primary-grad-bg-shade-3: #025c98;
+  --primary-grad-bg-shade-4: #016899;
+  --app-body-bg-color: #f1f2f5;
+  --nav-text-color: #11436f;
+  --nav-text-item-color: #11436f;
+  --nav-search-icon-color: #11436f;
+  --accesibility-text-color: #629ec9;
+  --slide-active-border-color: #fecf0a;
+  --slide-v-gradient-color-shade-0: rgba(12, 101, 180, 0.2);
+  --slide-v-gradient-color-shade-1: #0468b7;
+  --slide-v-gradient-color-shade-2: #068fcb;
+  --slide-v-gradient-color-shade-3: #0799ce;
+  --slide-v-gradient-color-shade-4: rgba(16, 155, 209, 0.1);
+  --table-header-gradient-color-shade-1: #165892;
+  --table-header-gradient-color-shade-2: #109BD1;
+  --table-header-gradient-color-shade-3: #00A042;
+  --tab-active-color: #fff1b5;
+  --tab-acive-border-color: #fecf0a;
+  --footer-title-text-color: #57b3f5;
+  --cap-primary-dark-text: rgba(black, 0.87);
+  --cap-primary-light-text: #ffffff;
+  --primary-text-color: #ffffff;
+  --table-odd: #efefef;
+  --table-header: rgba(210,210,210, 1);
+  --primary-red: #ff0000;
+  --left-panerl-inner-bg: rgba(255, 255, 255, 0.5);
+  --left-nav-text: #666666;
+  --button-icon-color: #33333A;
+}
