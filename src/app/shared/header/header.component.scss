@@ -5,7 +5,7 @@
   padding: 0.5rem 0 0.7rem 0;
   height: auto;
   position: relative;
-  background: url(../../../assets/images/header-bg.jpg) center top;
+  //background: url(../../../assets/images/header-bg.jpg) center top;
   background-size: cover;
 
   &::before {
@@ -87,6 +87,7 @@
     justify-content: center;
     margin: 0 0.2rem;
     padding: 0 1.5rem;
+    width: 10rem;
     // &:last-child {
     //     padding: 0 1rem 0 2rem;
     // }
@@ -97,6 +98,11 @@
     background: var(--app-body-bg-color);
     color: var(--primary-color);
     text-decoration: none;
+  }
+
+  .mdc-button {
+    width: 10rem;
+    margin-right: 2rem;
   }
 }
 
@@ -115,6 +121,7 @@
 .icon {
   vertical-align: middle !important;
 }
+
 
 ::ng-deep {
   .view-toggle .mat-slide-toggle-label {

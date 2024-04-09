@@ -7,6 +7,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { CreateAlnComponent } from './create-aln/create-aln.component';
 import { SharedModule } from './shared/shared.module';
+import { HomeComponent } from './home/home.component';
+import { ListAlnComponent } from './list-aln/list-aln.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { SharedModule } from './shared/shared.module';
     HeaderComponent,
     FooterComponent,
     CreateAlnComponent,
+    HomeComponent,
+    ListAlnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
   providers: [],

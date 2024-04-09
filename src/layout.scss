@@ -152,6 +152,11 @@
     }
   }
 
+ .mat-mdc-cell,
+ .mat-mdc-table .mat-mdc-header-cell {
+    border-bottom: none!important;
+  }
+
   .search-form {
     box-sizing: border-box;
     width: 50%;
@@ -163,6 +168,7 @@
     }
 
     .user-search {
+      height: 50px;
       width: 45%;
       margin-left: 9%;
     }
@@ -246,21 +252,30 @@
     padding: 0 0 0 1rem;
   }
 
-  .tbl-data .name {
-    flex: 0 0 10rem;
+  .tbl-data .trackingNumber {
+    flex: 0 0 15rem;
+    padding: 0 1rem 0 1rem;
+    word-break: break-word;
+  }
+
+  .tbl-data .number {
+    flex: 0 0 15rem;
     padding: 0 1rem 0 0;
     word-break: break-word;
   }
 
-  .tbl-data .email {
+  .tbl-data .title {
+    flex: 0 0 25rem;
+    word-break: break-word;
+    padding: 0 1rem 0 0;
+  }
+
+  .tbl-data .status {
     flex: 1 1 auto;
     word-break: break-word;
     padding-right: 1rem;
   }
 
-  .tbl-data .role {
-    flex: 0 0 10rem;
-  }
 
   .tbl-data .action-btns {
     flex: 0 0 10rem;
@@ -300,6 +315,14 @@
   .mat-icon.mat-accent {
     color: var(--button-icon-color);
     opacity: 84%;
+  }
+
+  .delete-btn {
+    color: #db2525;
+  }
+
+  .update-btn {
+    color: #29ad0f;
   }
 }
 
