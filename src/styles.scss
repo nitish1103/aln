@@ -59,7 +59,7 @@ app-list-aln,
 app-home {
   height: 100%;
   min-height: 0;
-  overflow-y: hidden;
+  overflow-y: auto;
 
   @media (max-width:959px) {
     height: auto;
