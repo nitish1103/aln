@@ -1,15 +1,12 @@
 <mat-toolbar color="primary" class="toolbar-header">
-  <mat-toolbar-row>
+  <mat-toolbar-row class="top-head">
     <div class="logo">
-      <h4>OPTUM POC</h4>
-      <a>
-        <img src="" />
-      </a>
+      <p>OPTUM</p>
+      <p>POC</p>
     </div>
     <span class="toolbar-spacer"></span>
     <button mat-button class="toolbar-button" [matMenuTriggerFor]="beforeMenu">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="account_circle"></mat-icon>
-      Demo User
+      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_outline"></mat-icon>
     </button>
     <mat-menu #beforeMenu="matMenu" xPosition="before">
       <mat-label class="username">

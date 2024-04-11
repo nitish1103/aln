@@ -10,27 +10,42 @@
 
   &::before {
     content: '';
-    background: var(--primary-color);
+    background: white;
     width: 100%;
     position: absolute;
-    opacity: 0.5;
+    color: black!important;
+    //opacity: 0.5;
     top: 0;
     left: 0;
     height: 100%;
   }
 
   .logo {
-    display: flex;
-    max-height: 51px;
+    display: inline-block;
+    max-height: 59px;
     max-width: 237px;
     z-index: 1;
     overflow: hidden;
+    text-align: center;
+    background-color: #3f51b5;
+    padding: 10px;
+    color: white;
+    p {
+      margin-top: 0px;
+      margin-bottom: 0px;
+      font-family: cursive;
+      font-size: 22px;
+    }
 
     img {
       max-width: 100%;
       height: 100%;
       overflow: hidden;
     }
+  }
+
+  .top-head {
+    height: 8rem;
   }
 
   @media(max-width: 959px) {
@@ -95,14 +110,13 @@
 
   a:hover,
   .is-active {
-    background: var(--app-body-bg-color);
-    color: var(--primary-color);
-    text-decoration: none;
+    font-weight: bold;
   }
 
   .mdc-button {
-    width: 10rem;
+    width: 7rem;
     margin-right: 2rem;
+    color: white;
   }
 }
 
@@ -305,6 +319,9 @@
   @media(max-width: 959px) {
     display: none;
   }
+  background-color: #3f51b5;
+  padding: 5px;
+  color: white!important;
 }
 
 .mobile-menu {
@@ -325,4 +342,13 @@
       filter: invert(75%) sepia(31%) saturate(4087%) hue-rotate(177deg) brightness(99%) contrast(94%);
     }
   }
+}
+
+.mat-mdc-button>.mat-icon,
+.mat-mdc-unelevated-button>.mat-icon,
+.mat-mdc-raised-button>.mat-icon,
+.mat-mdc-outlined-button>.mat-icon {
+  font-size: 2.125rem;
+  height: 2.125rem;
+  width: 3.125rem;
 }
