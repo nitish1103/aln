@@ -16,30 +16,50 @@ export class ListAlnComponent {
   ELEMENT_DATA: any[] = [
     {
       trackingNumber: 12345,
-      number: 45,
+      alnNumber: 45,
       title: 'A',
       status: 'Submit For Approval',
+      programContact: 'Manager',
+      activeIndicator: '27',
+      agencyCode: '125',
+      dateCreated: '04/04/24',
+      psuedoAln: '',
     },
     {
       trackingNumber: 12346,
-      number: 46,
+      alnNumber: 46,
       title: 'B',
       status: 'Rejected',
+      programContact: 'Manager',
+      activeIndicator: '26',
+      agencyCode: '125',
+      dateCreated: '04/04/24',
+      psuedoAln: '',
     },
     {
       trackingNumber: 12347,
-      number: 47,
+      alnNumber: 47,
       title: 'C',
       status: 'Approved',
+      programContact: 'Manager',
+      activeIndicator: '27',
+      agencyCode: '125',
+      dateCreated: '04/04/24',
+      psuedoAln: '',
     },
   ];
   searchQuery = '';
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   displayedColumns: string[] = [
     'trackingNumber',
-    'number',
+    'alnNumber',
     'title',
     'status',
+    'programContact',
+    'activeIndicator',
+    'agencyCode',
+    'dateCreated',
+    'psuedoAln',
     'action',
   ];
 

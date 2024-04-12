@@ -258,23 +258,54 @@
     word-break: break-word;
   }
 
-  .tbl-data .number {
-    flex: 0 0 15rem;
+  .tbl-data .alnNumber {
+    flex: 0 0 10rem;
     padding: 0 1rem 0 0;
     word-break: break-word;
   }
 
   .tbl-data .title {
-    flex: 0 0 25rem;
+    flex: 0 0 5rem;
     word-break: break-word;
     padding: 0 1rem 0 0;
   }
 
   .tbl-data .status {
+    flex: 0 0 15rem;
+    word-break: break-word;
+    padding-right: 1rem;
+  }
+
+  .tbl-data .programContact {
+    flex: 0 0 10rem;
+    word-break: break-word;
+    padding-right: 1rem;
+  }
+
+  .tbl-data .activeIndicator {
+    flex: 0 0 10rem;
+    word-break: break-word;
+    padding-right: 1rem;
+  }
+
+  .tbl-data .agencyCode {
+    flex: 0 0 10rem;
+    word-break: break-word;
+    padding-right: 1rem;
+  }
+
+  .tbl-data .dateCreated {
+    flex: 0 0 10rem;
+    word-break: break-word;
+    padding-right: 1rem;
+  }
+
+  .tbl-data .psuedoAln {
     flex: 1 1 auto;
     word-break: break-word;
     padding-right: 1rem;
   }
+
 
 
   .tbl-data .action-btns {
