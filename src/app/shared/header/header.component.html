@@ -19,9 +19,7 @@
     </mat-menu>
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="navigation web-menu">
-    <span class="toolbar-spacer">
-    </span>
+  <mat-toolbar-row class="navigation web-menu" fxLayout="row" fxLayoutAlign="center">
     <a mat-button routerLink="/home" [routerLinkActive]="['is-active']">Home</a>
     <a mat-button routerLink="/aln" [routerLinkActive]="['is-active']">ALN</a>
     <a mat-button routerLink="/aln-sub" [routerLinkActive]="['is-active']">ALN Subprogram</a>
