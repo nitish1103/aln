@@ -9,6 +9,8 @@ import { CreateAlnComponent } from './create-aln/create-aln.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { ListAlnComponent } from './list-aln/list-aln.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { ListAlnComponent } from './list-aln/list-aln.component';
     CreateAlnComponent,
     HomeComponent,
     ListAlnComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, SharedModule],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
