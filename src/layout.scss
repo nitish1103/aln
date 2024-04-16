@@ -159,7 +159,7 @@
 
   .search-form {
     box-sizing: border-box;
-    width: 50%;
+    width: 75%;
 
     h1 {
       display: inline-flex;
@@ -168,9 +168,14 @@
     }
 
     .user-search {
-      height: 50px;
-      width: 45%;
-      margin-left: 9%;
+      height: 65px;
+      width: 43%;
+    }
+
+    .mdc-text-field--outlined .mat-mdc-form-field-infix,
+    .mdc-text-field--no-label .mat-mdc-form-field-infix {
+      padding-top: 5px!important;
+      padding-bottom: 5px!important;
     }
 
     @media(max-width: 959px) {
