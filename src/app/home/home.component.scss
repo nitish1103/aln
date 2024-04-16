@@ -1,4 +1,14 @@
 .welcome-text {
-  margin-top: 10%;
-  font-size: 11rem;
+  font-size: 7rem;
+  text-align: center;
+  margin-top: 5%;
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .user-name {
+    font-size: 3rem;
+  }
 }
