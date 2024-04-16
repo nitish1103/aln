@@ -7,6 +7,17 @@
   }
 }
 
+td,
+th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
 //media query.
 @media(max-width: 959px) {
   .action-btns {
