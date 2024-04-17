@@ -10,15 +10,25 @@
           [(ngModel)]='searchQuery' (keyup)="filterUser()">
       </mat-form-field>
     </div>
-    <div class="users-btn">
-      <button mat-raised-button color="primary" (click)="createALN()">
-        Create ALN
-      </button>
-    </div>
   </div>
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
-    <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'100%'" class="right-panel">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="20%" class="left-panel">
+      <section class="left-panel-inner">
+        <section class="filer-role-section">
+          <p>
+            Create ALN
+          </p>
+          <p>
+            Summary
+          </p>
+          <p>
+            Confirmation
+          </p>
+        </section>
+      </section>
+    </div>
+    <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'80%'" class="right-panel">
       <div class="tbl-data user">
         <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="asc"
           aria-describedby="dataSource" matSortDisableClear>
