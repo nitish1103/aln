@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './list-aln.component.scss',
 })
 export class ListAlnComponent {
+  showFilter = false;
+  defaultSearchOption = 'title';
+  status = 'all';
   constructor(private readonly router: Router) {}
 
   ELEMENT_DATA: any[] = [
@@ -48,6 +51,7 @@ export class ListAlnComponent {
       psuedoAln: '',
     },
   ];
+  TABLE_DATA: any[] = [];
   searchQuery = '';
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   displayedColumns: string[] = [
@@ -70,6 +74,7 @@ export class ListAlnComponent {
   filterUser() {}
 
   async ngOnInit() {
+    this.TABLE_DATA = this.ELEMENT_DATA;
     this.dataSource = new MatTableDataSource();
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     setTimeout(() => {
@@ -90,6 +95,41 @@ export class ListAlnComponent {
       return data[sortHeaderId];
     };
     this.dataSource.sort = this.sort;
+  }
+
+  search() {
+    if (this.searchQuery != '' && this.status != 'all') {
+      this.ELEMENT_DATA = this.TABLE_DATA.filter(
+        (data) =>
+          data[this.defaultSearchOption].includes(this.searchQuery) &&
+          data.status == this.status
+      );
+    } else if (this.searchQuery != '' && this.status == 'all') {
+      this.ELEMENT_DATA = this.TABLE_DATA.filter((data) =>
+        data[this.defaultSearchOption].includes(this.searchQuery)
+      );
+    } else if (this.searchQuery == '' && this.status !== 'all') {
+      this.ELEMENT_DATA = this.TABLE_DATA.filter(
+        (data) => data.status === this.status
+      );
+    }
+
+    this.dataSource = new MatTableDataSource();
+    this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+    setTimeout(() => {
+      this.timeOutFunction();
+    }, 50);
+  }
+
+  clear() {
+    this.searchQuery = '';
+    this.status = 'all';
+    this.ELEMENT_DATA = this.TABLE_DATA;
+    this.dataSource = new MatTableDataSource();
+    this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+    setTimeout(() => {
+      this.timeOutFunction();
+    }, 50);
   }
 
   createALN() {

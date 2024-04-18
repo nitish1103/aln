@@ -3,13 +3,66 @@
     class="admin-mgmt-header">
     <div class="search-form">
       <h1>Dashboard</h1>
-      <mat-form-field appearance="outline" class="user-search">
+      <!--<mat-form-field appearance="outline" class="user-search">
         <mat-label>Search for ALN</mat-label>
         <mat-icon matPrefix>search</mat-icon>
         <input type="text" aria-label="Search for ALN" id="search-query" matInput [formControl]="myControl"
           [(ngModel)]='searchQuery' (keyup)="filterUser()">
-      </mat-form-field>
+      </mat-form-field>-->
+      
     </div>
+    <div class="users-btn">
+      <button mat-icon-button color="primary" (click)="showFilter=!showFilter">
+        <mat-icon>filter_alt</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div *ngIf="showFilter" fxLayout="row" fxLayoutAlign="start" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start"    class="admin-mgmt-header filter-row">
+    <section class="mr-2" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+      <mat-form-field appearance="outline">
+        <mat-label>Select an option</mat-label>
+        <mat-select [(ngModel)]="defaultSearchOption">
+          <mat-option value="title">ALN Title</mat-option>
+          <mat-option value="alnNumber">ALN Number</mat-option>
+          <mat-option value="trackingNumber">ALN Tracking Number</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <section class="mr-20" fxLayout="column" fxFlex="20%" fxFlex.sm="20%" fxFlex.xs="20%">
+      <mat-form-field appearance="outline" class="user-search">
+        <mat-label>Search for {{defaultSearchOption}}</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input type="text" id="search-query" matInput [(ngModel)]='searchQuery'>
+      </mat-form-field>
+    </section>
+
+    <section fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+      <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="status">
+          <mat-option value="all">All</mat-option>
+          <mat-option value="Draft">Draft</mat-option>
+          <mat-option value="Submit For Approval">Submit for approval</mat-option>
+          <mat-option value="Rejected">Rejected</mat-option>
+          <mat-option value="Approved">Approved</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+    <section fxLayout="column" fxFlex="50%" fxFlex.sm="40%" fxFlex.xs="40%"></section>
+    <section class="mr-2" fxLayout="column" fxFlex="5%" fxFlex.sm="10%" fxFlex.xs="10%">
+      <div class="users-btn">
+        <button mat-stroked-button color="primary" (click)="search()">
+          Search
+        </button>
+      </div>
+    </section>
+    <section fxLayout="column" fxFlex="5%" fxFlex.sm="10%" fxFlex.xs="10%">
+      <div class="users-btn">
+        <button mat-stroked-button color="primary" (click)="clear()">
+          Clear
+        </button>
+      </div>
+    </section>
   </div>
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
