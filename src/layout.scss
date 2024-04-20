@@ -1,7 +1,7 @@
 @mixin admin-layout {
   .admin-mgmt-header {
     box-shadow: 2px 2px 5px rgb(109 105 105 / 15%);
-    background: var(--primary-text-color);
+    background: #eaeaea;
     padding: 0rem 1rem;
     position: relative;
     min-height: 50px;
@@ -63,8 +63,8 @@
   }
 
   .left-panel {
-    background: var(--primary-text-color);
-    box-shadow: 4px 4px 25px rgb(109 105 105 / 15%);
+    //background: var(--primary-text-color);
+    //box-shadow: 4px 4px 25px rgb(109 105 105 / 15%);
     box-sizing: border-box;
     position: relative;
     /*background: var(--primary-text-color) url(../../assets/images/navbar-img-bg.jpg) no-repeat bottom;*/
@@ -79,8 +79,8 @@
     }
 
     .left-panel-inner {
-      background: #3a9bdc;
-      color: white;
+      //background: white;
+      color: black;
       height: 100%;
 
       &::before {
@@ -198,12 +198,32 @@
     padding: 0.5rem 1rem;
     box-sizing: border-box;
     padding-right: 0px;
-    padding-top: 10rem;
+    padding-top: 6rem;
 
     p {
-      padding-bottom: 10px;
+      padding-bottom: 29px;
+      padding-top: 28px;
       text-align: center;
       cursor: pointer;
+      background-color: white;
+      color: #8f8f8f;
+    }
+
+    p.active {
+      background-color: #3a9bdc;
+      color: white!important;
+      position: relative;
+    }
+
+    p.active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      /* Adjust this value to control the position of the pointer */
+      transform: translateY(-50%);
+      border: 10px solid transparent;
+      border-left-color: #3a9bdc;
     }
 
     h1 {

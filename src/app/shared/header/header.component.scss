@@ -2,11 +2,11 @@
 //     color: var(--cap-primary-dark-text);
 // }
 .toolbar-header {
-  padding: 0.5rem 0 0.7rem 0;
-  height: auto;
-  position: relative;
-  //background: url(../../../assets/images/header-bg.jpg) center top;
-  background-size: cover;
+  padding: 0.5rem 0 0rem 0;
+    height: auto;
+    position: relative;
+    background-size: cover;
+    border-bottom: 4px solid #3a9bdc;
 
   &::before {
     content: '';
@@ -22,19 +22,17 @@
 
   .logo {
     display: inline-block;
-    max-height: 59px;
-    max-width: 237px;
-    z-index: 1;
-    overflow: hidden;
-    text-align: center;
-    background-color: #3f51b5;
-    padding: 10px;
-    color: white;
+      z-index: 1;
+      overflow: hidden;
+      text-align: center;
+      padding: 10px;
+      color: #e79a0c;
+      font-weight: bold;
+      font-size: 19rem;
     p {
       margin-top: 0px;
       margin-bottom: 0px;
-      font-family: cursive;
-      font-size: 22px;
+      font-size: 28px;
     }
 
     img {
@@ -45,7 +43,10 @@
   }
 
   .top-head {
-    height: 8rem;
+    height: 4rem;
+    border-bottom: 1px solid #ccc5c5;
+    padding-bottom: 0px;
+    margin-bottom: -7px;
   }
 
   @media(max-width: 959px) {
@@ -114,9 +115,8 @@
   }
 
   .mdc-button {
-    width: 10rem;
-    margin-right: 2rem;
-    color: white;
+    width: 7rem;
+    color: black;
   }
 }
 
@@ -320,9 +320,9 @@
     display: none;
   }
   min-height: 2.5rem;
-  background-color: #3f51b5;
+  //background-color: #3f51b5;
   padding: 5px;
-  color: white!important;
+  color: black!important;
 }
 
 .mobile-menu {
@@ -340,16 +340,24 @@
     margin: 0 0.5rem 0 0;
 
     mat-icon {
-      filter: invert(75%) sepia(31%) saturate(4087%) hue-rotate(177deg) brightness(99%) contrast(94%);
+      font-size: 1.4rem;
+      height: 1.4rem;
+      width: 1.5rem;
     }
   }
 }
 
-.mat-mdc-button>.mat-icon,
-.mat-mdc-unelevated-button>.mat-icon,
-.mat-mdc-raised-button>.mat-icon,
-.mat-mdc-outlined-button>.mat-icon {
-  font-size: 2.125rem;
-  height: 2.125rem;
-  width: 3.125rem;
+.logout {
+  color: #e79a0c!important;
+  border: 1px solid #e79a0c;
+}
+
+.is-active {
+  color: #e79a0c !important;
+  border-bottom: 4px solid #e79a0c;
+  height: 44px;
+}
+
+.mdc-button {
+  font-size: 13px!important;
 }

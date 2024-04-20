@@ -1,30 +1,20 @@
 <mat-toolbar color="primary" class="toolbar-header">
-  <mat-toolbar-row class="top-head">
-    <div class="logo">
+  <mat-toolbar-row class="top-head web-menu" fxLayout="row">
+    <div class="logo" fxFlex="10%">
       <p>OPTUM</p>
-      <p>POC</p>
     </div>
-    <span class="toolbar-spacer"></span>
-    <button mat-button class="toolbar-button" *ngIf="!isAuthenticated">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_outline"></mat-icon>
-    </button>
-    <button mat-button class="toolbar-button" [matMenuTriggerFor]="beforeMenu" *ngIf="isAuthenticated">
-      <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="person_outline"></mat-icon>
-    </button>
-    <mat-menu #beforeMenu="matMenu" xPosition="before">
-      <mat-label class="username">
-        <mat-icon aria-hidden="false" aria-label="person" class="user-icon icon"> email </mat-icon>
-        demogmail.com
-      </mat-label>
-      <button mat-menu-item class="logout" (click)="logout()">
-        <mat-icon aria-hidden="false" aria-label="person">logout</mat-icon> Logout
-      </button>
-    </mat-menu>
+    <span fxFlex="48%"></span>
+    <a mat-button routerLink="/home" [routerLinkActive]="['is-active']" fxFlex="10%">Home</a>
+    <a mat-button routerLink="/aln" [routerLinkActive]="['is-active']" fxFlex="10%">ALN</a>
+    <a mat-button routerLink="/aln-sub" [routerLinkActive]="['is-active']" fxFlex="10%">ALN Subprogram</a>
+    <a mat-button (click)="logout()" class="logout" fxFlex="10%">
+      <mat-icon matPrefix>person</mat-icon> Logout
+    </a>
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="navigation web-menu" fxLayout="row" fxLayoutAlign="center" *ngIf="isAuthenticated">
+  <!--<mat-toolbar-row class="navigation web-menu" fxLayout="row" fxLayoutAlign="center" *ngIf="isAuthenticated">
     <a mat-button routerLink="/home" [routerLinkActive]="['is-active']">Home</a>
     <a mat-button routerLink="/aln" [routerLinkActive]="['is-active']">ALN</a>
     <a mat-button routerLink="/aln-sub" [routerLinkActive]="['is-active']">ALN Subprogram</a>
-  </mat-toolbar-row>
+  </mat-toolbar-row>-->
 </mat-toolbar>
