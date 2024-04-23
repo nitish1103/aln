@@ -7,6 +7,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './create-aln.component.scss',
 })
 export class CreateAlnComponent {
+  selectedFile!: File;
+
   createALNForm = new FormGroup({
     alnTitle: new FormControl('', [Validators.required]),
     alnCode: new FormControl('', [Validators.required]),
@@ -31,4 +33,11 @@ export class CreateAlnComponent {
   ];
 
   createAln() {}
+
+  selectFile(event: any) {
+    this.selectedFile = event.target.files[0];
+    this.createALNForm.patchValue({
+      descriptionDocument: this.selectedFile.name,
+    });
+  }
 }

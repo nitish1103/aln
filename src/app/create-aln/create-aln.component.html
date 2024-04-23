@@ -22,7 +22,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Select an option</mat-label>
                 <mat-select formControlName="alnCode">
-                  <mat-option *ngFor="let code of agencyDesignatorCodes">{{ code }}</mat-option>
+                  <mat-option *ngFor="let code of agencyDesignatorCodes" value="{{code}}">{{ code }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="createALNForm.controls['alnCode'].touched">
                   <span *ngIf="createALNForm.controls['alnCode'].errors?.['required']">Agency Designator Code is required.</span>
@@ -62,9 +62,12 @@
                 <mat-icon color="primary" aria-label="Add">add</mat-icon>
                 <mat-label>Upload Document</mat-label>
                 <input type="file" class="upload-file"
-                  accept="image/png, image/gif, image/jpeg" formControlName="descriptionDocument" required/>
+                  accept="*" (change)="selectFile($event)" required/>
+                
+                
               </section>
             </div>
+            <small class="mt-2" *ngIf="selectedFile != null">{{selectedFile.name}}</small>
           </div>
 
           <p class="info-text">
