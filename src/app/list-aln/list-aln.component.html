@@ -11,7 +11,7 @@
       </mat-form-field>-->
       
     </div>
-    <div class="users-btn">
+    <div class="users-btn" *ngIf="sectionActive === 'list'">
       <button mat-icon-button color="primary" (click)="showFilter=!showFilter">
         <mat-icon>filter_alt</mat-icon>
       </button>
@@ -66,7 +66,7 @@
   </div>
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
-    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="20%" class="left-panel">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="15%" class="left-panel">
       <section class="left-panel-inner">
         <section class="filer-role-section">
           <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list'">
@@ -84,7 +84,7 @@
         </section>
       </section>
     </div>
-    <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'80%'" class="right-panel">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'85%'" class="right-panel">
       <div class="tbl-data user" *ngIf="sectionActive === 'list'">
         <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="asc"
           aria-describedby="dataSource" matSortDisableClear>
