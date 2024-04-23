@@ -69,13 +69,13 @@
     <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="20%" class="left-panel">
       <section class="left-panel-inner">
         <section class="filer-role-section">
-          <p class="active">
+          <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list'">
             ALN
           </p>
-          <p>
+          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'">
             Create ALN
           </p>
-          <p>
+          <p [ngClass]="{'active' : sectionActive === 'summary'}" (click)="sectionActive = 'summary'">
             Summary
           </p>
           <p>
@@ -85,7 +85,7 @@
       </section>
     </div>
     <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'80%'" class="right-panel">
-      <div class="tbl-data user">
+      <div class="tbl-data user" *ngIf="sectionActive === 'list'">
         <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="asc"
           aria-describedby="dataSource" matSortDisableClear>
           <!-- Name Column -->
@@ -212,6 +212,7 @@
           aria-label="Select page of periodic elements" class="user-pagination">
         </mat-paginator>
       </div>
+      <app-create-aln *ngIf="sectionActive === 'create'"></app-create-aln>
     </div>
   </div>
 </div>

@@ -5,7 +5,6 @@
   background: var(--cap-primary-light-text);
   border-radius: 1rem;
   padding: 2rem 8rem;
-  margin: 1rem auto;
   max-width: 100%;
   width: 1027px;
 
@@ -216,4 +215,8 @@
 
 .description-buttons {
   margin-bottom: 0.5rem;
+}
+
+.btn-spacing {
+  margin-right: 2rem;
 }

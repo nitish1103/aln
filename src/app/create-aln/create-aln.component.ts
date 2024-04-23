@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-aln',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrl: './create-aln.component.scss',
 })
 export class CreateAlnComponent {
+  createALNForm = new FormGroup({
+    alnTitle: new FormControl('', [Validators.required]),
+    alnCode: new FormControl('', [Validators.required]),
+    purpose: new FormControl('', [Validators.required]),
+    programOfficeContact: new FormControl('', [Validators.required]),
+    descriptionDocument: new FormControl('', [Validators.required]),
+    executiveOrder: new FormControl(false),
+  });
+
   selectedDesignatorCode = '84';
   agencyDesignatorCodes = [
     '10',
@@ -19,4 +29,6 @@ export class CreateAlnComponent {
     '84',
     '93',
   ];
+
+  createAln() {}
 }

@@ -443,3 +443,7 @@ form {
   cursor: not-allowed !important;
   pointer-events: none;
 }
+
+.mat-mdc-raised-button:not(:disabled) {
+  background-color: #3a9bdc;
+}
