@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ListAlnComponent } from '../list-aln/list-aln.component';
+import { AlnService } from '../services/aln-service';
 
 @Component({
   selector: 'app-create-aln',
@@ -32,12 +34,39 @@ export class CreateAlnComponent {
     '93',
   ];
 
-  createAln() {}
+  constructor(
+    private readonly alnService: AlnService,
+    private readonly listAln: ListAlnComponent
+  ) {}
+
+  save() {
+    const {
+      alnTitle,
+      alnCode,
+      purpose,
+      programOfficeContact,
+      descriptionDocument,
+      executiveOrder,
+    } = this.createALNForm.value;
+
+    this.alnService.createALN.alnTitle = alnTitle ?? '';
+    this.alnService.createALN.alnCode = alnCode ?? '';
+    this.alnService.createALN.purpose = purpose ?? '';
+    this.alnService.createALN.programOfficeContact = programOfficeContact ?? '';
+    this.alnService.createALN.descriptionDocument = descriptionDocument ?? '';
+    this.alnService.createALN.executiveOrder = executiveOrder ?? false;
+
+    this.listAln.sectionActive = 'summary';
+  }
 
   selectFile(event: any) {
     this.selectedFile = event.target.files[0];
     this.createALNForm.patchValue({
       descriptionDocument: this.selectedFile.name,
     });
+  }
+
+  goBack() {
+    this.listAln.sectionActive = 'list';
   }
 }

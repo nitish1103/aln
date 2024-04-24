@@ -1,7 +1,7 @@
 <div class="admin-mgmt-container">
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
-    <form [formGroup]="createALNForm" (ngSubmit)="createAln()" novalidate>
+    <form [formGroup]="createALNForm" (ngSubmit)="save()" novalidate>
       <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
         <div class="indicator-container" fxLayout="column">
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
@@ -75,10 +75,10 @@
               Executive order applied for ALN
             </mat-checkbox>
           </p>
-          <div fxLayout="row" fxLayoutAlign="center center" class="section-spacing">
-            <button mat-stroked-button color="primary" class="btn-spacing">Cancel</button>
-            <button mat-raised-button color="primary" class="medium" [disabled]="!createALNForm.valid">
-              <span>Save</span>
+          <div fxLayout="row" fxLayoutAlign="space-between" class="section-spacing">
+            <button  type="submit" mat-raised-button color="primary">Save as Draft</button>
+            <button mat-raised-button color="primary" class="medium" (click)="goBack()">
+              <span>Cancel</span>
             </button>
           </div>
         </div>
