@@ -32,8 +32,17 @@ export class AlnSummaryComponent {
   goBack() {}
 
   save() {
-    this.alnService
-      .createAln(this.alnService.createALN)
-      .subscribe((response: any) => {});
+    let data = {
+      title: this.alnService.createALN.alnTitle,
+      purpose: this.alnService.createALN.purpose,
+      agencyCode: this.alnService.createALN.alnCode,
+      programContactId: this.alnService.createALN.programOfficeContact,
+      executiveOrderIndicator: this.alnService.createALN.executiveOrder
+        ? 'Y'
+        : 'N',
+    };
+    this.alnService.createAln(data).subscribe((response: any) => {
+      console.log('===response', response);
+    });
   }
 }
