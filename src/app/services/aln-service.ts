@@ -27,4 +27,11 @@ export class AlnService {
   public createAln(postData: Object): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/create', postData);
   }
+
+  /**
+   * method to get ALN
+   */
+  public getALNList(): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:8080/findall');
+  }
 }

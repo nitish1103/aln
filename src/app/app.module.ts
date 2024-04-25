@@ -14,6 +14,7 @@ import { AuthGuard } from './services/auth.guard';
 import { AlnService } from './services/aln-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AlnSummaryComponent } from './aln-summary/aln-summary.component';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AlnSummaryComponent } from './aln-summary/aln-summary.component';
     ListAlnComponent,
     LoginComponent,
     AlnSummaryComponent,
+    ListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService],

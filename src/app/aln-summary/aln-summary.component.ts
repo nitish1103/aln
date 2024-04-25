@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
 @Component({
@@ -16,7 +17,10 @@ export class AlnSummaryComponent {
     executiveOrder: false,
   };
 
-  constructor(private readonly alnService: AlnService) {}
+  constructor(
+    private readonly alnService: AlnService,
+    private readonly listALN: ListAlnComponent
+  ) {}
 
   ngOnInit() {
     this.createALN.alnTitle = this.alnService.createALN.alnTitle;
@@ -41,8 +45,14 @@ export class AlnSummaryComponent {
         ? 'Y'
         : 'N',
     };
-    this.alnService.createAln(data).subscribe((response: any) => {
-      console.log('===response', response);
-    });
+    this.alnService.createAln(data).subscribe(
+      (response: any) => {
+        console.log('===response', response);
+        this.listALN.sectionActive = 'list';
+      },
+      (error: any) => {
+        this.listALN.sectionActive = 'list';
+      }
+    );
   }
 }
