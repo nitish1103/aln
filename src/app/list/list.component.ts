@@ -20,10 +20,10 @@ export class ListComponent {
     'alnNumber',
     'title',
     'status',
-    'programContact',
+    'programContactId',
     'activeIndicator',
     'agencyCode',
-    'dateCreated',
+    'createdDate',
     'executiveOrderIndicator',
     'action',
   ];
