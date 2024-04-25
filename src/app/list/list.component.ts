@@ -12,41 +12,7 @@ import { AlnService } from '../services/aln-service';
 export class ListComponent {
   @Input() searchQuery!: string;
 
-  ELEMENT_DATA: any[] = [
-    {
-      trackingNumber: 12345,
-      alnNumber: 45,
-      title: 'A',
-      status: 'Submit For Approval',
-      programContact: 'Manager',
-      activeIndicator: '27',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-    {
-      trackingNumber: 12346,
-      alnNumber: 46,
-      title: 'B',
-      status: 'Rejected',
-      programContact: 'Manager',
-      activeIndicator: '26',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-    {
-      trackingNumber: 12347,
-      alnNumber: 47,
-      title: 'C',
-      status: 'Approved',
-      programContact: 'Manager',
-      activeIndicator: '27',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-  ];
+  ELEMENT_DATA: any[] = [];
   TABLE_DATA: any[] = [];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   displayedColumns: string[] = [
@@ -58,7 +24,7 @@ export class ListComponent {
     'activeIndicator',
     'agencyCode',
     'dateCreated',
-    'psuedoAln',
+    'executiveOrderIndicator',
     'action',
   ];
 
@@ -80,6 +46,13 @@ export class ListComponent {
   getALN() {
     this.alnService.getALNList().subscribe((response: any) => {
       console.log('===response', response);
+      this.ELEMENT_DATA = response;
+      this.TABLE_DATA = this.ELEMENT_DATA;
+      this.dataSource = new MatTableDataSource();
+      this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+      setTimeout(() => {
+        this.timeOutFunction();
+      }, 50);
     });
   }
 
