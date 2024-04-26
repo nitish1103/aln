@@ -39,6 +39,17 @@ export class CreateAlnComponent {
     private readonly listAln: ListAlnComponent
   ) {}
 
+  ngOnInit() {
+    this.createALNForm.patchValue({
+      alnTitle: this.alnService.createALN.alnTitle,
+      alnCode: this.alnService.createALN.alnCode,
+      purpose: this.alnService.createALN.purpose,
+      programOfficeContact: this.alnService.createALN.programOfficeContact,
+      descriptionDocument: this.alnService.createALN.descriptionDocument,
+      executiveOrder: this.alnService.createALN.executiveOrder,
+    });
+  }
+
   save() {
     const {
       alnTitle,
@@ -66,7 +77,29 @@ export class CreateAlnComponent {
     });
   }
 
+  saveasDraft() {
+    const {
+      alnTitle,
+      alnCode,
+      purpose,
+      programOfficeContact,
+      descriptionDocument,
+      executiveOrder,
+    } = this.createALNForm.value;
+
+    this.alnService.createALN.alnTitle = alnTitle ?? '';
+    this.alnService.createALN.alnCode = alnCode ?? '';
+    this.alnService.createALN.purpose = purpose ?? '';
+    this.alnService.createALN.programOfficeContact = programOfficeContact ?? '';
+    this.alnService.createALN.descriptionDocument = descriptionDocument ?? '';
+    this.alnService.createALN.executiveOrder = executiveOrder ?? false;
+  }
+
   goBack() {
+    this.listAln.sectionActive = 'list';
+  }
+
+  previous() {
     this.listAln.sectionActive = 'list';
   }
 }

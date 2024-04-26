@@ -66,7 +66,7 @@
   </div>
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
-    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="15%" class="left-panel">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="18%" class="left-panel">
       <section class="left-panel-inner">
         <section class="filer-role-section">
           <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list'">
@@ -75,10 +75,10 @@
           <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'">
             Create ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'summary'}">
+          <p [ngClass]="{'active' : sectionActive === 'summary','grey-out' : sectionActive !== 'summary' }">
             Summary
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'confirmation'}">
+          <p [ngClass]="{'active' : sectionActive === 'confirmation', 'grey-out' : sectionActive !== 'confirmation'}">
             Confirmation
           </p>
         </section>

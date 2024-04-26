@@ -69,6 +69,7 @@
     position: relative;
     /*background: var(--primary-text-color) url(../../assets/images/navbar-img-bg.jpg) no-repeat bottom;*/
     background-size: cover;
+    margin-right: 1rem;
 
     h3 {
       background: var(--table-header);
@@ -216,13 +217,12 @@
     }
 
     p.active::after {
-      content: '';
+      content: "";
       position: absolute;
       top: 50%;
-      right: -20px;
-      /* Adjust this value to control the position of the pointer */
+      right: -77px;
       transform: translateY(-50%);
-      border: 10px solid transparent;
+      border: 39px solid transparent;
       border-left-color: #3a9bdc;
     }
 
@@ -446,4 +446,5 @@ form {
 
 .mat-mdc-raised-button:not(:disabled) {
   background-color: #3a9bdc;
+  width: 10rem;
 }

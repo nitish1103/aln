@@ -33,7 +33,18 @@ export class AlnSummaryComponent {
     this.createALN.executiveOrder = this.alnService.createALN.executiveOrder;
   }
 
-  goBack() {}
+  goBack() {
+    this.alnService.createALN.alnCode = '';
+    this.alnService.createALN.alnTitle = '';
+    this.alnService.createALN.executiveOrder = false;
+    this.alnService.createALN.programOfficeContact = '';
+    this.alnService.createALN.purpose = '';
+    this.listALN.sectionActive = 'list';
+  }
+
+  previous() {
+    this.listALN.sectionActive = 'create';
+  }
 
   save() {
     let data = {
@@ -49,10 +60,15 @@ export class AlnSummaryComponent {
       (response: any) => {
         console.log('===response', response);
         this.alnService.confirmALnResponse = response;
+        this.alnService.createALN.alnCode = '';
+        this.alnService.createALN.alnTitle = '';
+        this.alnService.createALN.executiveOrder = false;
+        this.alnService.createALN.programOfficeContact = '';
+        this.alnService.createALN.purpose = '';
         this.listALN.sectionActive = 'confirmation';
       },
       (error: any) => {
-        this.listALN.sectionActive = 'list';
+        this.listALN.sectionActive = 'confirmation';
       }
     );
   }
