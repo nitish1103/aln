@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AlnSummaryComponent } from './aln-summary/aln-summary.component';
 import { ListComponent } from './list/list.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     AlnSummaryComponent,
     ListComponent,
     ConfirmationComponent,
+    ConfirmModalComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService],

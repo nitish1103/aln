@@ -1,7 +1,9 @@
 import { Component, Input, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { AlnService } from '../services/aln-service';
 
 @Component({
@@ -31,21 +33,14 @@ export class ListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private alnService: AlnService) {}
+  constructor(private alnService: AlnService, public dialog: MatDialog) {}
 
   async ngOnInit() {
     this.getALN();
-    this.TABLE_DATA = this.ELEMENT_DATA;
-    this.dataSource = new MatTableDataSource();
-    this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
-    setTimeout(() => {
-      this.timeOutFunction();
-    }, 50);
   }
 
   getALN() {
     this.alnService.getALNList().subscribe((response: any) => {
-      console.log('===response', response);
       this.ELEMENT_DATA = response;
       this.TABLE_DATA = this.ELEMENT_DATA;
       this.dataSource = new MatTableDataSource();
@@ -87,5 +82,20 @@ export class ListComponent {
     setTimeout(() => {
       this.timeOutFunction();
     }, 50);
+  }
+
+  delete(selectedElement: any) {
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      panelClass: 'custom-dialog-container-small',
+      autoFocus: false,
+      restoreFocus: false,
+      data: { aln: selectedElement },
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result !== 'cancel') {
+        this.getALN();
+        this.searchQuery = '';
+      }
+    });
   }
 }

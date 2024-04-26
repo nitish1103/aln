@@ -36,4 +36,11 @@ export class AlnService {
   public getALNList(): Observable<any> {
     return this.httpClient.get<any>('http://localhost:8080/findall');
   }
+
+  /**
+   * method to delete ALN
+   */
+  public deleteALN(id: any): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:8080/delete/' + id);
+  }
 }
