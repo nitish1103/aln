@@ -48,7 +48,8 @@ export class AlnSummaryComponent {
     this.alnService.createAln(data).subscribe(
       (response: any) => {
         console.log('===response', response);
-        this.listALN.sectionActive = 'list';
+        this.alnService.confirmALnResponse = response;
+        this.listALN.sectionActive = 'confirmation';
       },
       (error: any) => {
         this.listALN.sectionActive = 'list';

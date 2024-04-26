@@ -15,6 +15,7 @@ import { AlnService } from './services/aln-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AlnSummaryComponent } from './aln-summary/aln-summary.component';
 import { ListComponent } from './list/list.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ListComponent } from './list/list.component';
     LoginComponent,
     AlnSummaryComponent,
     ListComponent,
+    ConfirmationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService],

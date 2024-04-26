@@ -19,6 +19,8 @@ export class AlnService {
     executiveOrder: false,
   };
 
+  confirmALnResponse: any;
+
   constructor(private readonly httpClient: HttpClient) {}
 
   /**
