@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
+import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
 @Component({
@@ -14,7 +15,44 @@ import { AlnService } from '../services/aln-service';
 export class ListComponent {
   @Input() searchQuery!: string;
 
-  ELEMENT_DATA: any[] = [];
+  ELEMENT_DATA: any[] = [
+    {
+      trackingNumber: 12345,
+      alnNumber: 45,
+      title: 'A',
+      status: 'Submit For Approval',
+      programContact: 'Manager',
+      activeIndicator: 'Y',
+      purpose: 'Training For Teacher',
+      agencyCode: '125',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+    {
+      trackingNumber: 12346,
+      alnNumber: 46,
+      title: 'B',
+      status: 'Rejected',
+      programContact: 'Manager',
+      purpose: 'Training For Teacher',
+      activeIndicator: 'N',
+      agencyCode: '12',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+    {
+      trackingNumber: 12347,
+      alnNumber: 47,
+      title: 'C',
+      status: 'Approved',
+      programContact: 'Manager',
+      purpose: 'Training For Teacher',
+      activeIndicator: 'N',
+      agencyCode: '125',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+  ];
   TABLE_DATA: any[] = [];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   displayedColumns: string[] = [
@@ -22,7 +60,7 @@ export class ListComponent {
     'alnNumber',
     'title',
     'status',
-    'programContactId',
+    'programContact',
     'activeIndicator',
     'agencyCode',
     'createdDate',
@@ -33,7 +71,11 @@ export class ListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private alnService: AlnService, public dialog: MatDialog) {}
+  constructor(
+    private alnService: AlnService,
+    public dialog: MatDialog,
+    private alnComponent: ListAlnComponent
+  ) {}
 
   async ngOnInit() {
     this.getALN();
@@ -97,5 +139,12 @@ export class ListComponent {
         this.searchQuery = '';
       }
     });
+  }
+
+  approve(selectedElement: any) {
+    this.alnService.isApproving = false;
+    this.alnService.approveAlnData = selectedElement;
+    this.alnComponent.sectionActive = 'approve';
+    this.alnComponent.isApproving = true;
   }
 }

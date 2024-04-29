@@ -69,17 +69,21 @@
     <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="18%" class="left-panel">
       <section class="left-panel-inner">
         <section class="filer-role-section">
-          <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list'">
+          <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list';isApproving= false" >
             ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'">
+          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'" *ngIf="!isApproving">
             Create ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'summary','grey-out' : sectionActive !== 'summary' }">
+          <p [ngClass]="{'active' : sectionActive === 'summary','grey-out' : sectionActive !== 'summary' }" *ngIf="!isApproving">
             Summary
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'confirmation', 'grey-out' : sectionActive !== 'confirmation'}">
+          <p [ngClass]="{'active' : sectionActive === 'confirmation', 'grey-out' : sectionActive !== 'confirmation'}" *ngIf="!isApproving">
             Confirmation
+          </p>
+          <p [ngClass]="{'active' : sectionActive === 'approve', 'grey-out' : sectionActive !== 'approve'}"
+            *ngIf="isApproving">
+            Approve/Reject
           </p>
         </section>
       </section>
@@ -89,6 +93,7 @@
       <app-create-aln *ngIf="sectionActive === 'create'"></app-create-aln>
       <app-aln-summary *ngIf="sectionActive === 'summary'"></app-aln-summary>
       <app-confirmation *ngIf="sectionActive === 'confirmation'"></app-confirmation>
+      <app-approve-aln *ngIf="sectionActive === 'approve'"></app-approve-aln>
     </div>
   </div>
 </div>

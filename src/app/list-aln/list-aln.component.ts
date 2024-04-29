@@ -15,6 +15,7 @@ export class ListAlnComponent {
   defaultSearchOption = 'title';
   status = 'all';
   sectionActive = 'list';
+  isApproving = false;
   constructor(private readonly router: Router) {}
 
   ELEMENT_DATA: any[] = [

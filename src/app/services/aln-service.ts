@@ -19,6 +19,9 @@ export class AlnService {
     executiveOrder: false,
   };
 
+  isApproving = false;
+  approveAlnData: any;
+
   confirmALnResponse: any;
 
   constructor(private readonly httpClient: HttpClient) {}
@@ -42,5 +45,12 @@ export class AlnService {
    */
   public deleteALN(id: any): Observable<any> {
     return this.httpClient.delete<any>('http://localhost:8080/delete/' + id);
+  }
+
+  /**
+   * method to delete ALN
+   */
+  public approveALN(id: any): Observable<any> {
+    return this.httpClient.post<any>('http://localhost:8080/approve/' + id, {});
   }
 }

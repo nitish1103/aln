@@ -46,13 +46,13 @@
     </ng-container>
 
     <!-- Program Contact -->
-    <ng-container matColumnDef="programContactId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by programContactId"
+    <ng-container matColumnDef="programContact">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by programContact"
         class="programContact" id="programContact">
         Program Contact
       </th>
       <td mat-cell *matCellDef="let element" class="programContact">
-        {{ element.programContactId}}
+        {{ element.programContact}}
       </td>
     </ng-container>
 
@@ -91,12 +91,11 @@
 
     <!-- Psuedo ALN -->
     <ng-container matColumnDef="executiveOrderIndicator">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by executiveOrderIndicator" class="psuedoAln"
-        id="psuedoAln">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by executiveOrderIndicator" class="psuedoAln" id="psuedoAln">
         Psuedo ALN
       </th>
-      <td mat-cell *matCellDef="let element" class="executiveOrderIndicator">
-        {{ element.psuedoAln}}
+      <td mat-cell *matCellDef="let element" class="psuedoAln">
+        {{ element.executiveOrderIndicator}}
       </td>
     </ng-container>
 
@@ -105,7 +104,11 @@
       <th mat-header-cell *matHeaderCellDef class="action-btns" id="action-btns">Action </th>
       <td mat-cell *matCellDef="let element" class="action-btns">
 
-        <button mat-icon-button aria-label="icon button with edit" class="update-btn" matTooltip="Update">
+        <button mat-icon-button aria-label="icon button with edit" class="update-btn" matTooltip="Approve" (click)="approve(element)">
+          <mat-icon matPrefix>done</mat-icon>
+        </button>
+
+        <button mat-icon-button aria-label="icon button with edit" class="update-btn" matTooltip="Update" >
           <mat-icon matPrefix>edit</mat-icon>
         </button>
 

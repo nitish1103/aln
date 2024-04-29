@@ -1,0 +1,106 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+          fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Tracking Number</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Tracking Number</mat-label>
+              <input matInput value="{{approveAlnData.trackingNumber}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>Agency Title</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Title</mat-label>
+              <input matInput value="{{approveAlnData.title}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Purpose</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Purpose</mat-label>
+              <input matInput value="{{approveAlnData.purpose}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Designator Code</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Designator Code</mat-label>
+              <input matInput value="{{approveAlnData.agencyCode}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Program Office Contact</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Program Office Contact</mat-label>
+              <input matInput value="{{approveAlnData.programContact}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Status</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Status</mat-label>
+              <input matInput value="{{approveAlnData.status}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>OMB Submission Date</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>OMB Submission Date</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel)]="approvalDate">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>Comment</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>Comment</mat-label>
+              <textarea matInput [(ngModel)]="comment"></textarea>
+            </mat-form-field>
+          </section>
+        </div>
+
+        <p class="info-text">
+          <mat-checkbox color="primary" value="1" [(ngModel)]="markActive">
+            Mark this ALN as active
+          </mat-checkbox>
+        </p>
+        <p class="info-text">
+          <mat-checkbox color="primary" value="1" [(ngModel)]="orderActive">
+            Executive order 12372 applies on this ALN
+          </mat-checkbox>
+        </p>
+        <div fxLayout="row">
+          <section fxFlex="50%" fxLayoutAlign="space-between" class="btn-spacing">
+            <button type="button" mat-raised-button color="primary" (click)="approve()">Approve</button>
+          </section>
+          <section fxFlex="40%"></section>
+          <section fxFlex="10%" fxLayoutAlign="space-between">
+            <button type="button" mat-raised-button color="primary" class="medium" (click)="reject()">
+              <span>Reject</span>
+            </button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
