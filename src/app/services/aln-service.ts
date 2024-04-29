@@ -21,8 +21,11 @@ export class AlnService {
 
   isApproving = false;
   approveAlnData: any;
+  approvalSubmissionDate = '';
+  approvalComment = '';
 
   confirmALnResponse: any;
+  confirmApproveAlnResponse: any;
 
   constructor(private readonly httpClient: HttpClient) {}
 

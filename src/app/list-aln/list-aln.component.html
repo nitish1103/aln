@@ -85,6 +85,14 @@
             *ngIf="isApproving">
             Approve/Reject
           </p>
+          <p [ngClass]="{'active' : sectionActive === 'approve-summary', 'grey-out' : sectionActive !== 'approve-summary'}"
+            *ngIf="isApproving">
+            Approve Sumamry
+          </p>
+          <p [ngClass]="{'active' : sectionActive === 'approve-confirmation', 'grey-out' : sectionActive !== 'approve-confirmation'}"
+            *ngIf="isApproving">
+            Approve Confirmation
+          </p>
         </section>
       </section>
     </div>
@@ -94,6 +102,8 @@
       <app-aln-summary *ngIf="sectionActive === 'summary'"></app-aln-summary>
       <app-confirmation *ngIf="sectionActive === 'confirmation'"></app-confirmation>
       <app-approve-aln *ngIf="sectionActive === 'approve'"></app-approve-aln>
+      <app-approval-summary *ngIf="sectionActive === 'approve-summary'"></app-approval-summary>
+      <app-approval-summary-confirmation *ngIf="sectionActive === 'approve-confirmation'"></app-approval-summary-confirmation>
     </div>
   </div>
 </div>

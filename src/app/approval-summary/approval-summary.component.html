@@ -1,0 +1,78 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Tracking Number</p>
+            <p class="value">{{approveAlnData.trackingNumber}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Title</p>
+            <p class="value">{{approveAlnData.title}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Purpose</p>
+            <p class="value">{{approveAlnData.purpose}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Designator Code</p>
+            <p class="value">{{approveAlnData.agencyCode}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Program Office Contact</p>
+            <p class="value">{{approveAlnData.programContact}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Status</p>
+            <p class="value">Submit For Approval</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">OMB Submission Date</p>
+            <p class="value">{{approvalDate}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Comment</p>
+            <p class="value">{{comment}}</p>
+          </section>
+        </div>
+
+        <p class="info-text">
+          <mat-checkbox color="primary" value="1" [(ngModel)]="markActive">
+            Mark this ALN as active
+          </mat-checkbox>
+        </p>
+        <p class="info-text">
+          <mat-checkbox color="primary" value="1" [(ngModel)]="orderActive">
+            Executive order 12372 applies on this ALN
+          </mat-checkbox>
+        </p>
+        <div fxLayout="row">
+          <section fxFlex="30%" fxLayoutAlign="space-between" class="btn-spacing">
+            <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+          </section>
+          <section fxFlex="30%">
+            <button type="button" mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+          </section>
+          <section fxFlex="30%" fxLayoutAlign="space-between">
+            <button type="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
