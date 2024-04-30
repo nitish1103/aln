@@ -15,6 +15,8 @@ import { AlnService } from '../services/aln-service';
 export class ListComponent {
   @Input() searchQuery!: string;
 
+  userRole = '';
+
   ELEMENT_DATA: any[] = [
     {
       trackingNumber: 12345,
@@ -78,6 +80,7 @@ export class ListComponent {
   ) {}
 
   async ngOnInit() {
+    this.userRole = localStorage.getItem('role') ?? '';
     this.getALN();
   }
 

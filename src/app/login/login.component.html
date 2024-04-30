@@ -5,7 +5,7 @@
       <div>
         <mat-form-field appearance="outline">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="UserName" formControlName="userName" name="firstname" autocomplete="off">
+          <input type="text" matInput placeholder="UserName" formControlName="userName" name="firstname" autocomplete="off">
         </mat-form-field>
         <div class="error" *ngIf="loginForm.controls['userName'].touched">
           <span *ngIf="loginForm.controls['userName'].errors?.['required']">

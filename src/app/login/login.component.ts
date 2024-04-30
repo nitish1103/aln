@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlnService } from '../services/aln-service';
 import { SharedService } from '../services/shared.service';
 
 @Component({
@@ -16,12 +17,20 @@ export class LoginComponent {
 
   constructor(
     private readonly router: Router,
-    private readonly sharedService: SharedService
+    private readonly sharedService: SharedService,
+    private readonly alnService: AlnService
   ) {}
 
   public login() {
-    localStorage.setItem('token', 'testToken');
-    this.router.navigate(['/home']);
-    this.sharedService.updateAuthentication(true);
+    const { userName, password } = this.loginForm.value;
+    this.alnService.login(userName, password).subscribe(
+      (response: any) => {
+        localStorage.setItem('role', response);
+        localStorage.setItem('token', 'testToken');
+        this.router.navigate(['/home']);
+        this.sharedService.updateAuthentication(true);
+      },
+      (error: any) => {}
+    );
   }
 }

@@ -16,43 +16,10 @@ export class ListAlnComponent {
   status = 'all';
   sectionActive = 'list';
   isApproving = false;
+  userRole = '';
   constructor(private readonly router: Router) {}
 
-  ELEMENT_DATA: any[] = [
-    {
-      trackingNumber: 12345,
-      alnNumber: 45,
-      title: 'A',
-      status: 'Submit For Approval',
-      programContact: 'Manager',
-      activeIndicator: '27',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-    {
-      trackingNumber: 12346,
-      alnNumber: 46,
-      title: 'B',
-      status: 'Rejected',
-      programContact: 'Manager',
-      activeIndicator: '26',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-    {
-      trackingNumber: 12347,
-      alnNumber: 47,
-      title: 'C',
-      status: 'Approved',
-      programContact: 'Manager',
-      activeIndicator: '27',
-      agencyCode: '125',
-      dateCreated: '04/04/24',
-      psuedoAln: '',
-    },
-  ];
+  ELEMENT_DATA: any[] = [];
   TABLE_DATA: any[] = [];
   searchQuery = '';
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
@@ -76,6 +43,7 @@ export class ListAlnComponent {
   filterUser() {}
 
   async ngOnInit() {
+    this.userRole = localStorage.getItem('role') ?? '';
     this.TABLE_DATA = this.ELEMENT_DATA;
     this.dataSource = new MatTableDataSource();
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);

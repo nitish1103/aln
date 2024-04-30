@@ -56,4 +56,15 @@ export class AlnService {
   public approveALN(id: any): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/approve/' + id, {});
   }
+
+  /**
+   * method to login
+   */
+  public login(username: any, password: any): Observable<any> {
+    let data = {
+      username: username,
+      password: password,
+    };
+    return this.httpClient.post<any>('http://localhost:8080/login', data);
+  }
 }
