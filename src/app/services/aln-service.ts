@@ -65,6 +65,8 @@ export class AlnService {
       username: username,
       password: password,
     };
-    return this.httpClient.post<any>('http://localhost:8080/login', data);
+    return this.httpClient.post<any>('http://localhost:8080/login', data, {
+      responseType: 'text' as 'json',
+    });
   }
 }
