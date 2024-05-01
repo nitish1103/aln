@@ -10,6 +10,7 @@ import { AlnService } from '../services/aln-service';
 })
 export class ApprovalSummaryConfirmationComponent {
   confirmApproveResponse: any;
+  isRejecting = false;
 
   constructor(
     private listAln: ListAlnComponent,
@@ -19,6 +20,7 @@ export class ApprovalSummaryConfirmationComponent {
 
   ngOnInit() {
     this.confirmApproveResponse = this.alnService.confirmApproveAlnResponse;
+    this.isRejecting = this.alnService.isRejecting;
   }
 
   done() {
