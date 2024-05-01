@@ -1,2 +1,6 @@
 @import '../../layout';
 @include admin-layout();
+
+.disabled {
+  opacity: 0.5;
+}
