@@ -23,14 +23,18 @@ export class LoginComponent {
 
   public login() {
     const { userName, password } = this.loginForm.value;
+    console.log('====username', userName);
     this.alnService.login(userName, password).subscribe(
       (response: any) => {
+        console.log('===response', response);
         localStorage.setItem('role', response);
         localStorage.setItem('token', 'testToken');
         this.router.navigate(['/home']);
         this.sharedService.updateAuthentication(true);
       },
-      (error: any) => {}
+      (error: any) => {
+        console.log('===error', error);
+      }
     );
   }
 }

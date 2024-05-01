@@ -81,6 +81,7 @@ export class ListComponent {
 
   async ngOnInit() {
     this.userRole = localStorage.getItem('role') ?? '';
+    this.alnService.isRejecting = false;
     this.getALN();
   }
 

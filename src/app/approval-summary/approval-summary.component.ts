@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-approval-summary',
@@ -10,19 +11,28 @@ import { AlnService } from '../services/aln-service';
 export class ApprovalSummaryComponent {
   approveAlnData: any;
   approvalDate = '';
-  markActive = false;
-  orderActive = false;
+  markActive = true;
+  orderActive = true;
   comment = '';
+  isRejecting = false;
+  btnvalue = 1;
+  isChecked = true;
 
   constructor(
     private alnService: AlnService,
-    private listAln: ListAlnComponent
+    private listAln: ListAlnComponent,
+    public datepipe: DatePipe
   ) {}
 
   ngOnInit() {
     this.approveAlnData = this.alnService.approveAlnData;
     this.comment = this.alnService.approvalComment;
-    this.approvalDate = this.alnService.approvalSubmissionDate;
+    this.approvalDate =
+      this.datepipe.transform(
+        this.alnService.approvalSubmissionDate,
+        'yyyy-MM-dd'
+      ) ?? '';
+    this.isRejecting = this.alnService.isRejecting;
   }
 
   previous() {
@@ -34,14 +44,26 @@ export class ApprovalSummaryComponent {
   }
 
   submit() {
-    this.alnService.approveALN(this.approveAlnData.trackingNumber).subscribe(
-      (response: any) => {
-        this.alnService.confirmApproveAlnResponse = response;
-        this.listAln.sectionActive = 'approve-confirmation';
-      },
-      (error: any) => {
-        this.listAln.sectionActive = 'approve-confirmation';
-      }
-    );
+    if (this.alnService.isRejecting) {
+      this.alnService.rejectALN(this.approveAlnData.trackingNumber).subscribe(
+        (response: any) => {
+          this.alnService.confirmApproveAlnResponse = response;
+          this.listAln.sectionActive = 'approve-confirmation';
+        },
+        (error: any) => {
+          this.listAln.sectionActive = 'approve-confirmation';
+        }
+      );
+    } else {
+      this.alnService.approveALN(this.approveAlnData.trackingNumber).subscribe(
+        (response: any) => {
+          this.alnService.confirmApproveAlnResponse = response;
+          this.listAln.sectionActive = 'approve-confirmation';
+        },
+        (error: any) => {
+          this.listAln.sectionActive = 'approve-confirmation';
+        }
+      );
+    }
   }
 }

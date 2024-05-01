@@ -10,8 +10,8 @@ import { AlnService } from '../services/aln-service';
 export class ApproveAlnComponent {
   approveAlnData: any;
   approvalDate = '';
-  markActive = false;
-  orderActive = false;
+  markActive = true;
+  orderActive = true;
   comment = '';
 
   constructor(
@@ -26,10 +26,16 @@ export class ApproveAlnComponent {
   }
 
   approve() {
+    this.alnService.isRejecting = false;
     this.alnService.approvalSubmissionDate = this.approvalDate;
     this.alnService.approvalComment = this.comment;
     this.listAln.sectionActive = 'approve-summary';
   }
 
-  reject() {}
+  reject() {
+    this.alnService.isRejecting = true;
+    this.alnService.approvalSubmissionDate = this.approvalDate;
+    this.alnService.approvalComment = this.comment;
+    this.listAln.sectionActive = 'approve-summary';
+  }
 }

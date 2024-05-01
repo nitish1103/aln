@@ -61,6 +61,19 @@
             Executive order 12372 applies on this ALN
           </mat-checkbox>
         </p>
+
+        <div fxLayout="column" class="pb-10">
+          <h4>Are you sure you want to <span *ngIf="!isRejecting">approve</span> <span *ngIf="isRejecting">reject</span> this ALN?</h4>
+        </div>
+        <div fxLayout="column" class="pb-10">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button ngDefaultControl [value]="1" [(ngModel)]="btnvalue" name="btnvalue" type="radio"
+              [checked]="isChecked">Yes</mat-radio-button>
+            <mat-radio-button ngDefaultControl [value]="0" [(ngModel)]="btnvalue" name="btnvalue" type="radio"
+              [checked]="!isChecked">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
         <div fxLayout="row">
           <section fxFlex="30%" fxLayoutAlign="space-between" class="btn-spacing">
             <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
@@ -69,7 +82,7 @@
             <button type="button" mat-raised-button color="primary" (click)="cancel()">Cancel</button>
           </section>
           <section fxFlex="30%" fxLayoutAlign="space-between">
-            <button type="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
+            <button type="button" mat-raised-button color="primary" [disabled]="btnvalue == 0" (click)="submit()">Submit</button>
           </section>
         </div>
       </div>

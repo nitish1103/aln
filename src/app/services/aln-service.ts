@@ -20,6 +20,7 @@ export class AlnService {
   };
 
   isApproving = false;
+  isRejecting = false;
   approveAlnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
@@ -51,10 +52,17 @@ export class AlnService {
   }
 
   /**
-   * method to delete ALN
+   * method to approve ALN
    */
   public approveALN(id: any): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/approve/' + id, {});
+  }
+
+  /**
+   * method to reject ALN
+   */
+  public rejectALN(id: any): Observable<any> {
+    return this.httpClient.post<any>('http://localhost:8080/reject/' + id, {});
   }
 
   /**

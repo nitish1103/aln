@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { ListAlnComponent } from './list-aln/list-aln.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
+import { DatePipe } from '@angular/common';
 import { AlnService } from './services/aln-service';
 import { HttpClientModule } from '@angular/common/http';
 import { AlnSummaryComponent } from './aln-summary/aln-summary.component';
@@ -39,7 +40,7 @@ import { ApprovalSummaryConfirmationComponent } from './approval-summary-confirm
     ApprovalSummaryConfirmationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
-  providers: [AuthGuard, AlnService],
+  providers: [AuthGuard, AlnService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
