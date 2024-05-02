@@ -52,6 +52,7 @@ export class AlnSummaryComponent {
       purpose: this.alnService.createALN.purpose,
       agencyCode: this.alnService.createALN.alnCode,
       programContactId: this.alnService.createALN.programOfficeContact,
+      document: this.alnService.createALN.descriptionDocument,
       executiveOrderIndicator: this.alnService.createALN.executiveOrder
         ? 'Y'
         : 'N',
@@ -59,7 +60,20 @@ export class AlnSummaryComponent {
     this.alnService.createAln(data).subscribe(
       (response: any) => {
         console.log('===response', response);
+
         this.alnService.confirmALnResponse = response;
+        this.uploadFile(response.trackingNumber);
+      },
+      (error: any) => {
+        this.listALN.sectionActive = 'confirmation';
+      }
+    );
+  }
+
+  uploadFile(id: any) {
+    this.alnService.uploadDocument(id).subscribe(
+      (response: any) => {
+        console.log('===response of upload', response);
         this.alnService.createALN.alnCode = '';
         this.alnService.createALN.alnTitle = '';
         this.alnService.createALN.executiveOrder = false;
@@ -67,9 +81,7 @@ export class AlnSummaryComponent {
         this.alnService.createALN.purpose = '';
         this.listALN.sectionActive = 'confirmation';
       },
-      (error: any) => {
-        this.listALN.sectionActive = 'confirmation';
-      }
+      (error: any) => {}
     );
   }
 }

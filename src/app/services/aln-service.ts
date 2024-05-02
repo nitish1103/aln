@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -24,6 +24,8 @@ export class AlnService {
   approveAlnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
+
+  file!: File;
 
   confirmALnResponse: any;
   confirmApproveAlnResponse: any;
@@ -63,6 +65,24 @@ export class AlnService {
    */
   public rejectALN(id: any): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/reject/' + id, {});
+  }
+
+  /**
+   * method to upload document
+   */
+  public uploadDocument(id: any): Observable<any> {
+    let formData = new FormData();
+    formData.append('file', this.file);
+
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.append('Accept', 'application/json');
+
+    return this.httpClient.post<any>(
+      'http://localhost:8080/file/upload/id' + id,
+      formData,
+      { headers: headers }
+    );
   }
 
   /**

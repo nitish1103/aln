@@ -72,6 +72,7 @@ export class CreateAlnComponent {
 
   selectFile(event: any) {
     this.selectedFile = event.target.files[0];
+    this.alnService.file = this.selectedFile;
     this.createALNForm.patchValue({
       descriptionDocument: this.selectedFile.name,
     });
