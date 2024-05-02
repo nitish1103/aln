@@ -17,6 +17,8 @@ export class AlnSummaryComponent {
     executiveOrder: false,
   };
 
+  isSaving = false;
+
   constructor(
     private readonly alnService: AlnService,
     private readonly listALN: ListAlnComponent
@@ -47,6 +49,7 @@ export class AlnSummaryComponent {
   }
 
   save() {
+    this.isSaving = true;
     let data = {
       title: this.alnService.createALN.alnTitle,
       purpose: this.alnService.createALN.purpose,
@@ -60,12 +63,12 @@ export class AlnSummaryComponent {
     this.alnService.createAln(data).subscribe(
       (response: any) => {
         console.log('===response', response);
-
+        this.isSaving = false;
         this.alnService.confirmALnResponse = response;
         this.uploadFile(response.trackingNumber);
       },
       (error: any) => {
-        this.uploadFile('1234');
+        this.isSaving = false;
         this.listALN.sectionActive = 'confirmation';
       }
     );

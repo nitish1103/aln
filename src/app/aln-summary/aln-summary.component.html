@@ -43,7 +43,7 @@
           <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
             <span>Cancel</span>
           </button>
-          <button mat-raised-button color="primary" (click)="save()">Submit</button>
+          <button mat-raised-button color="primary" (click)="save()" [disabled]="isSaving">Submit</button>
         </div>
       </div>
     </div>

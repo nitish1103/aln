@@ -36,7 +36,7 @@
               <h4>ALN Purpose*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>ALN Purpose</mat-label>
-                <input matInput placeholder="Enter ALN Title" name="purpose" required formControlName="purpose" autocomplete="off">
+                <input matInput placeholder="Enter ALN Title" name="purpose" maxlength="256" required formControlName="purpose" autocomplete="off">
                 <mat-hint align="end" *ngIf="createALNForm.controls['purpose'].touched">
                   <span *ngIf="createALNForm.controls['purpose'].errors?.['required']">Purpose is required.</span>
                 </mat-hint>
@@ -84,7 +84,11 @@
             </section>
             <section fxFlxex="5%"></section>
             <section fxFlex="50%" fxLayoutAlign="space-between">
-              <button type="button" mat-raised-button color="primary" (click)="saveasDraft()">Save as Draft</button>
+              <button type="button" mat-raised-button color="primary" [disabled]="isSaving" (click)="saveasDraft()">
+                <span *ngIf="!isSaving">Save as Draft</span>
+                <span *ngIf="isSaving">Saving...</span>
+                
+              </button>
               <button type="submit" mat-raised-button color="primary" class="medium">
                 <span>Continue</span>
               </button>

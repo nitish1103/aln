@@ -10,6 +10,7 @@ import { AlnService } from '../services/aln-service';
 })
 export class CreateAlnComponent {
   selectedFile!: File;
+  isSaving = false;
 
   createALNForm = new FormGroup({
     alnTitle: new FormControl('', [Validators.required]),
@@ -79,6 +80,7 @@ export class CreateAlnComponent {
   }
 
   saveasDraft() {
+    this.isSaving = true;
     const {
       alnTitle,
       alnCode,
@@ -88,12 +90,27 @@ export class CreateAlnComponent {
       executiveOrder,
     } = this.createALNForm.value;
 
-    this.alnService.createALN.alnTitle = alnTitle ?? '';
-    this.alnService.createALN.alnCode = alnCode ?? '';
-    this.alnService.createALN.purpose = purpose ?? '';
-    this.alnService.createALN.programOfficeContact = programOfficeContact ?? '';
-    this.alnService.createALN.descriptionDocument = descriptionDocument ?? '';
-    this.alnService.createALN.executiveOrder = executiveOrder ?? false;
+    let data = {
+      title: alnTitle,
+      purpose: purpose,
+      agencyCode: alnCode,
+      programContactId: programOfficeContact,
+      document: descriptionDocument,
+      status: 'Draft',
+      executiveOrderIndicator: executiveOrder ? 'Y' : 'N',
+    };
+
+    this.alnService.createAln(data).subscribe(
+      (response: any) => {
+        this.isSaving = false;
+        console.log('===response', response);
+        this.listAln.sectionActive = 'list';
+      },
+      (error: any) => {
+        this.isSaving = false;
+        this.listAln.sectionActive = 'list';
+      }
+    );
   }
 
   goBack() {
