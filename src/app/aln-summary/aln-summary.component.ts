@@ -65,6 +65,7 @@ export class AlnSummaryComponent {
         this.uploadFile(response.trackingNumber);
       },
       (error: any) => {
+        this.uploadFile('1234');
         this.listALN.sectionActive = 'confirmation';
       }
     );

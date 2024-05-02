@@ -59,7 +59,7 @@
 
   textarea {
     resize: none;
-    min-height: 4rem;
+    min-height: 8rem;
   }
 
   .left-panel {
@@ -286,63 +286,55 @@
   }
 
   .tbl-data .trackingNumber {
-    flex: 0 0 10rem;
-    padding: 0 1rem 0 1rem;
-    word-break: break-word;
+    width: 10%;
+    text-align: center;
   }
 
   .tbl-data .alnNumber {
-    flex: 0 0 5rem;
-    padding: 0 1rem 0 0;
-    word-break: break-word;
+    width: 10%;
+      text-align: center;
   }
 
   .tbl-data .title {
-    flex: 0 0 5rem;
-    word-break: break-word;
-    padding: 0 1rem 0 0;
+    width: 10%;
+    text-align: center;
   }
 
   .tbl-data .status {
-    flex: 0 0 10rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 10%;
+      text-align: center;
   }
 
   .tbl-data .programContact {
-    flex: 0 0 8rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 10%;
+      text-align: center;
   }
 
   .tbl-data .activeIndicator {
-    flex: 0 0 7rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 8%;
+      text-align: center;
   }
 
   .tbl-data .agencyCode {
-    flex: 0 0 8rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 8%;
+      text-align: center;
   }
 
   .tbl-data .dateCreated {
-    flex: 0 0 8rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 8%;
+      text-align: center;
   }
 
   .tbl-data .psuedoAln {
-    flex: 0 0 8rem;
-    word-break: break-word;
-    padding-right: 1rem;
+    width: 5%;
+    text-align: center;
   }
 
 
 
   .tbl-data .action-btns {
-    flex: 1 1 auto;
+    width: 15%;
+      text-align: center;
   }
 
   .tbl-data mat-row,

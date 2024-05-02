@@ -25,6 +25,8 @@ export class ApprovalSummaryComponent {
   ) {}
 
   ngOnInit() {
+    this.markActive = this.alnService.markActive;
+    this.orderActive = this.alnService.orderActive;
     this.approveAlnData = this.alnService.approveAlnData;
     this.comment = this.alnService.approvalComment;
     this.approvalDate =

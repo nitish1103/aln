@@ -34,7 +34,7 @@ export class LoginComponent {
       },
       (error: any) => {
         console.log('===error', error);
-        localStorage.setItem('role', 'A89');
+        localStorage.setItem('role', 'Po User');
         localStorage.setItem('token', 'testToken');
         this.router.navigate(['/home']);
         this.sharedService.updateAuthentication(true);

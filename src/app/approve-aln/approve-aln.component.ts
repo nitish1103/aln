@@ -13,6 +13,7 @@ export class ApproveAlnComponent {
   markActive = true;
   orderActive = true;
   comment = '';
+  today = new Date();
 
   constructor(
     private alnService: AlnService,
@@ -26,6 +27,8 @@ export class ApproveAlnComponent {
   }
 
   approve() {
+    this.alnService.markActive = this.markActive;
+    this.alnService.orderActive = this.orderActive;
     this.alnService.isRejecting = false;
     this.alnService.approvalSubmissionDate = this.approvalDate;
     this.alnService.approvalComment = this.comment;
@@ -33,6 +36,8 @@ export class ApproveAlnComponent {
   }
 
   reject() {
+    this.alnService.markActive = this.markActive;
+    this.alnService.orderActive = this.orderActive;
     this.alnService.isRejecting = true;
     this.alnService.approvalSubmissionDate = this.approvalDate;
     this.alnService.approvalComment = this.comment;

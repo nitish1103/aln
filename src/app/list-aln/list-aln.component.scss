@@ -91,6 +91,12 @@ small {
     height: 37px!important;
   }
 
+  .comment {
+    .mat-mdc-text-field-wrapper {
+        height: auto !important;
+      }
+  }
+
   .mat-mdc-form-field-infix {
     padding-top: 8px!important;
     padding-bottom: 5px!important;

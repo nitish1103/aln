@@ -24,6 +24,8 @@ export class AlnService {
   approveAlnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
+  markActive = true;
+  orderActive = true;
 
   file!: File;
 
@@ -79,9 +81,8 @@ export class AlnService {
     headers.append('Accept', 'application/json');
 
     return this.httpClient.post<any>(
-      'http://localhost:8080/file/upload/id' + id,
-      formData,
-      { headers: headers }
+      'http://localhost:8080/file/upload',
+      formData
     );
   }
 

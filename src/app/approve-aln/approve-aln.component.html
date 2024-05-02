@@ -63,7 +63,7 @@
             <h4>OMB Submission Date</h4>
             <mat-form-field appearance="outline">
               <mat-label>OMB Submission Date</mat-label>
-              <input matInput [matDatepicker]="picker" [(ngModel)]="approvalDate">
+              <input matInput [matDatepicker]="picker" [max]="today" [(ngModel)]="approvalDate">
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
@@ -72,7 +72,7 @@
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
             <h4>Comment</h4>
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" class="comment">
               <mat-label>Comment</mat-label>
               <textarea matInput [(ngModel)]="comment"></textarea>
             </mat-form-field>
