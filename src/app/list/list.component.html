@@ -113,7 +113,13 @@
           <mat-icon matPrefix>done</mat-icon>
         </button>
 
-        <button mat-icon-button aria-label="icon button with edit" class="update-btn" matTooltip="Update" *ngIf="userRole !== 'A89'" (click)="edit(element)">
+        <button mat-icon-button aria-label="icon button with edit" class="update-btn" matTooltip="Update" *ngIf="(userRole !== 'A89' && element.status ==='Draft') || (userRole === 'A89' && element.status ==='Approved')" (click)="edit(element)">
+          <mat-icon matPrefix>edit</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="icon button with edit" class="update-btn disabled" matTooltip="Update"
+          *ngIf="(userRole !== 'A89' && element.status !=='Draft') || 
+          (userRole === 'A89' && element.status !=='Approved')"
+          >
           <mat-icon matPrefix>edit</mat-icon>
         </button>
 

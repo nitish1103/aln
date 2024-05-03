@@ -28,9 +28,11 @@ export class ConfirmModalComponent {
     this.alnService.deleteALN(this.data.aln.trackingNumber).subscribe(
       (result) => {
         this.deleteAlnDialogRef.close('success');
+        this.isDeleting = false;
       },
       (error) => {
         console.log('=============error', error);
+        this.isDeleting = false;
         this.deleteAlnDialogRef.close('error');
       }
     );
