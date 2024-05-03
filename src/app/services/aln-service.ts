@@ -22,10 +22,12 @@ export class AlnService {
   isApproving = false;
   isRejecting = false;
   approveAlnData: any;
+  editAlnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
   markActive = true;
   orderActive = true;
+  isEditing = false;
 
   file!: File;
 
@@ -39,6 +41,13 @@ export class AlnService {
    */
   public createAln(postData: Object): Observable<any> {
     return this.httpClient.post<any>('http://localhost:8080/create', postData);
+  }
+
+  /**
+   * method to edit ALN
+   */
+  public editAln(postData: Object): Observable<any> {
+    return this.httpClient.post<any>('http://localhost:8080/update', postData);
   }
 
   /**

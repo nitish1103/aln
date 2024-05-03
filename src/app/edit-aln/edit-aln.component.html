@@ -1,0 +1,150 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <form [formGroup]="editALNForm" (ngSubmit)="editALNForm.valid && save()" novalidate>
+      <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+        <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Tracking Number</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Tracking Number</mat-label>
+                <input matInput placeholder="Enter ALN Tracking Number" name="alnTitle" formControlName="trackingNumber" readonly autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Aln Number</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Number</mat-label>
+                <input matInput placeholder="Enter Number" name="alnTitle" formControlName="alnNumber" readonly
+                  autocomplete="off">
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Title*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Title</mat-label>
+                <input matInput placeholder="Enter ALN Title" name="alnTitle" formControlName="alnTitle" required
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="editALNForm.controls['alnTitle'].touched">
+                  <span *ngIf="editALNForm.controls['alnTitle'].errors?.['required']">Aln title is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Agency Designator Code*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Select an option</mat-label>
+                <mat-select formControlName="agencyCode">
+                  <mat-option *ngFor="let code of agencyDesignatorCodes" value="{{code}}">{{ code }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="editALNForm.controls['agencyCode'].touched">
+                  <span *ngIf="editALNForm.controls['agencyCode'].errors?.['required']">Agency Designator Code is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Purpose*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Purpose</mat-label>
+                <input matInput placeholder="Enter ALN Purpose" name="purpose" maxlength="256" required
+                  formControlName="purpose" autocomplete="off">
+                <mat-hint align="end" *ngIf="editALNForm.controls['purpose'].touched">
+                  <span *ngIf="editALNForm.controls['purpose'].errors?.['required']">Purpose is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Program Office Contact*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Program Office Contact</mat-label>
+                <input matInput placeholder="Enter ALN Title" name="programContact"
+                  formControlName="programContact" required autocomplete="off">
+                <mat-hint align="end" *ngIf="editALNForm.controls['programContact'].touched">
+                  <span *ngIf="editALNForm.controls['programContact'].errors?.['required']">Purpose is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" class="section-spacing" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Description Document*</h4>
+              <div fxLayout="row">
+                <section fxLayout="column" fxLayoutAlign="center center" class="upload-image">
+                  <mat-icon color="primary" aria-label="Add">add</mat-icon>
+                  <mat-label>Upload Document</mat-label>
+                  <input type="file" class="upload-file" accept="*" (change)="selectFile($event)" required />
+                </section>
+              </div>
+              <small class="mt-2" *ngIf="selectedFile != null">{{selectedFile.name}}</small>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4 class="status">ALN Status</h4>
+              <p class="value">{{editAlnData.status}}</p>
+            </section>
+          </div>
+          
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>OMB Submission Date</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>OMB Submission Date</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="today" [(ngModel)]="approvalDate" [ngModelOptions]="{standalone: true}">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Comment</h4>
+              <mat-form-field appearance="outline" class="comment">
+                <mat-label>Comment</mat-label>
+                <textarea matInput [(ngModel)]="comment" [ngModelOptions]="{standalone: true}"></textarea>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <p class="info-text">
+            <mat-checkbox color="primary" value="1" [(ngModel)]="markActive" [ngModelOptions]="{standalone: true}">
+              Mark this ALN as active
+            </mat-checkbox>
+          </p>
+          <p class="info-text">
+            <mat-checkbox color="primary" value="1" [(ngModel)]="orderActive" [ngModelOptions]="{standalone: true}">
+              Executive order 12372 applies on this ALN
+            </mat-checkbox>
+          </p>
+          <div fxLayout="row">
+            <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+              <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+              <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                <span>Cancel</span>
+              </button>
+            </section>
+            <section fxFlxex="5%"></section>
+            <section fxFlex="50%" fxLayoutAlign="space-between">
+              <button type="submit" mat-raised-button color="primary" class="medium">
+                <span>Continue</span>
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

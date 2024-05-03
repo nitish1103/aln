@@ -26,7 +26,7 @@ export class ListComponent {
       programContact: 'Manager',
       activeIndicator: 'Y',
       purpose: 'Training For Teacher',
-      agencyCode: '125',
+      agencyCode: '84',
       createdDate: '04/04/24',
       executiveOrderIndicator: 'Y',
     },
@@ -38,7 +38,7 @@ export class ListComponent {
       programContact: 'Manager',
       purpose: 'Training For Teacher',
       activeIndicator: 'N',
-      agencyCode: '12',
+      agencyCode: '84',
       createdDate: '04/04/24',
       executiveOrderIndicator: 'Y',
     },
@@ -50,7 +50,7 @@ export class ListComponent {
       programContact: 'Manager',
       purpose: 'Training For Teacher',
       activeIndicator: 'N',
-      agencyCode: '125',
+      agencyCode: '84',
       createdDate: '04/04/24',
       executiveOrderIndicator: 'Y',
     },
@@ -150,5 +150,12 @@ export class ListComponent {
     this.alnService.approveAlnData = selectedElement;
     this.alnComponent.sectionActive = 'approve';
     this.alnComponent.isApproving = true;
+  }
+
+  edit(selectedElement: any) {
+    this.alnService.isEditing = false;
+    this.alnService.editAlnData = selectedElement;
+    this.alnComponent.sectionActive = 'edit';
+    this.alnComponent.isEditing = true;
   }
 }

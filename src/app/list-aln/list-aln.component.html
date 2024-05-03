@@ -72,13 +72,14 @@
           <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list';isApproving= false" >
             ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'" *ngIf="userRole === 'Po User'">
-            Create ALN
+          <p [ngClass]="{'active' : sectionActive === 'create' || sectionActive === 'edit'}" (click)="isEditing ? '' : sectionActive = 'create'" *ngIf="userRole === 'Po User'">
+            <span *ngIf="!isEditing">Create ALN</span>
+            <span *ngIf="isEditing">Edit ALN</span>
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'summary','grey-out' : sectionActive !== 'summary' }" *ngIf="userRole === 'Po User'">
+          <p [ngClass]="{'active' : sectionActive === 'summary' || sectionActive === 'edit-summary','grey-out' : sectionActive !== 'summary' &&  sectionActive !== 'edit-summary' }" *ngIf="userRole === 'Po User'">
             Summary
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'confirmation', 'grey-out' : sectionActive !== 'confirmation'}" *ngIf="userRole === 'Po User'">
+          <p [ngClass]="{'active' : sectionActive === 'confirmation' || sectionActive === 'approve-confirmation', 'grey-out' : sectionActive !== 'confirmation' &&  sectionActive !== 'approve-confirmation'}" *ngIf="userRole === 'Po User'">
             Confirmation
           </p>
           <p [ngClass]="{'active' : sectionActive === 'approve', 'grey-out' : sectionActive !== 'approve'}"
@@ -104,6 +105,8 @@
       <app-approve-aln *ngIf="sectionActive === 'approve'"></app-approve-aln>
       <app-approval-summary *ngIf="sectionActive === 'approve-summary'"></app-approval-summary>
       <app-approval-summary-confirmation *ngIf="sectionActive === 'approve-confirmation'"></app-approval-summary-confirmation>
+      <app-edit-aln *ngIf="sectionActive === 'edit'"></app-edit-aln>
+      <app-edit-aln-summary *ngIf="sectionActive === 'edit-summary'"></app-edit-aln-summary>
     </div>
   </div>
 </div>

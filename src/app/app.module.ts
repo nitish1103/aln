@@ -21,6 +21,8 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 import { ApproveAlnComponent } from './approve-aln/approve-aln.component';
 import { ApprovalSummaryComponent } from './approval-summary/approval-summary.component';
 import { ApprovalSummaryConfirmationComponent } from './approval-summary-confirmation/approval-summary-confirmation.component';
+import { EditAlnComponent } from './edit-aln/edit-aln.component';
+import { EditAlnSummaryComponent } from './edit-aln-summary/edit-aln-summary.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { ApprovalSummaryConfirmationComponent } from './approval-summary-confirm
     ApproveAlnComponent,
     ApprovalSummaryComponent,
     ApprovalSummaryConfirmationComponent,
+    EditAlnComponent,
+    EditAlnSummaryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

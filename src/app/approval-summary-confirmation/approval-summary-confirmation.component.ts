@@ -26,12 +26,14 @@ export class ApprovalSummaryConfirmationComponent {
   done() {
     this.listAln.isApproving = false;
     this.alnService.isRejecting = false;
+    this.alnService.isEditing = false;
     this.listAln.sectionActive = 'list';
   }
 
   goToHome() {
     this.listAln.isApproving = false;
     this.alnService.isRejecting = false;
+    this.alnService.isEditing = false;
     this.router.navigate(['/home']);
   }
 }
