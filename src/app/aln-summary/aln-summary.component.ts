@@ -56,6 +56,7 @@ export class AlnSummaryComponent {
       agencyCode: this.alnService.createALN.alnCode,
       programContactId: this.alnService.createALN.programOfficeContact,
       document: this.alnService.createALN.descriptionDocument,
+      status: 'Submitted for Approval',
       executiveOrderIndicator: this.alnService.createALN.executiveOrder
         ? 'Y'
         : 'N',
