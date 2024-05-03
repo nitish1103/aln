@@ -11,6 +11,8 @@ import { AlnService } from '../services/aln-service';
 export class CreateAlnComponent {
   selectedFile!: File;
   isSaving = false;
+  isDraft = false;
+  trackingNumber = '';
 
   createALNForm = new FormGroup({
     alnTitle: new FormControl('', [Validators.required]),
@@ -103,12 +105,12 @@ export class CreateAlnComponent {
     this.alnService.createAln(data).subscribe(
       (response: any) => {
         this.isSaving = false;
+        this.isDraft = true;
         console.log('===response', response);
-        this.listAln.sectionActive = 'list';
+        this.trackingNumber = response.trackingNumber;
       },
       (error: any) => {
         this.isSaving = false;
-        this.listAln.sectionActive = 'list';
       }
     );
   }

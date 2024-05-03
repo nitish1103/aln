@@ -4,6 +4,16 @@
     <form [formGroup]="createALNForm" (ngSubmit)="createALNForm.valid && save()" novalidate>
       <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
         <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%" *ngIf="isDraft">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Tracking Number</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Tracking Number</mat-label>
+                <input matInput placeholder="Enter ALN Title" name="alnTitle" readonly required
+                  autocomplete="off" value="{{trackingNumber}}">
+              </mat-form-field>
+            </section>
+          </div>
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
                       fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
