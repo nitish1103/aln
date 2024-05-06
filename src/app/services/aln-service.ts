@@ -91,7 +91,10 @@ export class AlnService {
 
     return this.httpClient.post<any>(
       'http://localhost:8080/file/upload',
-      formData
+      formData,
+      {
+        responseType: 'text' as 'json',
+      }
     );
   }
 
