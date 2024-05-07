@@ -47,6 +47,9 @@ export class EditAlnSummaryComponent {
   }
 
   submit() {
+    if (this.alnService.editAlnData.status === 'Draft') {
+      this.alnService.editAlnData.status = 'Submit For Approval';
+    }
     this.alnService.editAln(this.alnService.editAlnData).subscribe(
       (response: any) => {
         this.alnService.confirmApproveAlnResponse = response;
