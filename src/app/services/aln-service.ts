@@ -23,11 +23,13 @@ export class AlnService {
   isRejecting = false;
   approveAlnData: any;
   editAlnData: any;
+  deleteAlnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
   markActive = true;
   orderActive = true;
   isEditing = false;
+  isDeleting = false;
 
   file!: File;
 

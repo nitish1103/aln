@@ -23,6 +23,9 @@ import { ApprovalSummaryComponent } from './approval-summary/approval-summary.co
 import { ApprovalSummaryConfirmationComponent } from './approval-summary-confirmation/approval-summary-confirmation.component';
 import { EditAlnComponent } from './edit-aln/edit-aln.component';
 import { EditAlnSummaryComponent } from './edit-aln-summary/edit-aln-summary.component';
+import { DeleteAlnComponent } from './delete-aln/delete-aln.component';
+import { DeleteAlnSummaryComponent } from './delete-aln-summary/delete-aln-summary.component';
+import { DeleteAlnConfirmationComponent } from './delete-aln-confirmation/delete-aln-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,9 @@ import { EditAlnSummaryComponent } from './edit-aln-summary/edit-aln-summary.com
     ApprovalSummaryConfirmationComponent,
     EditAlnComponent,
     EditAlnSummaryComponent,
+    DeleteAlnComponent,
+    DeleteAlnSummaryComponent,
+    DeleteAlnConfirmationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

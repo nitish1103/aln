@@ -16,6 +16,7 @@ export class ListAlnComponent {
   status = 'all';
   sectionActive = 'list';
   isApproving = false;
+  isDeleting = false;
   isEditing = false;
 
   userRole = '';

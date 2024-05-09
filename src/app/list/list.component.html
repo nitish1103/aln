@@ -124,11 +124,11 @@
         </button>
 
         <button mat-icon-button aria-label="icon button with delete" class="delete-btn" matTooltip="Delete"
-          (click)="delete(element)" *ngIf="element.status !== 'Approved'">
+          (click)="delete(element)" *ngIf="userRole !== 'A89' && (element.status === 'Draft' || element.status === 'Rejected')">
           <mat-icon matPrefix>delete</mat-icon>
         </button>
 
-        <button mat-icon-button aria-label="icon button with delete" class="delete-btn disabled"  matTooltip="Approved records cannot be deleted" *ngIf="element.status === 'Approved'">
+        <button mat-icon-button aria-label="icon button with delete" class="delete-btn disabled"  matTooltip="Approved records cannot be deleted" *ngIf="userRole === 'A89' || (element.status !== 'Draft' && element.status !== 'Rejected')">
           <mat-icon matPrefix>delete</mat-icon>
         </button>
       </td>

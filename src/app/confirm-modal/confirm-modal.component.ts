@@ -19,9 +19,13 @@ export class ConfirmModalComponent {
     public dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: { aln: any },
     public deleteAlnDialogRef: MatDialogRef<ConfirmModalComponent>
-  ) {}
+  ) {
+    console.log('=============data', this.data.aln.trackingNumber);
+  }
 
   public deleteAln() {
+    console.log('=============data', this.data.aln.trackingNumber);
+
     this.isDeleting = true;
     this.deleteAlnDialogRef.disableClose = true;
 

@@ -1,0 +1,77 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Tracking Number</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Tracking Number</mat-label>
+              <input matInput value="{{deleteAlnData.trackingNumber}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>Agency Title</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Title</mat-label>
+              <input matInput value="{{deleteAlnData.title}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Purpose</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Purpose</mat-label>
+              <input matInput value="{{deleteAlnData.purpose}}" readonly maxlength="256" autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Designator Code</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Designator Code</mat-label>
+              <input matInput value="{{deleteAlnData.agencyCode}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Program Office Contact</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Program Office Contact</mat-label>
+              <input matInput value="{{deleteAlnData.programContact}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <h4>ALN Status</h4>
+            <mat-form-field appearance="outline">
+              <mat-label>ALN Status</mat-label>
+              <input matInput value="{{deleteAlnData.status}}" readonly autocomplete="off">
+            </mat-form-field>
+          </section>
+        </div>
+
+        <div fxLayout="row">
+          <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+            <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+            <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+              <span>Cancel</span>
+            </button>
+          </section>
+          <section fxFlxex="5%"></section>
+          <section fxFlex="50%" fxLayoutAlign="space-between">
+            <button type="submit" mat-raised-button color="primary" class="medium" (click)="continue()">
+              <span>Continue</span>
+            </button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Tracking Number</p>
+            <p class="value">{{deleteAlnData.trackingNumber}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Title</p>
+            <p class="value">{{deleteAlnData.title}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Purpose</p>
+            <p class="value">{{deleteAlnData.purpose}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Designator Code</p>
+            <p class="value">{{deleteAlnData.agencyCode}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Program Office Contact</p>
+            <p class="value">{{deleteAlnData.programContact}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Status</p>
+            <p class="value">{{deleteAlnData.status}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="column" class="pb-10">
+          <h4>Are you sure you want to delete
+            this ALN?</h4>
+        </div>
+        <div fxLayout="column" class="pb-10">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button ngDefaultControl [value]="1" [(ngModel)]="btnvalue" name="btnvalue" type="radio"
+              [checked]="isChecked">Yes</mat-radio-button>
+            <mat-radio-button ngDefaultControl [value]="0" [(ngModel)]="btnvalue" name="btnvalue" type="radio"
+              [checked]="!isChecked">No</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+        <div fxLayout="row">
+          <section fxFlex="30%" fxLayoutAlign="space-between" class="btn-spacing">
+            <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+          </section>
+          <section fxFlex="30%">
+            <button type="button" mat-raised-button color="primary" (click)="cancel()">Cancel</button>
+          </section>
+          <section fxFlex="30%" fxLayoutAlign="space-between">
+            <button type="button" mat-raised-button color="primary" [disabled]="btnvalue == 0"
+              (click)="submit()">Submit</button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

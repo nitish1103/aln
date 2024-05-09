@@ -17,7 +17,44 @@ export class ListComponent {
 
   userRole = '';
 
-  ELEMENT_DATA: any[] = [];
+  ELEMENT_DATA: any[] = [
+    {
+      trackingNumber: 12345,
+      alnNumber: 45,
+      title: 'A',
+      status: 'Submit For Approval',
+      programContact: 'Manager',
+      activeIndicator: 'Y',
+      purpose: 'Training For Teacher',
+      agencyCode: '84',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+    {
+      trackingNumber: 12346,
+      alnNumber: 46,
+      title: 'B',
+      status: 'Rejected',
+      programContact: 'Manager',
+      purpose: 'Training For Teacher',
+      activeIndicator: 'N',
+      agencyCode: '84',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+    {
+      trackingNumber: 12347,
+      alnNumber: 47,
+      title: 'C',
+      status: 'Approved',
+      programContact: 'Manager',
+      purpose: 'Training For Teacher',
+      activeIndicator: 'N',
+      agencyCode: '84',
+      createdDate: '04/04/24',
+      executiveOrderIndicator: 'Y',
+    },
+  ];
   TABLE_DATA: any[] = [];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   displayedColumns: string[] = [
@@ -99,18 +136,10 @@ export class ListComponent {
   }
 
   delete(selectedElement: any) {
-    const dialogRef = this.dialog.open(ConfirmModalComponent, {
-      panelClass: 'custom-dialog-container-small',
-      autoFocus: false,
-      restoreFocus: false,
-      data: { aln: selectedElement },
-    });
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result !== 'cancel') {
-        this.getALN();
-        this.searchQuery = '';
-      }
-    });
+    this.alnService.isDeleting = true;
+    this.alnService.deleteAlnData = selectedElement;
+    this.alnComponent.sectionActive = 'delete';
+    this.alnComponent.isDeleting = true;
   }
 
   approve(selectedElement: any) {
