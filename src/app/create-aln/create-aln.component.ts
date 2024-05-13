@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
+import { CreateComponent } from '../create/create.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -9,10 +11,13 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './create-aln.component.scss',
 })
 export class CreateAlnComponent {
+  @Input() stepper!: MatStepper;
+
   selectedFile!: File;
   isSaving = false;
   isDraft = false;
   trackingNumber = '';
+  submitted = false;
 
   createALNForm = new FormGroup({
     alnTitle: new FormControl('', [Validators.required]),
@@ -39,7 +44,8 @@ export class CreateAlnComponent {
 
   constructor(
     private readonly alnService: AlnService,
-    private readonly listAln: ListAlnComponent
+    private readonly listAln: ListAlnComponent,
+    private readonly createAln: CreateComponent
   ) {}
 
   ngOnInit() {
@@ -54,6 +60,7 @@ export class CreateAlnComponent {
   }
 
   save() {
+    this.submitted = true;
     const {
       alnTitle,
       alnCode,
@@ -69,8 +76,8 @@ export class CreateAlnComponent {
     this.alnService.createALN.programOfficeContact = programOfficeContact ?? '';
     this.alnService.createALN.descriptionDocument = descriptionDocument ?? '';
     this.alnService.createALN.executiveOrder = executiveOrder ?? false;
-
-    this.listAln.sectionActive = 'summary';
+    this.createAln.sectionActive = 'summary';
+    this.stepper.next();
   }
 
   selectFile(event: any) {

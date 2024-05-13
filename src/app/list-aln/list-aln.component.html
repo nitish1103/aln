@@ -77,12 +77,6 @@
             <span *ngIf="isEditing">Edit ALN</span>
             <span *ngIf="isDeleting">Delete ALN</span>
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'summary' || sectionActive === 'edit-summary' || sectionActive === 'delete-summary','grey-out' : sectionActive !== 'summary' && sectionActive !== 'edit-summary' && sectionActive !== 'delete-summary' }" *ngIf="userRole === 'Po User'">
-            Summary
-          </p>
-          <p [ngClass]="{'active' : sectionActive === 'confirmation' || sectionActive === 'approve-confirmation' || sectionActive === 'delete-confirmation', 'grey-out' : sectionActive !== 'confirmation' && sectionActive !== 'approve-confirmation' && sectionActive !== 'delete-confirmation'}" *ngIf="userRole === 'Po User'">
-            Confirmation
-          </p>
           <p [ngClass]="{'active' : sectionActive === 'approve', 'grey-out' : sectionActive !== 'approve'}"
             *ngIf="userRole === 'A89'">
             Approve/Reject
@@ -100,17 +94,13 @@
     </div>
     <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'85%'" class="right-panel">
       <app-list [searchQuery]="searchQuery" *ngIf="sectionActive === 'list'"></app-list>
-      <app-create-aln *ngIf="sectionActive === 'create'"></app-create-aln>
-      <app-aln-summary *ngIf="sectionActive === 'summary'"></app-aln-summary>
-      <app-confirmation *ngIf="sectionActive === 'confirmation'"></app-confirmation>
+      <app-create *ngIf="sectionActive === 'create'"></app-create>
+      <app-edit *ngIf="sectionActive === 'edit'"></app-edit>
+      <app-delete *ngIf="sectionActive === 'delete'"></app-delete>
+
       <app-approve-aln *ngIf="sectionActive === 'approve'"></app-approve-aln>
       <app-approval-summary *ngIf="sectionActive === 'approve-summary'"></app-approval-summary>
       <app-approval-summary-confirmation *ngIf="sectionActive === 'approve-confirmation'"></app-approval-summary-confirmation>
-      <app-edit-aln *ngIf="sectionActive === 'edit'"></app-edit-aln>
-      <app-edit-aln-summary *ngIf="sectionActive === 'edit-summary'"></app-edit-aln-summary>
-      <app-delete-aln *ngIf="sectionActive === 'delete'"></app-delete-aln>
-      <app-delete-aln-summary *ngIf="sectionActive === 'delete-summary'"></app-delete-aln-summary>
-      <app-delete-aln-confirmation *ngIf="sectionActive === 'delete-confirmation'"></app-delete-aln-confirmation>
     </div>
   </div>
 </div>

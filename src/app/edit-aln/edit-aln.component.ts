@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatStepper } from '@angular/material/stepper';
+import { EditComponent } from '../edit/edit.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -9,6 +11,8 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './edit-aln.component.scss',
 })
 export class EditAlnComponent {
+  @Input() stepper!: MatStepper;
+
   selectedFile!: File;
   isSaving = false;
   editAlnData: any;
@@ -44,7 +48,8 @@ export class EditAlnComponent {
 
   constructor(
     private readonly alnService: AlnService,
-    private readonly listAln: ListAlnComponent
+    private readonly listAln: ListAlnComponent,
+    private readonly editComponent: EditComponent
   ) {}
 
   ngOnInit() {
@@ -61,7 +66,6 @@ export class EditAlnComponent {
   }
 
   save() {
-    console.log('====in save');
     const {
       alnTitle,
       agencyCode,
@@ -77,7 +81,8 @@ export class EditAlnComponent {
     this.alnService.approvalComment = this.comment;
     this.alnService.approvalSubmissionDate = this.approvalDate;
 
-    this.listAln.sectionActive = 'edit-summary';
+    this.editComponent.sectionActive = 'summary';
+    this.stepper.next();
   }
 
   selectFile(event: any) {

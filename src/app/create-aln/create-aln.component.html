@@ -9,7 +9,7 @@
               <h4>ALN Tracking Number</h4>
               <mat-form-field appearance="outline">
                 <mat-label>ALN Tracking Number</mat-label>
-                <input matInput placeholder="Enter ALN Title" name="alnTitle" readonly required
+                <input matInput placeholder="ALN Tracking Number" name="alnTitle" readonly required
                   autocomplete="off" value="{{trackingNumber}}">
               </mat-form-field>
             </section>
@@ -85,7 +85,7 @@
               Executive order applied for ALN
             </mat-checkbox>
           </p>
-          <div fxLayout="row">
+          <div fxLayout="row" class="mt-2">
             <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
               <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
               <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">

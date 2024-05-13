@@ -1,0 +1,14 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Delete ALN</ng-template>
+    <app-delete-aln [stepper]="stepper" *ngIf="sectionActive == 'delete'"></app-delete-aln>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Summary</ng-template>
+    <app-delete-aln-summary [stepper]="stepper" *ngIf="sectionActive == 'summary'"></app-delete-aln-summary>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirm</ng-template>
+    <app-delete-aln-confirmation *ngIf="sectionActive == 'confirm'"></app-delete-aln-confirmation>
+  </mat-step>
+</mat-stepper>

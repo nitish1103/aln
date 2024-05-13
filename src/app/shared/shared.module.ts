@@ -34,6 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
   imports: [CommonModule, MatTableModule],
@@ -68,6 +69,7 @@ import { BrowserModule } from '@angular/platform-browser';
     MatSortModule,
     MatTooltipModule,
     RouterModule,
+    MatStepperModule,
   ],
   providers: [
     { provide: MAT_DIALOG_DATA, useValue: {} },

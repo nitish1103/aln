@@ -11,6 +11,8 @@ import { AlnService } from '../services/aln-service';
 export class ApprovalSummaryConfirmationComponent {
   confirmApproveResponse: any;
   isRejecting = false;
+  isEditing = false;
+  isApproving = false;
 
   constructor(
     private listAln: ListAlnComponent,
@@ -21,6 +23,8 @@ export class ApprovalSummaryConfirmationComponent {
   ngOnInit() {
     this.confirmApproveResponse = this.alnService.confirmApproveAlnResponse;
     this.isRejecting = this.alnService.isRejecting;
+    this.isEditing = this.alnService.isEditing;
+    this.isApproving = this.alnService.isApproving;
   }
 
   done() {

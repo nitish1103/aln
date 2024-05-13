@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { CreateComponent } from '../create/create.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -18,10 +20,12 @@ export class AlnSummaryComponent {
   };
 
   isSaving = false;
+  @Input() stepper!: MatStepper;
 
   constructor(
     private readonly alnService: AlnService,
-    private readonly listALN: ListAlnComponent
+    private readonly listALN: ListAlnComponent,
+    private readonly createComponent: CreateComponent
   ) {}
 
   ngOnInit() {
@@ -45,7 +49,8 @@ export class AlnSummaryComponent {
   }
 
   previous() {
-    this.listALN.sectionActive = 'create';
+    this.createComponent.sectionActive = 'create';
+    this.stepper.previous();
   }
 
   save() {
@@ -63,14 +68,14 @@ export class AlnSummaryComponent {
     };
     this.alnService.createAln(data).subscribe(
       (response: any) => {
-        console.log('===response', response);
         this.isSaving = false;
         this.alnService.confirmALnResponse = response;
         this.uploadFile(response.trackingNumber);
       },
       (error: any) => {
         this.isSaving = false;
-        this.listALN.sectionActive = 'confirmation';
+        this.createComponent.sectionActive = 'confirm';
+        this.stepper.next();
       }
     );
   }
@@ -84,7 +89,8 @@ export class AlnSummaryComponent {
         this.alnService.createALN.executiveOrder = false;
         this.alnService.createALN.programOfficeContact = '';
         this.alnService.createALN.purpose = '';
-        this.listALN.sectionActive = 'confirmation';
+        this.createComponent.sectionActive = 'confirm';
+        this.stepper.next();
       },
       (error: any) => {}
     );

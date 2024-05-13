@@ -22,7 +22,7 @@ export class ListComponent {
       trackingNumber: 12345,
       alnNumber: 45,
       title: 'A',
-      status: 'Submit For Approval',
+      status: 'Draft',
       programContact: 'Manager',
       activeIndicator: 'Y',
       purpose: 'Training For Teacher',
@@ -150,7 +150,7 @@ export class ListComponent {
   }
 
   edit(selectedElement: any) {
-    this.alnService.isEditing = false;
+    this.alnService.isEditing = true;
     this.alnService.editAlnData = selectedElement;
     this.alnComponent.sectionActive = 'edit';
     this.alnComponent.isEditing = true;

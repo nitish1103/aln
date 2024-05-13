@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { DeleteComponent } from '../delete/delete.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -8,6 +10,8 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './delete-aln.component.scss',
 })
 export class DeleteAlnComponent {
+  @Input() stepper!: MatStepper;
+
   deleteAlnData: any;
   approvalDate = '';
   markActive = true;
@@ -17,7 +21,8 @@ export class DeleteAlnComponent {
 
   constructor(
     private alnService: AlnService,
-    private listAln: ListAlnComponent
+    private listAln: ListAlnComponent,
+    private deleteComponent: DeleteComponent
   ) {}
 
   ngOnInit() {
@@ -26,15 +31,18 @@ export class DeleteAlnComponent {
 
   goBack() {
     this.alnService.isDeleting = false;
+    this.listAln.isDeleting = false;
     this.listAln.sectionActive = 'list';
   }
 
   previous() {
     this.alnService.isDeleting = false;
+    this.listAln.isDeleting = false;
     this.listAln.sectionActive = 'list';
   }
 
   continue() {
-    this.listAln.sectionActive = 'delete-summary';
+    this.deleteComponent.sectionActive = 'summary';
+    this.stepper.next();
   }
 }

@@ -1,0 +1,14 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Create ALN</ng-template>
+    <app-create-aln [stepper]="stepper" *ngIf="sectionActive == 'create'"></app-create-aln>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Summary</ng-template>
+    <app-aln-summary [stepper]="stepper"  *ngIf="sectionActive == 'summary'"></app-aln-summary>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirm</ng-template>
+    <app-confirmation *ngIf="sectionActive == 'confirm'"></app-confirmation>
+  </mat-step>
+</mat-stepper>

@@ -26,9 +26,13 @@ import { EditAlnSummaryComponent } from './edit-aln-summary/edit-aln-summary.com
 import { DeleteAlnComponent } from './delete-aln/delete-aln.component';
 import { DeleteAlnSummaryComponent } from './delete-aln-summary/delete-aln-summary.component';
 import { DeleteAlnConfirmationComponent } from './delete-aln-confirmation/delete-aln-confirmation.component';
+import { CreateComponent } from './create/create.component';
+import { EditComponent } from './edit/edit.component';
+import { DeleteComponent } from './delete/delete.component';
 
 @NgModule({
   declarations: [
+    CreateComponent,
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -48,6 +52,8 @@ import { DeleteAlnConfirmationComponent } from './delete-aln-confirmation/delete
     DeleteAlnComponent,
     DeleteAlnSummaryComponent,
     DeleteAlnConfirmationComponent,
+    EditComponent,
+    DeleteComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

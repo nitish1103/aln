@@ -1,5 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { EditComponent } from '../edit/edit.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -9,6 +11,8 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './edit-aln-summary.component.scss',
 })
 export class EditAlnSummaryComponent {
+  @Input() stepper!: MatStepper;
+
   editAlnData: any;
   approvalDate = '';
   markActive = true;
@@ -17,11 +21,13 @@ export class EditAlnSummaryComponent {
   isRejecting = false;
   btnvalue = 1;
   isChecked = true;
+  isSaving = false;
 
   constructor(
     private alnService: AlnService,
     private listAln: ListAlnComponent,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private readonly editComponent: EditComponent
   ) {}
 
   ngOnInit() {
@@ -38,7 +44,8 @@ export class EditAlnSummaryComponent {
   }
 
   previous() {
-    this.listAln.sectionActive = 'edit';
+    this.editComponent.sectionActive = 'edit';
+    this.stepper.previous();
   }
 
   cancel() {
@@ -47,16 +54,21 @@ export class EditAlnSummaryComponent {
   }
 
   submit() {
+    this.isSaving = true;
     if (this.alnService.editAlnData.status === 'Draft') {
       this.alnService.editAlnData.status = 'Submit For Approval';
     }
     this.alnService.editAln(this.alnService.editAlnData).subscribe(
       (response: any) => {
         this.alnService.confirmApproveAlnResponse = response;
-        this.listAln.sectionActive = 'approve-confirmation';
+        this.isSaving = false;
+        this.editComponent.sectionActive = 'confirm';
+        this.stepper.next();
       },
       (error: any) => {
-        this.listAln.sectionActive = 'approve-confirmation';
+        this.isSaving = false;
+        this.editComponent.sectionActive = 'confirm';
+        this.stepper.next();
       }
     );
   }

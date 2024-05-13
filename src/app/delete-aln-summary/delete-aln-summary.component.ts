@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { DeleteComponent } from '../delete/delete.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -8,13 +10,16 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './delete-aln-summary.component.scss',
 })
 export class DeleteAlnSummaryComponent {
+  @Input() stepper!: MatStepper;
+
   deleteAlnData: any;
   btnvalue = 1;
   isChecked = true;
 
   constructor(
     private alnService: AlnService,
-    private listAln: ListAlnComponent
+    private listAln: ListAlnComponent,
+    private readonly deleteComponent: DeleteComponent
   ) {}
 
   ngOnInit() {
@@ -22,7 +27,8 @@ export class DeleteAlnSummaryComponent {
   }
 
   previous() {
-    this.listAln.sectionActive = 'delete';
+    this.deleteComponent.sectionActive = 'delete';
+    this.stepper.previous();
   }
 
   cancel() {
@@ -33,9 +39,13 @@ export class DeleteAlnSummaryComponent {
     this.alnService.deleteALN(this.deleteAlnData.trackingNumber).subscribe(
       (response: any) => {
         this.alnService.confirmApproveAlnResponse = response;
-        this.listAln.sectionActive = 'delete-confirmation';
+        this.stepper.next();
+        this.deleteComponent.sectionActive = 'confirm';
       },
-      (error: any) => {}
+      (error: any) => {
+        this.stepper.next();
+        this.deleteComponent.sectionActive = 'confirm';
+      }
     );
   }
 }

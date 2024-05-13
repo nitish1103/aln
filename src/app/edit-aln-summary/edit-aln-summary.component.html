@@ -83,7 +83,7 @@
             <button type="button" mat-raised-button color="primary" (click)="cancel()">Cancel</button>
           </section>
           <section fxFlex="30%" fxLayoutAlign="space-between">
-            <button type="button" mat-raised-button color="primary" [disabled]="btnvalue == 0"
+            <button type="button" mat-raised-button color="primary" [disabled]="btnvalue == 0 || isSaving"
               (click)="submit()">Submit</button>
           </section>
         </div>
