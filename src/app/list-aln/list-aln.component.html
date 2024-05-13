@@ -72,10 +72,14 @@
           <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list';isApproving= false" >
             ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'create' || sectionActive === 'edit' || sectionActive === 'delete'}" (click)="isEditing ? '' : sectionActive = 'create'" *ngIf="userRole === 'Po User'">
-            <span *ngIf="!isEditing && !isDeleting">Create ALN</span>
-            <span *ngIf="isEditing">Edit ALN</span>
-            <span *ngIf="isDeleting">Delete ALN</span>
+          <p [ngClass]="{'active' : sectionActive === 'create', 'grey-out' : sectionActive !== 'create'}" (click)="sectionActive = 'create'"  *ngIf="userRole === 'Po User'">
+            Create
+          </p>
+          <p [ngClass]="{'active' : sectionActive === 'edit', 'grey-out' : sectionActive !== 'edit'}" *ngIf="userRole === 'Po User'">
+            Edit
+          </p>
+          <p [ngClass]="{'active' : sectionActive === 'delete', 'grey-out' : sectionActive !== 'delete'}" *ngIf="userRole === 'Po User'">
+            Delete
           </p>
           <p [ngClass]="{'active' : sectionActive === 'approve', 'grey-out' : sectionActive !== 'approve'}"
             *ngIf="userRole === 'A89'">
