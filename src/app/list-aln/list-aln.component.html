@@ -72,7 +72,7 @@
           <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list';isApproving= false" >
             ALN
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'create', 'grey-out' : sectionActive !== 'create'}" (click)="sectionActive = 'create'"  *ngIf="userRole === 'Po User'">
+          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'"  *ngIf="userRole === 'Po User'">
             Create
           </p>
           <p [ngClass]="{'active' : sectionActive === 'edit', 'grey-out' : sectionActive !== 'edit'}" *ngIf="userRole === 'Po User'">
@@ -85,14 +85,6 @@
             *ngIf="userRole === 'A89'">
             Approve/Reject
           </p>
-          <p [ngClass]="{'active' : sectionActive === 'approve-summary', 'grey-out' : sectionActive !== 'approve-summary'}"
-            *ngIf="userRole === 'A89'">
-            Summary
-          </p>
-          <p [ngClass]="{'active' : sectionActive === 'approve-confirmation', 'grey-out' : sectionActive !== 'approve-confirmation'}"
-            *ngIf="userRole === 'A89'">
-            Confirmation
-          </p>
         </section>
       </section>
     </div>
@@ -101,10 +93,7 @@
       <app-create *ngIf="sectionActive === 'create'"></app-create>
       <app-edit *ngIf="sectionActive === 'edit'"></app-edit>
       <app-delete *ngIf="sectionActive === 'delete'"></app-delete>
-
-      <app-approve-aln *ngIf="sectionActive === 'approve'"></app-approve-aln>
-      <app-approval-summary *ngIf="sectionActive === 'approve-summary'"></app-approval-summary>
-      <app-approval-summary-confirmation *ngIf="sectionActive === 'approve-confirmation'"></app-approval-summary-confirmation>
+      <app-approve *ngIf="sectionActive === 'approve'"></app-approve>
     </div>
   </div>
 </div>

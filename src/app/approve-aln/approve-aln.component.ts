@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
+import { ApproveComponent } from '../approve/approve.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 
@@ -8,6 +10,8 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './approve-aln.component.scss',
 })
 export class ApproveAlnComponent {
+  @Input() stepper!: MatStepper;
+
   approveAlnData: any;
   approvalDate = '';
   markActive = true;
@@ -17,7 +21,8 @@ export class ApproveAlnComponent {
 
   constructor(
     private alnService: AlnService,
-    private listAln: ListAlnComponent
+    private listAln: ListAlnComponent,
+    private readonly approveComponent: ApproveComponent
   ) {}
 
   ngOnInit() {
@@ -29,18 +34,22 @@ export class ApproveAlnComponent {
   approve() {
     this.alnService.markActive = this.markActive;
     this.alnService.orderActive = this.orderActive;
+    this.alnService.isApproving = true;
     this.alnService.isRejecting = false;
     this.alnService.approvalSubmissionDate = this.approvalDate;
     this.alnService.approvalComment = this.comment;
-    this.listAln.sectionActive = 'approve-summary';
+    this.stepper.next();
+    this.approveComponent.sectionActive = 'summary';
   }
 
   reject() {
     this.alnService.markActive = this.markActive;
     this.alnService.orderActive = this.orderActive;
     this.alnService.isRejecting = true;
+    this.alnService.isApproving = false;
     this.alnService.approvalSubmissionDate = this.approvalDate;
     this.alnService.approvalComment = this.comment;
-    this.listAln.sectionActive = 'approve-summary';
+    this.stepper.next();
+    this.approveComponent.sectionActive = 'summary';
   }
 }

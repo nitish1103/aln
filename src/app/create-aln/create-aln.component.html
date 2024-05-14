@@ -1,7 +1,7 @@
 <div class="admin-mgmt-container">
   <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
     class="admin-mgmt-body">
-    <form [formGroup]="createALNForm" (ngSubmit)="createALNForm.valid && save()" novalidate>
+    <form [formGroup]="createALNForm" (ngSubmit)="createALNForm.valid && save();submitted=true;" novalidate>
       <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
         <div class="indicator-container" fxLayout="column">
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%" *ngIf="isDraft">
@@ -21,7 +21,7 @@
                 <mat-form-field appearance="outline">
                   <mat-label>ALN Title</mat-label>
                   <input matInput placeholder="Enter ALN Title" name="alnTitle" formControlName="alnTitle" required autocomplete="off">
-                  <mat-hint align="end" *ngIf="createALNForm.controls['alnTitle'].touched">
+                  <mat-hint align="end" *ngIf="createALNForm.controls['alnTitle'].touched || submitted">
                     <span *ngIf="createALNForm.controls['alnTitle'].errors?.['required']">Aln title is required.</span>
                   </mat-hint>
                 </mat-form-field>
@@ -34,7 +34,7 @@
                 <mat-select formControlName="alnCode">
                   <mat-option *ngFor="let code of agencyDesignatorCodes" value="{{code}}">{{ code }}</mat-option>
                 </mat-select>
-                <mat-hint align="end" *ngIf="createALNForm.controls['alnCode'].touched">
+                <mat-hint align="end" *ngIf="createALNForm.controls['alnCode'].touched || submitted">
                   <span *ngIf="createALNForm.controls['alnCode'].errors?.['required']">Agency Designator Code is required.</span>
                 </mat-hint>
               </mat-form-field>
@@ -47,7 +47,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>ALN Purpose</mat-label>
                 <input matInput placeholder="Enter ALN Title" name="purpose" maxlength="256" required formControlName="purpose" autocomplete="off">
-                <mat-hint align="end" *ngIf="createALNForm.controls['purpose'].touched">
+                <mat-hint align="end" *ngIf="createALNForm.controls['purpose'].touched || submitted">
                   <span *ngIf="createALNForm.controls['purpose'].errors?.['required']">Purpose is required.</span>
                 </mat-hint>
               </mat-form-field>
@@ -58,7 +58,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>ALN Program Office Contact</mat-label>
                 <input matInput placeholder="Enter ALN Title" name="programOfficeContact" formControlName="programOfficeContact" required autocomplete="off">
-                <mat-hint align="end" *ngIf="createALNForm.controls['programOfficeContact'].touched">
+                <mat-hint align="end" *ngIf="createALNForm.controls['programOfficeContact'].touched || submitted">
                   <span *ngIf="createALNForm.controls['programOfficeContact'].errors?.['required']">Purpose is required.</span>
                 </mat-hint>
               </mat-form-field>
@@ -73,11 +73,12 @@
                 <mat-label>Upload Document</mat-label>
                 <input type="file" class="upload-file"
                   accept="*" (change)="selectFile($event)" required/>
-                
-                
               </section>
             </div>
             <small class="mt-2" *ngIf="selectedFile != null">{{selectedFile.name}}</small>
+            <mat-hint align="end" *ngIf="submitted">
+              <span *ngIf="createALNForm.controls['descriptionDocument'].errors?.['required']" class="error-doc">Document is required.</span>
+            </mat-hint>
           </div>
 
           <p class="info-text">

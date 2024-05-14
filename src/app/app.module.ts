@@ -29,6 +29,7 @@ import { DeleteAlnConfirmationComponent } from './delete-aln-confirmation/delete
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
+import { ApproveComponent } from './approve/approve.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DeleteComponent } from './delete/delete.component';
     DeleteAlnConfirmationComponent,
     EditComponent,
     DeleteComponent,
+    ApproveComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

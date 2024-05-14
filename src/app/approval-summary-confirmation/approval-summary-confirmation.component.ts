@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
+import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
@@ -9,6 +10,8 @@ import { AlnService } from '../services/aln-service';
   styleUrl: './approval-summary-confirmation.component.scss',
 })
 export class ApprovalSummaryConfirmationComponent {
+  @Input() stepper!: MatStepper;
+
   confirmApproveResponse: any;
   isRejecting = false;
   isEditing = false;

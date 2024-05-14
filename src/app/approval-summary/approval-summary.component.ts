@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
 import { DatePipe } from '@angular/common';
+import { MatStepper } from '@angular/material/stepper';
+import { ApproveComponent } from '../approve/approve.component';
 
 @Component({
   selector: 'app-approval-summary',
@@ -9,6 +11,8 @@ import { DatePipe } from '@angular/common';
   styleUrl: './approval-summary.component.scss',
 })
 export class ApprovalSummaryComponent {
+  @Input() stepper!: MatStepper;
+
   approveAlnData: any;
   approvalDate = '';
   markActive = true;
@@ -17,11 +21,13 @@ export class ApprovalSummaryComponent {
   isRejecting = false;
   btnvalue = 1;
   isChecked = true;
+  isSaving = false;
 
   constructor(
     private alnService: AlnService,
     private listAln: ListAlnComponent,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    private readonly approveComponent: ApproveComponent
   ) {}
 
   ngOnInit() {
@@ -38,7 +44,8 @@ export class ApprovalSummaryComponent {
   }
 
   previous() {
-    this.listAln.sectionActive = 'approve';
+    this.approveComponent.sectionActive = 'approve';
+    this.stepper.previous();
   }
 
   cancel() {
@@ -46,24 +53,33 @@ export class ApprovalSummaryComponent {
   }
 
   submit() {
+    this.isSaving = true;
     if (this.alnService.isRejecting) {
       this.alnService.rejectALN(this.approveAlnData.trackingNumber).subscribe(
         (response: any) => {
+          this.isSaving = false;
           this.alnService.confirmApproveAlnResponse = response;
-          this.listAln.sectionActive = 'approve-confirmation';
+          this.approveComponent.sectionActive = 'confirm';
+          this.stepper.next();
         },
         (error: any) => {
-          this.listAln.sectionActive = 'approve-confirmation';
+          this.isSaving = false;
+          this.approveComponent.sectionActive = 'confirm';
+          this.stepper.next();
         }
       );
     } else {
       this.alnService.approveALN(this.approveAlnData.trackingNumber).subscribe(
         (response: any) => {
+          this.isSaving = false;
           this.alnService.confirmApproveAlnResponse = response;
-          this.listAln.sectionActive = 'approve-confirmation';
+          this.approveComponent.sectionActive = 'confirm';
+          this.stepper.next();
         },
         (error: any) => {
-          this.listAln.sectionActive = 'approve-confirmation';
+          this.isSaving = false;
+          this.approveComponent.sectionActive = 'confirm';
+          this.stepper.next();
         }
       );
     }
