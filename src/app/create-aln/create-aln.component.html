@@ -95,12 +95,12 @@
             </section>
             <section fxFlxex="5%"></section>
             <section fxFlex="50%" fxLayoutAlign="space-between">
-              <button type="button" mat-raised-button color="primary" [disabled]="isSaving" (click)="saveasDraft()">
+              <button type="button" mat-raised-button color="primary" [disabled]="isSaving || isDraft" (click)="saveasDraft()">
                 <span *ngIf="!isSaving">Save as Draft</span>
                 <span *ngIf="isSaving">Saving...</span>
                 
               </button>
-              <button type="submit" mat-raised-button color="primary" class="medium">
+              <button type="submit" mat-raised-button color="primary" class="medium" [disabled]="isDraft">
                 <span>Continue</span>
               </button>
             </section>

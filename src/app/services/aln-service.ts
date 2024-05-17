@@ -69,8 +69,15 @@ export class AlnService {
   /**
    * method to approve ALN
    */
-  public approveALN(id: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:8080/approve/' + id, {});
+  public approveALN(id: any, comment: any, date: any): Observable<any> {
+    let data = {
+      statusComment: comment,
+      OmbSubmissionDate: date,
+    };
+    return this.httpClient.post<any>(
+      'http://localhost:8080/approve/' + id,
+      data
+    );
   }
 
   /**

@@ -1,6 +1,8 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatStepper } from '@angular/material/stepper';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { CreateComponent } from '../create/create.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
@@ -45,7 +47,8 @@ export class CreateAlnComponent {
   constructor(
     private readonly alnService: AlnService,
     private readonly listAln: ListAlnComponent,
-    private readonly createAln: CreateComponent
+    private readonly createAln: CreateComponent,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -115,6 +118,12 @@ export class CreateAlnComponent {
         this.isDraft = true;
         console.log('===response', response);
         this.trackingNumber = response.trackingNumber;
+        this.dialog.open(ConfirmModalComponent, {
+          panelClass: 'custom-dialog-container',
+          autoFocus: false,
+          restoreFocus: false,
+          data: { trackingNumber: this.trackingNumber },
+        });
       },
       (error: any) => {
         this.isSaving = false;

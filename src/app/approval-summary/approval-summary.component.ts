@@ -69,19 +69,25 @@ export class ApprovalSummaryComponent {
         }
       );
     } else {
-      this.alnService.approveALN(this.approveAlnData.trackingNumber).subscribe(
-        (response: any) => {
-          this.isSaving = false;
-          this.alnService.confirmApproveAlnResponse = response;
-          this.approveComponent.sectionActive = 'confirm';
-          this.stepper.next();
-        },
-        (error: any) => {
-          this.isSaving = false;
-          this.approveComponent.sectionActive = 'confirm';
-          this.stepper.next();
-        }
-      );
+      this.alnService
+        .approveALN(
+          this.approveAlnData.trackingNumber,
+          this.comment,
+          this.approvalDate
+        )
+        .subscribe(
+          (response: any) => {
+            this.isSaving = false;
+            this.alnService.confirmApproveAlnResponse = response;
+            this.approveComponent.sectionActive = 'confirm';
+            this.stepper.next();
+          },
+          (error: any) => {
+            this.isSaving = false;
+            this.approveComponent.sectionActive = 'confirm';
+            this.stepper.next();
+          }
+        );
     }
   }
 }

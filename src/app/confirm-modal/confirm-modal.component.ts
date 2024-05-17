@@ -17,30 +17,9 @@ export class ConfirmModalComponent {
   constructor(
     private readonly alnService: AlnService,
     public dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: { aln: any },
+    @Inject(MAT_DIALOG_DATA) public data: { trackingNumber: any },
     public deleteAlnDialogRef: MatDialogRef<ConfirmModalComponent>
-  ) {
-    console.log('=============data', this.data.aln.trackingNumber);
-  }
-
-  public deleteAln() {
-    console.log('=============data', this.data.aln.trackingNumber);
-
-    this.isDeleting = true;
-    this.deleteAlnDialogRef.disableClose = true;
-
-    this.alnService.deleteALN(this.data.aln.trackingNumber).subscribe(
-      (result) => {
-        this.deleteAlnDialogRef.close('success');
-        this.isDeleting = false;
-      },
-      (error) => {
-        console.log('=============error', error);
-        this.isDeleting = false;
-        this.deleteAlnDialogRef.close('error');
-      }
-    );
-  }
+  ) {}
 
   public closeDialog() {
     this.deleteAlnDialogRef.close('cancel');
