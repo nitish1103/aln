@@ -1,4 +1,4 @@
-<div class="tbl-data user">
+<div class="tbl-data user" *ngIf="!isLoading">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="desc"
     aria-describedby="dataSource" matSortDisableClear>
     <!-- Name Column -->

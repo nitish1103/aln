@@ -72,6 +72,7 @@ export class ListComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  isLoading = false;
 
   constructor(
     private alnService: AlnService,
@@ -86,6 +87,7 @@ export class ListComponent {
   }
 
   getALN() {
+    this.isLoading = true;
     this.alnService.getALNList().subscribe((response: any) => {
       this.ELEMENT_DATA = response;
       if (this.userRole === 'A89') {
