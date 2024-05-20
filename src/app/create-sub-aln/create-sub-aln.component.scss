@@ -1,0 +1,236 @@
+@import '../../layout';
+@include admin-layout();
+
+.indicator-container {
+  background: var(--cap-primary-light-text);
+  border-radius: 1rem;
+  padding: 2rem 8rem;
+  max-width: 100%;
+  width: 1027px;
+  border: 2px solid #3a9bdc;
+
+  @media(max-width: 767px) {
+    padding: 2rem 1.5rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .section-spacing {
+    padding: 1rem 0;
+
+    textarea {
+      resize: none;
+      min-height: 4rem;
+    }
+  }
+
+  .sub-section {
+
+    section+section,
+    section+div {
+      margin-left: 1.5rem;
+    }
+
+    div section+div {
+      margin-left: 0;
+    }
+
+    section+button,
+    section+button+button {
+      margin: 2.5rem 0 0 0.5rem;
+    }
+
+    @media (max-width:959px) {
+
+      section+section,
+      section+div {
+        margin: 1.5rem 0 0 0;
+      }
+
+      section,
+      div {
+        width: 100%;
+      }
+
+      section+div.buttons-outer {
+        margin: 0.5rem 0 0 0;
+      }
+    }
+
+    .buttons-outer {
+      margin-top: 0.5rem;
+    }
+  }
+
+  .buttons-outer-first {
+    padding-top: 2.5rem;
+
+    @media (max-width:959px) {
+      padding-top: 0.5rem;
+    }
+  }
+
+  .info-text {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .upload-image {
+    border-radius: 0.5rem;
+    border: 1px solid var(--table-header);
+    cursor: pointer;
+    height: 6rem;
+    padding: 1rem;
+    position: relative;
+    text-align: center;
+    width: 8.5rem;
+  }
+
+  .upload-image+.upload-image {
+    margin-left: 1rem;
+  }
+
+  .upload-file {
+    cursor: pointer;
+    height: 6rem;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 8.5rem;
+  }
+
+  .upload-image.added {
+    box-sizing: border-box;
+    height: 6rem;
+    padding: 0;
+    position: relative;
+    width: 6rem;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    mat-icon {
+      position: absolute;
+      right: -0.5rem;
+      top: -0.5rem;
+    }
+
+    &.active {
+      border: 2px solid var(--table-header-gradient-color-shade-3);
+      position: relative;
+      color: var(--table-header-gradient-color-shade-3);
+
+      mat-icon {
+        visibility: visible;
+      }
+    }
+
+    .active-check {
+      position: absolute;
+      right: -0.5rem;
+      top: -0.5rem;
+      background: var(--cap-primary-light-text);
+    }
+  }
+
+  .upload-image.added+.upload-image.added {
+    margin-left: 1rem;
+  }
+
+  mat-radio-button+mat-radio-button {
+    margin-left: 5rem;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .note {
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+  }
+
+  .medium {
+    min-width: 7rem;
+  }
+
+  .error {
+    color: var(--primary-red);
+  }
+
+  .success {
+    color: var(--table-header-gradient-color-shade-3);
+
+    mat-icon {
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.right-panel {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.char-count {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  opacity: 0.5;
+}
+
+.spinner-outer {
+  height: 100%;
+}
+
+.loading-panel {
+  height: 90vh;
+}
+
+::ng-deep body {
+  overflow-y: auto;
+}
+
+.mat-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+.mat-stroked-button {
+  margin-right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.HTML-description-outer {
+  position: relative;
+}
+
+.description-buttons {
+  margin-bottom: 0.5rem;
+}
+
+.btn-spacing {
+  margin-right: 2rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+mat-hint {
+  color: red;
+}
+
+.error-doc {
+  font-size: 12px;
+  margin-left: 10px;
+}

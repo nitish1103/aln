@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { ListAlnComponent } from './list-aln/list-aln.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './services/auth.guard';
+import { SubAlnComponent } from './sub-aln/sub-aln.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,11 @@ const routes: Routes = [
   {
     path: 'aln',
     component: ListAlnComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'aln-sub',
+    component: SubAlnComponent,
     canActivate: [AuthGuard],
   },
   {

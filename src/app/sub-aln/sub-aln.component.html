@@ -1,0 +1,27 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start"
+    class="admin-mgmt-header">
+    <div class="search-form">
+      <h1>Sub Program</h1>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="18%" class="left-panel">
+      <section class="left-panel-inner">
+        <section class="filer-role-section">
+          <p [ngClass]="{'active' : sectionActive === 'list'}" (click)="sectionActive = 'list'">
+            Sub ALN
+          </p>
+          <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'">
+            Create
+          </p>
+        </section>
+      </section>
+    </div>
+    <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'85%'" class="right-panel">
+      <app-sub-aln-list *ngIf="sectionActive === 'list'"></app-sub-aln-list>
+      <app-create-sub-aln *ngIf="sectionActive === 'create'"></app-create-sub-aln>
+    </div>
+  </div>
+</div>

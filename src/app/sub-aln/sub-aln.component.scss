@@ -1,0 +1,133 @@
+@import '../../layout';
+@include admin-layout();
+
+.action-btns {
+  button+button {
+    margin-left: 1rem;
+  }
+}
+
+td,
+th {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+:host ::ng-deep .mat-sort-header-container {
+  display: flex;
+  justify-content: center;
+}
+
+//media query.
+@media(max-width: 959px) {
+  .action-btns {
+    button+button {
+      margin-left: 0;
+    }
+  }
+
+  .users-btn {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@mixin modal-layout {
+  .modal-content {
+    padding: 1rem;
+
+    mat-chip {
+      margin: 0.5rem;
+    }
+  }
+
+  .selection-outer {
+    padding: 1rem 5rem;
+
+    mat-radio-button {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.spinner-outer {
+  height: 100%;
+}
+
+.disable-operations {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+small {
+  opacity: 0.7;
+  margin-left: 6px;
+}
+
+.no-user {
+  margin-left: 40%;
+}
+
+.no-user-label {
+  margin-left: 3px;
+}
+
+.single-action {
+  margin-left: 1rem;
+}
+
+.collapse {
+  cursor: pointer;
+}
+
+.filter-row {
+  border-top: 1px solid #d4d3d3;
+  animation: smooth-appear 1s ease forwards;
+  padding-top: 10px;
+}
+
+::ng-deep {
+  .mat-mdc-text-field-wrapper {
+    height: 37px !important;
+  }
+
+  .comment {
+    .mat-mdc-text-field-wrapper {
+      height: auto !important;
+    }
+  }
+
+  .mat-mdc-form-field-infix {
+    padding-top: 8px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .mat-mdc-form-field-icon-prefix {
+    top: -7px !important;
+  }
+
+  input::placeholder {
+    top: -7px !important;
+  }
+
+  .mdc-floating-label {
+    top: 19px !important;
+  }
+
+  .mdc-floating-label--float-above {
+    top: 30px !important;
+  }
+}
+
+.mr-2 {
+  margin-right: 2px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+
+.grey-out {
+  background-color: #dadada !important;
+  color: black !important;
+}

@@ -30,6 +30,9 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { DeleteComponent } from './delete/delete.component';
 import { ApproveComponent } from './approve/approve.component';
+import { SubAlnComponent } from './sub-aln/sub-aln.component';
+import { SubAlnListComponent } from './sub-aln-list/sub-aln-list.component';
+import { CreateSubAlnComponent } from './create-sub-aln/create-sub-aln.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { ApproveComponent } from './approve/approve.component';
     EditComponent,
     DeleteComponent,
     ApproveComponent,
+    SubAlnComponent,
+    SubAlnListComponent,
+    CreateSubAlnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],
