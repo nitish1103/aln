@@ -89,7 +89,8 @@
       </section>
     </div>
     <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'85%'" class="right-panel">
-      <app-list [searchQuery]="searchQuery" *ngIf="sectionActive === 'list'"></app-list>
+      <app-list [searchQuery]="searchQuery" *ngIf="sectionActive === 'list' && !showAlnDetail"></app-list>
+      <app-aln-detail *ngIf="sectionActive === 'list' && showAlnDetail"></app-aln-detail>
       <app-create *ngIf="sectionActive === 'create'"></app-create>
       <app-edit *ngIf="sectionActive === 'edit'"></app-edit>
       <app-delete *ngIf="sectionActive === 'delete'"></app-delete>

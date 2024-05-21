@@ -24,6 +24,7 @@ export class AlnService {
   approveAlnData: any;
   editAlnData: any;
   deleteAlnData: any;
+  alnData: any;
   approvalSubmissionDate = '';
   approvalComment = '';
   markActive = true;

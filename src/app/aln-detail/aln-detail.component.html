@@ -1,0 +1,48 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Tracking Number</p>
+            <p class="value">{{alnData.trackingNumber}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Title</p>
+            <p class="value">{{alnData.title}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Purpose</p>
+            <p class="value">{{alnData.purpose}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Designator Code</p>
+            <p class="value">{{alnData.agencyCode}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Program Office Contact</p>
+            <p class="value">{{alnData.programContact}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">ALN Status</p>
+            <p class="value">{{alnData.status}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center" class="mt-2">
+          <button type="button" mat-raised-button color="primary" (click)="cancel()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

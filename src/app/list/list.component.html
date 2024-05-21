@@ -8,7 +8,9 @@
         ALN Tracking Number
       </th>
       <td mat-cell *matCellDef="let element" class="trackingNumber">
-        {{element.trackingNumber}}
+        <a class="show-detail" (click)="openAln(element)">
+          {{element.trackingNumber}}
+        </a> 
       </td>
     </ng-container>
 

@@ -18,6 +18,7 @@ export class ListAlnComponent {
   isApproving = false;
   isDeleting = false;
   isEditing = false;
+  showAlnDetail = false;
 
   userRole = '';
   constructor(private readonly router: Router) {}

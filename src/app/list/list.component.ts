@@ -88,20 +88,30 @@ export class ListComponent {
 
   getALN() {
     this.isLoading = true;
-    this.alnService.getALNList().subscribe((response: any) => {
-      this.ELEMENT_DATA = response;
-      if (this.userRole === 'A89') {
-        this.ELEMENT_DATA = this.ELEMENT_DATA.filter(
-          (data) => data.status !== 'Draft'
-        );
+    this.alnService.getALNList().subscribe(
+      (response: any) => {
+        this.ELEMENT_DATA = response;
+        if (this.userRole === 'A89') {
+          this.ELEMENT_DATA = this.ELEMENT_DATA.filter(
+            (data) => data.status !== 'Draft'
+          );
+        }
+        this.TABLE_DATA = this.ELEMENT_DATA;
+        this.dataSource = new MatTableDataSource();
+        this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+        setTimeout(() => {
+          this.timeOutFunction();
+        }, 50);
+      },
+      (error: any) => {
+        this.isLoading = false;
       }
-      this.TABLE_DATA = this.ELEMENT_DATA;
-      this.dataSource = new MatTableDataSource();
-      this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
-      setTimeout(() => {
-        this.timeOutFunction();
-      }, 50);
-    });
+    );
+  }
+
+  openAln(aln: any) {
+    this.alnService.alnData = aln;
+    this.alnComponent.showAlnDetail = true;
   }
 
   public timeOutFunction() {
@@ -117,6 +127,7 @@ export class ListComponent {
       return data[sortHeaderId];
     };
     this.dataSource.sort = this.sort;
+    this.isLoading = false;
   }
 
   search() {
