@@ -1,14 +1,12 @@
-<div class="admin-mgmt-container">
-  <div class="tab" fxLayout="row">
-    <span class="tab-item" fxFlex="12%" [ngClass]="{'active' : tabActive =='general'}">General</span>
-    <span class="tab-item" fxFlex="15%" [ngClass]="{'active' : tabActive =='programOffice'}">Program Office</span>
-    <span class="tab-item" fxFlex="12%" [ngClass]="{'active' : tabActive =='reporting'}">Reporting</span>
-    <span class="tab-item" fxFlex="15%" [ngClass]="{'active' : tabActive =='costSharing'}">Cost Sharing</span>
-    <span class="tab-item" fxFlex="12%" [ngClass]="{'active' : tabActive =='law'}">Law</span>
-    <span class="tab-item" fxFlex="12%" [ngClass]="{'active' : tabActive =='summary'}">Summary</span>
-    <span class="tab-item" fxFlex="12%" [ngClass]="{'active' : tabActive =='confirmation'}">Confirmation</span>
-  </div>
-
-  <app-create-sub-aln *ngIf="tabActive == ''"></app-create-sub-aln>
-  <app-sub-aln-general *ngIf="tabActive == 'general'"></app-sub-aln-general>
-</div>
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <ng-template matStepLabel>Create Sub Program</ng-template>
+    <app-create-sub-aln [stepper]="stepper" *ngIf="sectionActive == 'create'"></app-create-sub-aln>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <ng-template matStepLabel>Summary</ng-template>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Confirm</ng-template>
+  </mat-step>
+</mat-stepper>

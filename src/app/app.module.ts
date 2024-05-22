@@ -36,6 +36,7 @@ import { CreateSubAlnComponent } from './create-sub-aln/create-sub-aln.component
 import { AlnDetailComponent } from './aln-detail/aln-detail.component';
 import { SubAlnProgramComponent } from './sub-aln-program/sub-aln-program.component';
 import { SubAlnGeneralComponent } from './sub-aln-general/sub-aln-general.component';
+import { CreateSubAlnProgramComponent } from './create-sub-aln-program/create-sub-aln-program.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { SubAlnGeneralComponent } from './sub-aln-general/sub-aln-general.compon
     AlnDetailComponent,
     SubAlnProgramComponent,
     SubAlnGeneralComponent,
+    CreateSubAlnProgramComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

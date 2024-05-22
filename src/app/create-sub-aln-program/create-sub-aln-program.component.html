@@ -1,0 +1,112 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <form [formGroup]="createSubALNForm" (ngSubmit)="createSubALNForm.valid && save();submitted=true;" novalidate>
+      <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+        <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Fiscal Year</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Fiscal Year</mat-label>
+                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" required
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="createSubALNForm.controls['fiscalYear'].touched || submitted">
+                  <span *ngIf="createSubALNForm.controls['fiscalYear'].errors?.['required']">Fiscal Year is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Agency Designator Code*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Select an option</mat-label>
+                <mat-select formControlName="alnCode">
+                  <mat-option *ngFor="let code of agencyDesignatorCodes" value="{{code}}">{{ code }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="createSubALNForm.controls['alnCode'].touched || submitted">
+                  <span *ngIf="createSubALNForm.controls['alnCode'].errors?.['required']">Agency Designator Code is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>ALN Number*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>ALN Number</mat-label>
+                <input matInput placeholder="Enter ALN Number" name="purpose" required formControlName="alnNumber"
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="createSubALNForm.controls['alnNumber'].touched || submitted">
+                  <span *ngIf="createSubALNForm.controls['alnNumber'].errors?.['required']">ALN Number is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Subprogram ID*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Subprogram ID</mat-label>
+                <input matInput placeholder="Enter Subprogram ID" name="subProgramId" formControlName="subProgramId"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="createSubALNForm.controls['subProgramId'].touched || submitted">
+                  <span *ngIf="createSubALNForm.controls['subProgramId'].errors?.['required']">Subprogram ID is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Award Type*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Award Type</mat-label>
+                <mat-select formControlName="awardType">
+                  <mat-option *ngFor="let award of awardTypes" value="{{award}}">{{ award }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="createSubALNForm.controls['awardType'].touched || submitted">
+                  <span *ngIf="createSubALNForm.controls['awardType'].errors?.['required']">Award Type is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div class="info-text" fxLayout="column">
+            <h4>Sub Program Action Type*</h4>
+            <mat-checkbox color="primary" value="1">
+              New
+            </mat-checkbox>
+            <mat-checkbox color="primary" value="1">
+              Non Competive Continuation
+            </mat-checkbox>
+            <mat-checkbox color="primary" value="1">
+              Funding Down the Slate
+            </mat-checkbox>
+          </div>
+          <div fxLayout="row" class="mt-2">
+            <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+              <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+              <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                <span>Cancel</span>
+              </button>
+            </section>
+            <section fxFlxex="5%"></section>
+            <section fxFlex="50%" fxLayoutAlign="space-between">
+
+              <button type="submit" mat-raised-button color="primary" class="medium">
+                <span>Continue</span>
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

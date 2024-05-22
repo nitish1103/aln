@@ -1,27 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { MatStepper } from '@angular/material/stepper';
-import { CreateComponent } from '../create/create.component';
-import { ListAlnComponent } from '../list-aln/list-aln.component';
-import { AlnService } from '../services/aln-service';
+import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
-  selector: 'app-create-sub-aln',
-  templateUrl: './create-sub-aln.component.html',
-  styleUrl: './create-sub-aln.component.scss',
+  selector: 'app-create-sub-aln-program',
+  templateUrl: './create-sub-aln-program.component.html',
+  styleUrl: './create-sub-aln-program.component.scss',
 })
-export class CreateSubAlnComponent {
-  @Input() stepper!: MatStepper;
-
-  selectedFile!: File;
-  isSaving = false;
-  trackingNumber = '';
+export class CreateSubAlnProgramComponent {
   submitted = false;
-  tabActive = '';
-
   createSubALNForm = new FormGroup({
     fiscalYear: new FormControl('', [Validators.required]),
     alnCode: new FormControl('', [Validators.required]),
@@ -50,13 +40,14 @@ export class CreateSubAlnComponent {
   constructor(
     private readonly subAln: SubAlnComponent,
     public dialog: MatDialog,
-    private readonly subAlnComponent: SubAlnProgramComponent
+    private readonly createSubAlnComponent: CreateSubAlnComponent
   ) {}
 
   ngOnInit() {}
 
   save() {
     this.submitted = true;
+    this.createSubAlnComponent.tabActive = 'general';
   }
 
   goBack() {

@@ -176,7 +176,7 @@
 .right-panel {
   height: 100%;
   overflow-y: auto;
-  padding: 0px!important;
+  padding: 0px !important;
 }
 
 .char-count {
@@ -234,21 +234,4 @@ mat-hint {
 .error-doc {
   font-size: 12px;
   margin-left: 10px;
-}
-
-.tab {
-  background: #3a9bdc;
-}
-
-.tab-item {
-  padding: 10px;
-  color: white;
-  text-align: center;
-}
-
-.tab-item.active {
-  background-color: white !important;
-  color: #3a9bdc;
-  border: 2px solid #3a9bdc;
-  border-bottom: none;
 }

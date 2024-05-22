@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
@@ -17,18 +18,18 @@ export class SubAlnGeneralComponent {
   submitted = false;
 
   constructor(
-    private readonly subALnProgramComponent: SubAlnProgramComponent,
+    private readonly createSubAlnComponent: CreateSubAlnComponent,
     private readonly subAlnComponent: SubAlnComponent
   ) {}
 
   save() {}
 
   previous() {
-    this.subALnProgramComponent.tabActive = '';
+    this.createSubAlnComponent.tabActive = '';
   }
 
   goBack() {
-    this.subALnProgramComponent.tabActive = '';
+    this.createSubAlnComponent.tabActive = '';
     this.subAlnComponent.sectionActive = 'list';
   }
 }
