@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateComponent } from '../create/create.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
+import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -40,17 +41,19 @@ export class CreateSubAlnComponent {
     '93',
   ];
 
-  awardTypes = [];
+  awardTypes = ['Award 1', 'Award 2', 'Award 3'];
 
   constructor(
     private readonly subAln: SubAlnComponent,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private readonly subAlnComponent: SubAlnProgramComponent
   ) {}
 
   ngOnInit() {}
 
   save() {
     this.submitted = true;
+    this.subAlnComponent.tabActive = 'general';
   }
 
   goBack() {

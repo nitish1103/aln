@@ -3,11 +3,11 @@
 
 .indicator-container {
   background: var(--cap-primary-light-text);
+  border-radius: 1rem;
   padding: 2rem 8rem;
   max-width: 100%;
-  width: 100%;
+  width: 1027px;
   border: 2px solid #3a9bdc;
-  border-top: none;
 
   @media(max-width: 767px) {
     padding: 2rem 1.5rem;
@@ -171,67 +171,22 @@
       margin-left: 0.5rem;
     }
   }
+
 }
 
-.right-panel {
-  height: 100%;
-  overflow-y: auto;
-  padding: 0px!important;
+
+.tab {
+  background: #3a9bdc;
 }
 
-.char-count {
-  position: absolute;
-  right: 0.5rem;
-  bottom: 0.5rem;
-  opacity: 0.5;
+.tab-item {
+  padding: 20px;
+  color: white;
 }
 
-.spinner-outer {
-  height: 100%;
-}
-
-.loading-panel {
-  height: 90vh;
-}
-
-::ng-deep body {
-  overflow-y: auto;
-}
-
-.mat-button-disabled {
-  opacity: 0.5;
-  cursor: not-allowed !important;
-}
-
-.mat-stroked-button {
-  margin-right: 10px;
-}
-
-.hidden {
-  display: none;
-}
-
-.HTML-description-outer {
-  position: relative;
-}
-
-.description-buttons {
-  margin-bottom: 0.5rem;
-}
-
-.btn-spacing {
-  margin-right: 2rem;
-}
-
-.mt-2 {
-  margin-top: 2rem;
-}
-
-mat-hint {
-  color: red;
-}
-
-.error-doc {
-  font-size: 12px;
-  margin-left: 10px;
+.tab-item.active {
+  background-color: white!important;
+  color: #3a9bdc;
+  border: 2px solid #3a9bdc;
+  border-bottom: none;
 }
