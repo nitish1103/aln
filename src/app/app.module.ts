@@ -37,6 +37,7 @@ import { AlnDetailComponent } from './aln-detail/aln-detail.component';
 import { SubAlnProgramComponent } from './sub-aln-program/sub-aln-program.component';
 import { SubAlnGeneralComponent } from './sub-aln-general/sub-aln-general.component';
 import { CreateSubAlnProgramComponent } from './create-sub-aln-program/create-sub-aln-program.component';
+import { ProgramOfficeAlnComponent } from './program-office-aln/program-office-aln.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { CreateSubAlnProgramComponent } from './create-sub-aln-program/create-su
     SubAlnProgramComponent,
     SubAlnGeneralComponent,
     CreateSubAlnProgramComponent,
+    ProgramOfficeAlnComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

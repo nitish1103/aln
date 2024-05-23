@@ -6,7 +6,8 @@
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='costSharing'}">Cost Sharing</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}">Law</span>
   </div>
-
   <app-create-sub-aln-program *ngIf="tabActive == ''"></app-create-sub-aln-program>
   <app-sub-aln-general *ngIf="tabActive == 'general'"></app-sub-aln-general>
+  <app-program-office-aln *ngIf="tabActive == 'programOffice'"></app-program-office-aln>
+  <app-program-office-aln *ngIf="tabActive == 'reporting'"></app-program-office-aln>
 </div>

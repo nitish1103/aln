@@ -196,10 +196,10 @@
               <h4>Suspension Periods*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Suspension Periods</mat-label>
-                <input matInput placeholder="Number of Budget Periods" name="budgetPeriod" formControlName="budgetPeriod" required
+                <input matInput placeholder="Number of Budget Periods" name="suspensionPeriod" formControlName="suspensionPeriod" required
                   autocomplete="off">
-                <mat-hint align="end" *ngIf="generalSubALNForm.controls['budgetPeriod'].touched || submitted">
-                  <span *ngIf="generalSubALNForm.controls['budgetPeriod'].errors?.['required']">Performance Period is
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['suspensionPeriod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['suspensionPeriod'].errors?.['required']">Performance Period is
                     required.</span>
                 </mat-hint>
               </mat-form-field>

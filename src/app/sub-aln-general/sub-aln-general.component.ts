@@ -40,7 +40,16 @@ export class SubAlnGeneralComponent {
     private readonly subAlnComponent: SubAlnComponent
   ) {}
 
+  ngOnInit() {
+    this.generalSubALNForm.patchValue({
+      fiscalYear: '2024',
+      alnSubProgram: '84.002A',
+      awardType: 'Discretinary',
+    });
+  }
+
   save() {
+    console.log('===in save');
     this.createSubAlnComponent.tabActive = 'programOffice';
   }
 

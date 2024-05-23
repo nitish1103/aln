@@ -1,0 +1,116 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <form [formGroup]="programOfficeSubALNForm" (ngSubmit)="programOfficeSubALNForm.valid && save();submitted=true;" novalidate>
+      <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+        <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Fiscal Year</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Fiscal Year</mat-label>
+                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" readonly
+                  required autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Aln Sub Program*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Aln Sub Program </mat-label>
+                <input matInput placeholder="Aln Sub Program" name="alnSubProgram" readonly
+                  formControlName="alnSubProgram" required autocomplete="off">
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Award Type</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Award Type</mat-label>
+                <input matInput placeholder="Award Type" name="awardType" formControlName="awardType" readonly required
+                  autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Primary Program Office*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Primary Program Office</mat-label>
+                <input matInput placeholder="Primary Program Office" name="primaryProgramOffice" formControlName="primaryProgramOffice" required autocomplete="off">
+                <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['primaryProgramOffice'].touched || submitted">
+                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOffice'].errors?.['required']">
+                    Primary Program Office is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Primary Program Office Divison</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Primary Program Office Divison</mat-label>
+                <input matInput placeholder="Primary Program Office Divison" name="primaryProgramOfficeDivison"
+                  formControlName="primaryProgramOfficeDivison" required autocomplete="off">
+                <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['primaryProgramOfficeDivison'].touched || submitted">
+                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOfficeDivison'].errors?.['required']">Sub Primary Program Office Divison is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Sub Program Contact*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Sub Program Contact</mat-label>
+                <input matInput placeholder="Program Website" name="subProgramContact" formControlName="subProgramContact"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['subProgramContact'].touched || submitted">
+                  <span *ngIf="programOfficeSubALNForm.controls['subProgramContact'].errors?.['required']">Sub Program Contact is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Secondary Program Office*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Secondary Program Office</mat-label>
+                <input matInput placeholder="Secondary Program Office" name="secondaryProgramOffice" formControlName="secondaryProgramOffice" required autocomplete="off">
+                <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['secondaryProgramOffice'].touched || submitted">
+                  <span *ngIf="programOfficeSubALNForm.controls['secondaryProgramOffice'].errors?.['required']">Secondary Program Office is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              
+            </section>
+          </div>
+
+
+          <div fxLayout="row" class="mt-2">
+            <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+              <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+              <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                <span>Cancel</span>
+              </button>
+            </section>
+            <section fxFlxex="5%"></section>
+            <section fxFlex="50%" fxLayoutAlign="space-between">
+
+              <button type="submit" mat-raised-button color="primary" class="medium">
+                <span>Continue</span>
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
