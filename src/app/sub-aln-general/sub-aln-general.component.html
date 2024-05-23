@@ -9,11 +9,8 @@
               <h4>Fiscal Year</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Fiscal Year</mat-label>
-                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" required
+                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" readonly required
                   autocomplete="off">
-                <mat-hint align="end" *ngIf="generalSubALNForm.controls['fiscalYear'].touched || submitted">
-                  <span *ngIf="generalSubALNForm.controls['fiscalYear'].errors?.['required']">Fiscal Year is required.</span>
-                </mat-hint>
               </mat-form-field>
             </section>
             <section fxFlex="5%"></section>
@@ -21,13 +18,248 @@
               <h4>Aln Sub Program*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Aln Sub Program </mat-label>
-                <input matInput placeholder="Aln Sub Program" name="alnSubProgram" formControlName="alnSubProgram" required autocomplete="off">
-                <mat-hint align="end" *ngIf="generalSubALNForm.controls['alnSubProgram'].touched || submitted">
-                  <span *ngIf="generalSubALNForm.controls['alnSubProgram'].errors?.['required']">Aln Sub Program is required.</span>
+                <input matInput placeholder="Aln Sub Program" name="alnSubProgram" readonly formControlName="alnSubProgram" required autocomplete="off">
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Award Type</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Award Type</mat-label>
+                <input matInput placeholder="Award Type" name="awardType" formControlName="awardType" readonly required
+                  autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Sub Program Title*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Sub Program Title</mat-label>
+                <input matInput placeholder="Sub Program Title" name="subProgramTitle" formControlName="subProgramTitle"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['subProgramTitle'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['subProgramTitle'].errors?.['required']">Sub Program Title is
+                    required.</span>
                 </mat-hint>
               </mat-form-field>
             </section>
           </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Sub Program Purpose</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Sub Program Purpose</mat-label>
+                <input matInput placeholder="Sub Program Purpose" name="subProgramPurpose" formControlName="subProgramPurpose" required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['subProgramPurpose'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['subProgramPurpose'].errors?.['required']">Sub Program Purpose is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Program Website*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Program Website</mat-label>
+                <input matInput placeholder="Program Website" name="programWebsite" formControlName="programWebsite" required
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['programWebsite'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['programWebsite'].errors?.['required']">Program Website is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Sub Award Type*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Sub Award Type</mat-label>
+                <mat-select formControlName="subAwardType">
+                  <mat-option *ngFor="let award of awardTypes" value="{{award}}">{{ award }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['subAwardType'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['subAwardType'].errors?.['required']">Award Type is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Review Method*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Review Method</mat-label>
+                <mat-select formControlName="reveiwMethod">
+                  <mat-option *ngFor="let review of reviewMethods" value="{{review}}">{{ review }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['reveiwMethod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['reveiwMethod'].errors?.['required']">Award Type is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Sub Program Purpose</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Sub Program Purpose</mat-label>
+                <input matInput placeholder="Sub Program Purpose" name="subProgramPurpose" formControlName="subProgramPurpose"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['subProgramPurpose'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['subProgramPurpose'].errors?.['required']">Sub Program Purpose is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Program Website*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Program Website</mat-label>
+                <input matInput placeholder="Program Website" name="programWebsite" formControlName="programWebsite" required
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['programWebsite'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['programWebsite'].errors?.['required']">Program Website is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Abstract Type*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Abstract Type</mat-label>
+                <mat-select formControlName="abstractType">
+                  <mat-option *ngFor="let abstractType of abstractTypes" value="{{abstractType}}">{{ abstractType }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['abstractType'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['abstractType'].errors?.['required']">Abstract Type is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              
+            </section>
+          </div>
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Performance Period*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Performance Period</mat-label>
+                <input matInput placeholder="Performance Period" name="performancePeriod" formControlName="performancePeriod"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['performancePeriod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['performancePeriod'].errors?.['required']">Performance Period is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Number of Budget Periods*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Number of Budget Periods</mat-label>
+                <input matInput placeholder="Number of Budget Periods" name="budgetPeriod" formControlName="budgetPeriod"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['budgetPeriod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['budgetPeriod'].errors?.['required']">Performance Period is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Liquidation Period*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Liquidation Period</mat-label>
+                <input matInput placeholder="Liquidation Period" name="liquidationPeriod" formControlName="liquidationPeriod"
+                  required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['liquidationPeriod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['liquidationPeriod'].errors?.['required']">Performance Period is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Suspension Periods*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Suspension Periods</mat-label>
+                <input matInput placeholder="Number of Budget Periods" name="budgetPeriod" formControlName="budgetPeriod" required
+                  autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['budgetPeriod'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['budgetPeriod'].errors?.['required']">Performance Period is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-checkbox color="primary" value="1">
+                Participant Number Indicator
+              </mat-checkbox>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <mat-checkbox color="primary" value="1">
+                Balance Remaining Email Notification
+              </mat-checkbox>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Percentage Threshold*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Percentage Threshold</mat-label>
+                <input matInput placeholder="Percentage Threshold" name="percentageThreshold" formControlName="percentageThreshold" required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['percentageThreshold'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['percentageThreshold'].errors?.['required']">Percentage Threshold is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Category Code*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Category Code</mat-label>
+                <input matInput placeholder="Category Code" name="categoryCode" formControlName="categoryCode" required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['categoryCode'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['categoryCode'].errors?.['required']">Performance Period is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Grant Award Type*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Grant Award Type</mat-label>
+                <input matInput placeholder="Grant Award Type" name="grantAwardType"
+                  formControlName="grantAwardType" required autocomplete="off">
+                <mat-hint align="end" *ngIf="generalSubALNForm.controls['grantAwardType'].touched || submitted">
+                  <span *ngIf="generalSubALNForm.controls['grantAwardType'].errors?.['required']">Grant Award Type is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+          
 
           <div fxLayout="row" class="mt-2">
             <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
