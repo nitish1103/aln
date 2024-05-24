@@ -11,6 +11,10 @@ import { SubAlnComponent } from '../sub-aln/sub-aln.component';
   styleUrl: './sub-aln-general.component.scss',
 })
 export class SubAlnGeneralComponent {
+  fiscalYear = '';
+  alnSubProgram = '';
+  awardType = '';
+
   generalSubALNForm = new FormGroup({
     fiscalYear: new FormControl('2024', [Validators.required]),
     alnSubProgram: new FormControl('84.002A', [Validators.required]),
@@ -48,6 +52,10 @@ export class SubAlnGeneralComponent {
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
       awardType: this.subALnService.createSubALN.awardType,
     });
+
+    this.fiscalYear = this.subALnService.createSubALN.fiscalYear;
+    this.alnSubProgram = this.subALnService.createSubALN.alnNumber;
+    this.awardType = this.subALnService.createSubALN.awardType;
   }
 
   save() {

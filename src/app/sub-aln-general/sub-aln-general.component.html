@@ -5,34 +5,23 @@
       <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
         <div class="indicator-container" fxLayout="column">
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <h4>Fiscal Year</h4>
-              <mat-form-field appearance="outline">
-                <mat-label>Fiscal Year</mat-label>
-                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" readonly required
-                  autocomplete="off">
-              </mat-form-field>
+            <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Fiscal Year</p>
+              <p class="value">{{ fiscalYear }}</p>
             </section>
             <section fxFlex="5%"></section>
-            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <h4>Aln Sub Program*</h4>
-              <mat-form-field appearance="outline">
-                <mat-label>Aln Sub Program </mat-label>
-                <input matInput placeholder="Aln Sub Program" name="alnSubProgram" readonly formControlName="alnSubProgram" required autocomplete="off">
-              </mat-form-field>
+            <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Aln Sub Program</p>
+              <p class="value">{{ alnSubProgram }}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Award Type</p>
+              <p class="value">{{ awardType }}</p>
             </section>
           </div>
 
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-              <h4>Award Type</h4>
-              <mat-form-field appearance="outline">
-                <mat-label>Award Type</mat-label>
-                <input matInput placeholder="Award Type" name="awardType" formControlName="awardType" readonly required
-                  autocomplete="off">
-              </mat-form-field>
-            </section>
-            <section fxFlex="5%"></section>
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Sub Program Title*</h4>
               <mat-form-field appearance="outline">
