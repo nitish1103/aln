@@ -9,5 +9,7 @@
   <app-create-sub-aln-program *ngIf="tabActive == ''"></app-create-sub-aln-program>
   <app-sub-aln-general *ngIf="tabActive == 'general'"></app-sub-aln-general>
   <app-program-office-aln *ngIf="tabActive == 'programOffice'"></app-program-office-aln>
-  <app-program-office-aln *ngIf="tabActive == 'reporting'"></app-program-office-aln>
+  <app-reporting-sub-aln *ngIf="tabActive == 'reporting'"></app-reporting-sub-aln>
+  <app-costsharing-sub-aln *ngIf="tabActive == 'costSharing'"></app-costsharing-sub-aln>
+  <app-law-sub-aln *ngIf="tabActive == 'law'" [stepper]="stepper"></app-law-sub-aln>
 </div>

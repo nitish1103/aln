@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
+import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
@@ -37,19 +38,51 @@ export class SubAlnGeneralComponent {
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
-    private readonly subAlnComponent: SubAlnComponent
+    private readonly subAlnComponent: SubAlnComponent,
+    private readonly subALnService: AlnSubProgramService
   ) {}
 
   ngOnInit() {
     this.generalSubALNForm.patchValue({
-      fiscalYear: '2024',
-      alnSubProgram: '84.002A',
-      awardType: 'Discretinary',
+      fiscalYear: this.subALnService.createSubALN.fiscalYear,
+      alnSubProgram: this.subALnService.createSubALN.alnNumber,
+      awardType: this.subALnService.createSubALN.awardType,
     });
   }
 
   save() {
-    console.log('===in save');
+    this.subALnService.generalSubALN.fiscalYear =
+      this.generalSubALNForm.value.fiscalYear ?? '';
+    this.subALnService.generalSubALN.alnSubProgram =
+      this.generalSubALNForm.value.alnSubProgram ?? '';
+    this.subALnService.generalSubALN.awardType =
+      this.generalSubALNForm.value.awardType ?? '';
+    this.subALnService.generalSubALN.subProgramTitle =
+      this.generalSubALNForm.value.subProgramTitle ?? '';
+    this.subALnService.generalSubALN.subProgramPurpose =
+      this.generalSubALNForm.value.subProgramPurpose ?? '';
+    this.subALnService.generalSubALN.programWebsite =
+      this.generalSubALNForm.value.programWebsite ?? '';
+    this.subALnService.generalSubALN.subAwardType =
+      this.generalSubALNForm.value.subAwardType ?? '';
+    this.subALnService.generalSubALN.reveiwMethod =
+      this.generalSubALNForm.value.reveiwMethod ?? '';
+    this.subALnService.generalSubALN.abstractType =
+      this.generalSubALNForm.value.abstractType ?? '';
+    this.subALnService.generalSubALN.performancePeriod =
+      this.generalSubALNForm.value.performancePeriod ?? '';
+    this.subALnService.generalSubALN.budgetPeriod =
+      this.generalSubALNForm.value.budgetPeriod ?? '';
+    this.subALnService.generalSubALN.liquidationPeriod =
+      this.generalSubALNForm.value.liquidationPeriod ?? '';
+    this.subALnService.generalSubALN.suspensionPeriod =
+      this.generalSubALNForm.value.suspensionPeriod ?? '';
+    this.subALnService.generalSubALN.percentageThreshold =
+      this.generalSubALNForm.value.percentageThreshold ?? '';
+    this.subALnService.generalSubALN.categoryCode =
+      this.generalSubALNForm.value.categoryCode ?? '';
+    this.subALnService.generalSubALN.grantAwardType =
+      this.generalSubALNForm.value.grantAwardType ?? '';
     this.createSubAlnComponent.tabActive = 'programOffice';
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
+import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -23,10 +24,27 @@ export class ProgramOfficeAlnComponent {
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
-    private readonly subAlnComponent: SubAlnComponent
+    private readonly subAlnComponent: SubAlnComponent,
+    private readonly subALnService: AlnSubProgramService
   ) {}
 
+  ngOnInit() {
+    this.programOfficeSubALNForm.patchValue({
+      fiscalYear: this.subALnService.createSubALN.fiscalYear,
+      alnSubProgram: this.subALnService.createSubALN.alnNumber,
+      awardType: this.subALnService.createSubALN.awardType,
+    });
+  }
+
   save() {
+    this.subALnService.programOfficeSubALN.primaryProgramOffice =
+      this.programOfficeSubALNForm.value.primaryProgramOffice ?? '';
+    this.subALnService.programOfficeSubALN.primaryProgramOfficeDivison =
+      this.programOfficeSubALNForm.value.primaryProgramOfficeDivison ?? '';
+    this.subALnService.programOfficeSubALN.subProgramContact =
+      this.programOfficeSubALNForm.value.subProgramContact ?? '';
+    this.subALnService.programOfficeSubALN.secondaryProgramOffice =
+      this.programOfficeSubALNForm.value.secondaryProgramOffice ?? '';
     this.createSubAlnComponent.tabActive = 'reporting';
   }
 

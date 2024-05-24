@@ -1,0 +1,112 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <form [formGroup]="reportingSubALNForm" (ngSubmit)="reportingSubALNForm.valid && save();submitted=true;"
+      novalidate>
+      <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+        <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Fiscal Year</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Fiscal Year</mat-label>
+                <input matInput placeholder="Fiscal Year" name="fiscalYear" formControlName="fiscalYear" readonly
+                  required autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Aln Sub Program*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Aln Sub Program </mat-label>
+                <input matInput placeholder="Aln Sub Program" name="alnSubProgram" readonly
+                  formControlName="alnSubProgram" required autocomplete="off">
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Award Type</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Award Type</mat-label>
+                <input matInput placeholder="Award Type" name="awardType" formControlName="awardType" readonly required
+                  autocomplete="off">
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Performance Reports*</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Select an option</mat-label>
+                <mat-select formControlName="performaceReport">
+                  <mat-option *ngFor="let report of performanceReports" value="{{report}}">{{ report }}</mat-option>
+                </mat-select>
+                <mat-hint align="end" *ngIf="reportingSubALNForm.controls['performaceReport'].touched || submitted">
+                  <span *ngIf="reportingSubALNForm.controls['performaceReport'].errors?.['required']">Performace Report is
+                    required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+          </div>
+
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+            fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Number of Reports Per Budget Period</h4>
+              <mat-form-field appearance="outline">
+                <mat-label>Number of Reports Per Budget Period</mat-label>
+                <input matInput placeholder="Number of Reports Per Budget Period" name="numberPerBudgetPeriod"
+                  formControlName="numberPerBudgetPeriod" required autocomplete="off">
+                <mat-hint align="end"
+                  *ngIf="reportingSubALNForm.controls['numberPerBudgetPeriod'].touched || submitted">
+                  <span *ngIf="reportingSubALNForm.controls['numberPerBudgetPeriod'].errors?.['required']">Sub
+                    Number of Reports Per Budget Period is required.</span>
+                </mat-hint>
+              </mat-form-field>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <h4>Final Performance Report</h4>
+              <mat-checkbox color="primary" value="1">
+                Final Performace Report
+              </mat-checkbox>
+            </section>
+          </div>
+
+          <div class="info-text" fxLayout="column">
+            <h4>Program Financial Reports</h4>
+            <mat-checkbox color="primary" value="1">
+              Annual
+            </mat-checkbox>
+            <mat-checkbox color="primary" value="1">
+              Final
+            </mat-checkbox>
+            <mat-checkbox color="primary" value="1">
+              Quaterly
+            </mat-checkbox>
+          </div>
+
+
+          <div fxLayout="row" class="mt-2">
+            <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+              <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+              <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                <span>Cancel</span>
+              </button>
+            </section>
+            <section fxFlxex="5%"></section>
+            <section fxFlex="50%" fxLayoutAlign="space-between">
+
+              <button type="submit" mat-raised-button color="primary" class="medium">
+                <span>Continue</span>
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

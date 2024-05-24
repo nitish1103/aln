@@ -38,6 +38,13 @@ import { SubAlnProgramComponent } from './sub-aln-program/sub-aln-program.compon
 import { SubAlnGeneralComponent } from './sub-aln-general/sub-aln-general.component';
 import { CreateSubAlnProgramComponent } from './create-sub-aln-program/create-sub-aln-program.component';
 import { ProgramOfficeAlnComponent } from './program-office-aln/program-office-aln.component';
+import { ReportingSubAlnComponent } from './reporting-sub-aln/reporting-sub-aln.component';
+import { CostsharingSubAlnComponent } from './costsharing-sub-aln/costsharing-sub-aln.component';
+import { LawSubAlnComponent } from './law-sub-aln/law-sub-aln.component';
+import { SubAlnSummaryComponent } from './sub-aln-summary/sub-aln-summary.component';
+import { SubAlnSummaryGeneralComponent } from './sub-aln-summary-general/sub-aln-summary-general.component';
+import { SubAlnSummaryProgramOfficeComponent } from './sub-aln-summary-program-office/sub-aln-summary-program-office.component';
+import { SubAlnSummaryReportingComponent } from './sub-aln-summary-reporting/sub-aln-summary-reporting.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +79,13 @@ import { ProgramOfficeAlnComponent } from './program-office-aln/program-office-a
     SubAlnGeneralComponent,
     CreateSubAlnProgramComponent,
     ProgramOfficeAlnComponent,
+    ReportingSubAlnComponent,
+    CostsharingSubAlnComponent,
+    LawSubAlnComponent,
+    SubAlnSummaryComponent,
+    SubAlnSummaryGeneralComponent,
+    SubAlnSummaryProgramOfficeComponent,
+    SubAlnSummaryReportingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

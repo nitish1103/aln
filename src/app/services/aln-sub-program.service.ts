@@ -11,12 +11,42 @@ import { Observable } from 'rxjs';
  */
 export class AlnSubProgramService {
   createSubALN = {
-    alnTitle: '',
+    fiscalYear: '',
     alnCode: '',
-    purpose: '',
-    programOfficeContact: '',
-    descriptionDocument: '',
-    executiveOrder: false,
+    alnNumber: '',
+    subProgramId: '',
+    awardType: '',
+  };
+
+  generalSubALN = {
+    fiscalYear: '',
+    alnSubProgram: '',
+    awardType: '',
+    subProgramTitle: '',
+    subProgramPurpose: '',
+    programWebsite: '',
+    subAwardType: '',
+    reveiwMethod: '',
+    abstractType: '',
+    performancePeriod: '',
+    budgetPeriod: '',
+    liquidationPeriod: '',
+    suspensionPeriod: '',
+    percentageThreshold: '',
+    categoryCode: '',
+    grantAwardType: '',
+  };
+
+  programOfficeSubALN = {
+    primaryProgramOffice: '',
+    primaryProgramOfficeDivison: '',
+    subProgramContact: '',
+    secondaryProgramOffice: '',
+  };
+
+  reportingSubALN = {
+    performaceReport: '',
+    numberPerBudgetPeriod: '',
   };
 
   constructor(private readonly httpClient: HttpClient) {}
