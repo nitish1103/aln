@@ -44,6 +44,17 @@ export class LawSubAlnComponent {
   }
 
   save() {
+    this.subALnService.lawSubAln.lawName =
+      this.lawSubALNForm.value.lawName ?? '';
+    this.subALnService.lawSubAln.lawPurpose =
+      this.lawSubALNForm.value.lawPurpose ?? '';
+    this.subALnService.lawSubAln.latestPublicLaw =
+      this.lawSubALNForm.value.latestPublicLaw ?? '';
+    this.subALnService.lawSubAln.title = this.lawSubALNForm.value.title ?? '';
+    this.subALnService.lawSubAln.section =
+      this.lawSubALNForm.value.section ?? '';
+    this.subALnService.lawSubAln.cfrPart =
+      this.lawSubALNForm.value.cfrPart ?? '';
     this.subALnProgram.sectionActive = 'summary';
     this.createSubAlnComponent.tabActive = '';
     this.stepper.next();

@@ -9,4 +9,6 @@
   <app-sub-aln-summary-general *ngIf="tabActive == 'general'"></app-sub-aln-summary-general>
   <app-sub-aln-summary-program-office *ngIf="tabActive == 'programOffice'"></app-sub-aln-summary-program-office>
   <app-sub-aln-summary-reporting *ngIf="tabActive == 'reporting'"></app-sub-aln-summary-reporting>
+  <app-sub-aln-summary-cost-sharing *ngIf="tabActive == 'costSharing'"></app-sub-aln-summary-cost-sharing>
+  <app-sub-aln-summary-law *ngIf="tabActive == 'law'" [stepper]="stepper"></app-sub-aln-summary-law>
 </div>

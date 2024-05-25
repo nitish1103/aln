@@ -49,5 +49,27 @@ export class AlnSubProgramService {
     numberPerBudgetPeriod: '',
   };
 
+  costSharingSubAln = {
+    paymentMethod: '',
+    costSharePercentage: '',
+    costShareMethod: '',
+    maximumDrawDownPercentageQ1: '',
+    maximumDrawDownPercentageQ2: '',
+    maximumDrawDownPercentageQ3: '',
+    maximumDrawDownPercentageQ4: '',
+    indirectCostAllowed: '',
+    programIndirectCostRate: '',
+    administrativeCostCap: '',
+  };
+
+  lawSubAln = {
+    lawName: '',
+    lawPurpose: '',
+    latestPublicLaw: '',
+    title: '',
+    section: '',
+    cfrPart: '',
+  };
+
   constructor(private readonly httpClient: HttpClient) {}
 }

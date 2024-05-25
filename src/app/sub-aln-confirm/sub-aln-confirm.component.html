@@ -1,0 +1,17 @@
+<p>sub-aln-confirm works!</p>
+<div class="admin-mgmt-container">
+  <div class="tab" fxLayout="row" *ngIf="tabActive !== ''">
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='general'}"
+      (click)="tabActive = 'general'">General</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='programOffice'}"
+      (click)="tabActive = 'programOffice'">Program Office</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='reporting'}"
+      (click)="tabActive = 'reporting'">Reporting</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='costSharing'}"
+      (click)="tabActive = 'costSharing'">Cost Sharing</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}"
+      (click)="tabActive = 'law'">Law</span>
+  </div>
+  <app-sub-aln-confirm-general *ngIf="tabActive == 'general'"></app-sub-aln-confirm-general>
+  
+</div>

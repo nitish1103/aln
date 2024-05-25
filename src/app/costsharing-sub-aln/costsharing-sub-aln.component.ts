@@ -45,6 +45,28 @@ export class CostsharingSubAlnComponent {
   }
 
   save() {
+    this.subALnService.costSharingSubAln.paymentMethod =
+      this.costSharingSubALNForm.value.paymentMethod ?? '';
+    this.subALnService.costSharingSubAln.costSharePercentage =
+      this.costSharingSubALNForm.value.costSharePercentage ?? '';
+    this.subALnService.costSharingSubAln.costShareMethod =
+      this.costSharingSubALNForm.value.costShareMethod == 1
+        ? 'Cost Matching of the Federal Amount'
+        : 'Cost Sharing of total project cost';
+    this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ1 =
+      this.costSharingSubALNForm.value.maximumDrawDownPercentageQ1 ?? '';
+    this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ2 =
+      this.costSharingSubALNForm.value.maximumDrawDownPercentageQ2 ?? '';
+    this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ3 =
+      this.costSharingSubALNForm.value.maximumDrawDownPercentageQ3 ?? '';
+    this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ4 =
+      this.costSharingSubALNForm.value.maximumDrawDownPercentageQ4 ?? '';
+    this.subALnService.costSharingSubAln.indirectCostAllowed =
+      this.costSharingSubALNForm.value.indirectCostAllowed == 1 ? 'Yes' : 'No';
+    this.subALnService.costSharingSubAln.programIndirectCostRate =
+      this.costSharingSubALNForm.value.programIndirectCostRate ?? '';
+    this.subALnService.costSharingSubAln.administrativeCostCap =
+      this.costSharingSubALNForm.value.administrativeCostCap ?? '';
     this.createSubAlnComponent.tabActive = 'law';
   }
 

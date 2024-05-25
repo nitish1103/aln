@@ -1,0 +1,100 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Payment Method</p>
+            <p class="value">{{summaryCostSharingData.paymentMethod}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Cost Share Required</p>
+            <p class="value">
+              <mat-checkbox color="primary" value="1" [checked]="true" readonly="true">
+                Cost Share Required
+              </mat-checkbox>
+          </p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Cost Share Percentage</p>
+            <p class="value">{{ summaryCostSharingData.costSharePercentage}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Cost Share Adjustment Allowed</p>
+            <p class="value">
+              <mat-checkbox color="primary" value="1" [checked]="true" readonly="true">
+                Cost Share Adjustment Allowed
+              </mat-checkbox>
+            </p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Cost Share Method</p>
+            <p class="value">{{ summaryCostSharingData.costShareMethod}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Maximum Draw Dawn Percentage Q1</p>
+            <p class="value">{{ summaryCostSharingData.maximumDrawDownPercentageQ1}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Maximum Draw Dawn Percentage Q2</p>
+            <p class="value">{{ summaryCostSharingData.maximumDrawDownPercentageQ2}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Maximum Draw Dawn Percentage Q3</p>
+            <p class="value">{{ summaryCostSharingData.maximumDrawDownPercentageQ3}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Maximum Draw Dawn Percentage Q4</p>
+            <p class="value">{{ summaryCostSharingData.maximumDrawDownPercentageQ4}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Indirect Cost Allowed</p>
+            <p class="value">{{ summaryCostSharingData.indirectCostAllowed}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Program Indirect Cost Type</p>
+            <p class="value">Restricted</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Program Indirect Cost Rate</p>
+            <p class="value">{{ summaryCostSharingData.programIndirectCostRate}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Administrative Cost Cap Allowed</p>
+            <p class="value">Yes</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Administrative Cost Cap</p>
+            <p class="value">{{ summaryCostSharingData.administrativeCostCap}}</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

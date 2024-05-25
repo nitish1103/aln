@@ -9,5 +9,6 @@
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Confirm</ng-template>
+    <app-sub-aln-confirm [stepper]="stepper" *ngIf="sectionActive == 'confirm'"></app-sub-aln-confirm>
   </mat-step>
 </mat-stepper>

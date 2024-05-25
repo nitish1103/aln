@@ -1,0 +1,64 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Law Name</p>
+            <p class="value">{{summarylawData.lawName}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Law Purpose</p>
+            <p class="value">
+              {{ summarylawData.lawPurpose }}
+            </p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Latest Public Law</p>
+            <p class="value">{{ summarylawData.latestPublicLaw}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Title</p>
+            <p class="value">
+              {{ summarylawData.title }}
+            </p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Section</p>
+            <p class="value">{{ summarylawData.section}}</p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">CFR Part</p>
+            <p class="value">{{ summarylawData.cfrPart}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" class="mt-2">
+          <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+            <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+            <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+              <span>Cancel</span>
+            </button>
+          </section>
+          <section fxFlxex="5%"></section>
+          <section fxFlex="50%" fxLayoutAlign="space-between">
+        
+            <button type="button" mat-raised-button color="primary" class="medium" (click)="continue()">
+              <span>Continue</span>
+            </button>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
