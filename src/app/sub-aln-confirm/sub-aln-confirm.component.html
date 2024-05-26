@@ -1,4 +1,3 @@
-<p>sub-aln-confirm works!</p>
 <div class="admin-mgmt-container">
   <div class="tab" fxLayout="row" *ngIf="tabActive !== ''">
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='general'}"
@@ -13,5 +12,9 @@
       (click)="tabActive = 'law'">Law</span>
   </div>
   <app-sub-aln-confirm-general *ngIf="tabActive == 'general'"></app-sub-aln-confirm-general>
+  <app-sub-aln-confirm-program-office *ngIf="tabActive == 'programOffice'"></app-sub-aln-confirm-program-office>
+  <app-sub-aln-confirm-reporting *ngIf="tabActive == 'reporting'"></app-sub-aln-confirm-reporting>
+  <app-sub-aln-confirm-cost-sharing *ngIf="tabActive == 'costSharing'"></app-sub-aln-confirm-cost-sharing>
+  <app-sub-aln-confirm-law *ngIf="tabActive == 'law'"></app-sub-aln-confirm-law>
   
 </div>

@@ -1,0 +1,52 @@
+<div class="admin-mgmt-container">
+  <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+    class="admin-mgmt-body">
+    <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+      <div class="indicator-container" fxLayout="column">
+        <h4>The ALN below was succesfully Created</h4>
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Performance Reports : </p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="value">{{confirmReportingData?.performaceReport}}</p>
+          </section>
+        </div>
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Number of Reports Per Budget Period : </p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="value">{{confirmReportingData?.numberPerBudgetPeriod || '-'}}</p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Final Performance Report : </p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="value">
+              <mat-checkbox color="primary" value="1" checked="true">
+                Final Performace Report
+              </mat-checkbox>
+            </p>
+          </section>
+        </div>
+
+        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="key">Program Financial Reports : </p>
+          </section>
+          <section fxFlex="5%"></section>
+          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+            <p class="value">Annual</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

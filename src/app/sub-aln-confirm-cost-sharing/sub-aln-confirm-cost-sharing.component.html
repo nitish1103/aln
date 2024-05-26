@@ -6,192 +6,150 @@
         <h4>The ALN below was succesfully Created</h4>
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Fiscal Year : </p>
+            <p class="key">Payment Method : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.fiscalYear}}</p>
+            <p class="value">{{confirmCostSharingData?.paymentMethod}}</p>
           </section>
         </div>
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Agency Code : </p>
+            <p class="key">Cost Share Required : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.alnNumber || '-'}}</p>
-          </section>
-        </div>
-
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">ALN Number : </p>
-          </section>
-          <section fxFlex="5%"></section>
-          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.alnSubProgram}}</p>
+            <p class="value">
+              <mat-checkbox color="primary" value="1" [checked]="true" readonly="true">
+                Cost Share Required
+              </mat-checkbox>
+            </p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Sub Program ID : </p>
+            <p class="key">Cost Share Percentage : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.subProgramTitle}}</p>
+            <p class="value">{{confirmCostSharingData?.costSharePercentage}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Award Type : </p>
+            <p class="key">Cost Share Adjustment Allowed : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.awardType}}</p>
+            <p class="value">
+              <mat-checkbox color="primary" value="1" [checked]="true" readonly="true">
+                Cost Share Adjustment Allowed
+              </mat-checkbox>
+            </p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Subprogram Action Type : </p>
+            <p class="key">Cost Share Method : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.subProgramTitle}}</p>
+            <p class="value">{{confirmCostSharingData?.costShareMethod}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Sub Program Title : </p>
+            <p class="key">Maximum Draw Dawn Percentage Q1 : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.subProgramTitle}}</p>
+            <p class="value">{{confirmCostSharingData?.maximumDrawDownPercentageQ1}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Sub Program Purpose : </p>
+            <p class="key">Maximum Draw Dawn Percentage Q2 : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.subProgramPurpose}}</p>
+            <p class="value">{{confirmCostSharingData?.maximumDrawDownPercentageQ2}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Program Website : </p>
+            <p class="key">Maximum Draw Dawn Percentage Q3 : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.programWebsite}}</p>
+            <p class="value">{{confirmCostSharingData?.maximumDrawDownPercentageQ3}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Sub-Award Type : </p>
+            <p class="key">Maximum Draw Dawn Percentage Q4 : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.subAwardType}}</p>
+            <p class="value">{{confirmCostSharingData?.maximumDrawDownPercentageQ4}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Review Method : </p>
+            <p class="key">Indirect Cost Allowed : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.reveiwMethod}}</p>
-          </section>
-        </div>
-
-
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Abstract Type : </p>
-          </section>
-          <section fxFlex="5%"></section>
-          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.abstractType}}</p>
+            <p class="value">{{confirmCostSharingData?.indirectCostAllowed}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Performace Period : </p>
+            <p class="key">Program Indirect Cost Type : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.performancePeriod}}</p>
+            <p class="value">Restricted</p>
           </section>
         </div>
 
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Number of Budget Periods : </p>
+            <p class="key">Program Indirect Cost Rate : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.budgetPeriod}}</p>
+            <p class="value">{{confirmCostSharingData?.programIndirectCostRate}}</p>
           </section>
         </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Liquidation Period : </p>
+            <p class="key">Administrative Cost Cap Allowed : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.liquidationPeriod}}</p>
+            <p class="value">Yes</p>
           </section>
         </div>
 
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Suspension Period : </p>
-          </section>
-          <section fxFlex="5%"></section>
-          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.suspensionPeriod}}</p>
-          </section>
-        </div>
 
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Percentage Threshold : </p>
+            <p class="key">Administrative Cost Cap : </p>
           </section>
           <section fxFlex="5%"></section>
           <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.percentageThreshold}}</p>
-          </section>
-        </div>
-
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Category Code : </p>
-          </section>
-          <section fxFlex="5%"></section>
-          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.categoryCode}}</p>
-          </section>
-        </div>
-
-        <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
-          <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="key">Grant Award Type : </p>
-          </section>
-          <section fxFlex="5%"></section>
-          <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
-            <p class="value">{{summaryGeneralData?.grantAwrdType}}</p>
+            <p class="value">{{confirmCostSharingData?.administrativeCostCap}}</p>
           </section>
         </div>
       </div>
