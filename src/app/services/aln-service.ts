@@ -120,4 +120,14 @@ export class AlnService {
       responseType: 'text' as 'json',
     });
   }
+
+  /**
+   * method to create sub program ALN
+   */
+  public createSubAln(postData: Object): Observable<any> {
+    return this.httpClient.post<any>(
+      'http://localhost:8080/subprogram/create',
+      postData
+    );
+  }
 }

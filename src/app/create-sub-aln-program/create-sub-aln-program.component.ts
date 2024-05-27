@@ -3,6 +3,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import {
+  AWARD_TYPES,
+  SUB_PROGRAM_ACTION_TYPES,
+} from '../services/aln-sub.interface';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
@@ -35,7 +39,8 @@ export class CreateSubAlnProgramComponent {
     '93',
   ];
 
-  awardTypes = ['Award 1', 'Award 2', 'Award 3'];
+  awardTypes = AWARD_TYPES;
+  subProgramActionTypes = SUB_PROGRAM_ACTION_TYPES;
 
   constructor(
     private readonly subAln: SubAlnComponent,
