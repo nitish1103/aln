@@ -18,7 +18,8 @@ export class CostsharingSubAlnComponent {
     awardType: new FormControl('Discretinary', Validators.required),
     paymentMethod: new FormControl('', Validators.required),
     costSharePercentage: new FormControl('', Validators.required),
-    costShareMethod: new FormControl(1, Validators.required),
+    costShareMethod: new FormControl('restricted', Validators.required),
+    programIndirectCostType: new FormControl(1, Validators.required),
     maximumDrawDownPercentageQ1: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ2: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ3: new FormControl('', Validators.required),
@@ -50,9 +51,7 @@ export class CostsharingSubAlnComponent {
     this.subALnService.costSharingSubAln.costSharePercentage =
       this.costSharingSubALNForm.value.costSharePercentage ?? '';
     this.subALnService.costSharingSubAln.costShareMethod =
-      this.costSharingSubALNForm.value.costShareMethod == 1
-        ? 'Cost Matching of the Federal Amount'
-        : 'Cost Sharing of total project cost';
+      this.costSharingSubALNForm.value.costShareMethod ?? '';
     this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ1 =
       this.costSharingSubALNForm.value.maximumDrawDownPercentageQ1 ?? '';
     this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ2 =

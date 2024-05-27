@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { map, Observable, startWith } from 'rxjs';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
+import { AlnService } from '../services/aln-service';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import {
   AWARD_TYPES,
@@ -39,17 +41,24 @@ export class CreateSubAlnProgramComponent {
     '93',
   ];
 
+  myControl: FormControl = new FormControl();
+  alnNumberList: any[] = [];
+  filteredOptions!: Observable<string[]>;
+
   awardTypes = AWARD_TYPES;
   subProgramActionTypes = SUB_PROGRAM_ACTION_TYPES;
 
   constructor(
     private readonly subAln: SubAlnComponent,
     public dialog: MatDialog,
+    private readonly alnService: AlnService,
     private readonly createSubAlnComponent: CreateSubAlnComponent,
     private readonly subALnService: AlnSubProgramService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getALN();
+  }
 
   save() {
     this.submitted = true;
@@ -62,6 +71,39 @@ export class CreateSubAlnProgramComponent {
     this.subALnService.createSubALN.awardType = awardType ?? '';
 
     this.createSubAlnComponent.tabActive = 'general';
+  }
+
+  getALN() {
+    this.alnService.getALNList().subscribe(
+      (response: any) => {
+        response.map((res: any) => {
+          this.alnNumberList.push(res.alnNumber);
+        });
+        setTimeout(() => {
+          this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(''),
+            map((value) => this._filter(value))
+          );
+        }, 50);
+      },
+      (error: any) => {
+        this.alnNumberList = ['24', '36', '42', '56'];
+        setTimeout(() => {
+          this.filteredOptions = this.myControl.valueChanges.pipe(
+            startWith(''),
+            map((value) => this._filter(value))
+          );
+        }, 50);
+      }
+    );
+  }
+
+  private _filter(value: string): string[] {
+    console.log('===value', value);
+    const filterValue = value.toLowerCase();
+    return this.alnNumberList.filter((aln) =>
+      aln.toLowerCase().includes(filterValue)
+    );
   }
 
   goBack() {
