@@ -76,15 +76,18 @@ export class CreateSubAlnProgramComponent {
   getALN() {
     this.alnService.getALNList().subscribe(
       (response: any) => {
-        response.map((res: any) => {
+        response.map((res: any, index:number) => {
           this.alnNumberList.push(res.alnNumber);
+          if (index === response.length-1) {
+            setTimeout(() => {
+              this.filteredOptions = this.myControl.valueChanges.pipe(
+                startWith(''),
+                map((value) => this._filter(value))
+              );
+            }, 50);
+          }
         });
-        setTimeout(() => {
-          this.filteredOptions = this.myControl.valueChanges.pipe(
-            startWith(''),
-            map((value) => this._filter(value))
-          );
-        }, 50);
+        
       },
       (error: any) => {
         this.alnNumberList = ['24', '36', '42', '56'];
@@ -99,7 +102,9 @@ export class CreateSubAlnProgramComponent {
   }
 
   private _filter(value: string): string[] {
-    console.log('===value', value);
+    this.createSubALNForm.patchValue({
+      alnNumber: value
+    });
     const filterValue = value.toLowerCase();
     return this.alnNumberList.filter((aln) =>
       aln.toLowerCase().includes(filterValue)
