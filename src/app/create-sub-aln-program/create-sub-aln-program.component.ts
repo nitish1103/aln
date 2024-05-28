@@ -70,6 +70,12 @@ export class CreateSubAlnProgramComponent {
     this.subALnService.createSubALN.subProgramId = subProgramId ?? '';
     this.subALnService.createSubALN.awardType = awardType ?? '';
 
+    AWARD_TYPES.map((award:any) => {
+      if (award.AWARD_TYPE_CD === awardType) {
+        this.subALnService.createSubALN.awardDescription = award.AWARD_TYPE;
+      }
+    })
+
     this.createSubAlnComponent.tabActive = 'general';
   }
 

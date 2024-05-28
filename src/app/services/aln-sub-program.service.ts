@@ -16,6 +16,7 @@ export class AlnSubProgramService {
     alnNumber: '',
     subProgramId: '',
     awardType: '',
+    awardDescription: ''
   };
 
   generalSubALN = {

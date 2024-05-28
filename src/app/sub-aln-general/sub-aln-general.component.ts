@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import { ABSTRACT_TYPES, REVIEW_METHODS, SUB_AWARD_TYPES } from '../services/aln-sub.interface';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
@@ -36,9 +37,9 @@ export class SubAlnGeneralComponent {
 
   submitted = false;
 
-  awardTypes = ['Award1', 'Award2'];
-  reviewMethods = ['Review1', 'Review2'];
-  abstractTypes = ['Abstract Type1', 'Abstract Type2'];
+  awardTypes = SUB_AWARD_TYPES;
+  reviewMethods = REVIEW_METHODS;
+  abstractTypes = ABSTRACT_TYPES;
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
@@ -55,7 +56,7 @@ export class SubAlnGeneralComponent {
 
     this.fiscalYear = this.subALnService.createSubALN.fiscalYear;
     this.alnSubProgram = this.subALnService.createSubALN.alnNumber;
-    this.awardType = this.subALnService.createSubALN.awardType;
+    this.awardType = this.subALnService.createSubALN.awardDescription;
   }
 
   save() {

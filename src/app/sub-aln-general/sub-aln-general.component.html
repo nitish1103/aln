@@ -68,7 +68,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Sub Award Type</mat-label>
                 <mat-select formControlName="subAwardType">
-                  <mat-option *ngFor="let award of awardTypes" value="{{award}}">{{ award }}</mat-option>
+                  <mat-option *ngFor="let award of awardTypes" value="{{award.SUB_AWARD_TYPE_CD}}">{{ award.SUB_AWARD_TYPE }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="generalSubALNForm.controls['subAwardType'].touched || submitted">
                   <span *ngIf="generalSubALNForm.controls['subAwardType'].errors?.['required']">Award Type is
@@ -82,7 +82,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Review Method</mat-label>
                 <mat-select formControlName="reveiwMethod">
-                  <mat-option *ngFor="let review of reviewMethods" value="{{review}}">{{ review }}</mat-option>
+                  <mat-option *ngFor="let review of reviewMethods" value="{{review.REVIEW_METHOD_CD}}">{{ review.REVIEW_METHOD }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="generalSubALNForm.controls['reveiwMethod'].touched || submitted">
                   <span *ngIf="generalSubALNForm.controls['reveiwMethod'].errors?.['required']">Award Type is
@@ -126,7 +126,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Abstract Type</mat-label>
                 <mat-select formControlName="abstractType">
-                  <mat-option *ngFor="let abstractType of abstractTypes" value="{{abstractType}}">{{ abstractType }}</mat-option>
+                  <mat-option *ngFor="let abstractType of abstractTypes" value="{{abstractType.ABSTRACT_TYPE_CD}}">{{ abstractType.ABSTRACT_TYPE }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="generalSubALNForm.controls['abstractType'].touched || submitted">
                   <span *ngIf="generalSubALNForm.controls['abstractType'].errors?.['required']">Abstract Type is
