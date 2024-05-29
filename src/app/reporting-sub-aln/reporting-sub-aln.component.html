@@ -42,7 +42,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Select an option</mat-label>
                 <mat-select formControlName="performaceReport">
-                  <mat-option *ngFor="let report of performanceReports" value="{{report}}">{{ report }}</mat-option>
+                  <mat-option *ngFor="let report of performanceReports" value="{{report.PERF_RPT_TYPE_CD}}">{{ report.PERF_RPT_TYPE }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="reportingSubALNForm.controls['performaceReport'].touched || submitted">
                   <span *ngIf="reportingSubALNForm.controls['performaceReport'].errors?.['required']">Performace Report is
@@ -78,14 +78,14 @@
 
           <div class="info-text" fxLayout="column">
             <h4>Program Financial Reports</h4>
-            <mat-checkbox color="primary" value="1">
+            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Annual')">
               Annual
             </mat-checkbox>
-            <mat-checkbox color="primary" value="1">
+            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Final')">
               Final
             </mat-checkbox>
-            <mat-checkbox color="primary" value="1">
-              Quaterly
+            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Quarterly')">
+              Quarterly
             </mat-checkbox>
           </div>
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import { PERFORMANCE_REPORT_TYPES } from '../services/aln-sub.interface';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -10,7 +11,7 @@ import { SubAlnComponent } from '../sub-aln/sub-aln.component';
   styleUrl: './reporting-sub-aln.component.scss',
 })
 export class ReportingSubAlnComponent {
-  performanceReports = ['Report1', 'Report2', 'Report3'];
+  performanceReports = PERFORMANCE_REPORT_TYPES;
 
   reportingSubALNForm = new FormGroup({
     fiscalYear: new FormControl('2024', [Validators.required]),
@@ -18,6 +19,7 @@ export class ReportingSubAlnComponent {
     awardType: new FormControl('Discretinary', Validators.required),
     performaceReport: new FormControl('', Validators.required),
     numberPerBudgetPeriod: new FormControl('', Validators.required),
+    programFinancialReport: new FormControl('', Validators.required)
   });
 
   submitted = false;
@@ -36,11 +38,19 @@ export class ReportingSubAlnComponent {
     });
   }
 
+  setFinancialReport(report:string) {
+    this.reportingSubALNForm.patchValue({
+      programFinancialReport: report
+    })
+  }
+
   save() {
     this.subALnService.reportingSubALN.performaceReport =
       this.reportingSubALNForm.value.performaceReport ?? '';
     this.subALnService.reportingSubALN.numberPerBudgetPeriod =
       this.reportingSubALNForm.value.numberPerBudgetPeriod ?? '';
+    this.subALnService.reportingSubALN.programFinancialReport =
+      this.reportingSubALNForm.value.programFinancialReport ?? '';
     this.createSubAlnComponent.tabActive = 'costSharing';
   }
 

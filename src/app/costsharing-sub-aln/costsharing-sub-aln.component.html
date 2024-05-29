@@ -41,7 +41,7 @@
               <mat-form-field appearance="outline">
                 <mat-label>Select an option</mat-label>
                 <mat-select formControlName="paymentMethod">
-                  <mat-option *ngFor="let method of paymentMethods" value="{{method}}">{{ method }}</mat-option>
+                  <mat-option *ngFor="let method of paymentMethods" value="{{method.PAYMENT_METHOD_CD}}">{{ method.PAYMENT_METHOD }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="costSharingSubALNForm.controls['paymentMethod'].touched || submitted">
                   <span *ngIf="costSharingSubALNForm.controls['paymentMethod'].errors?.['required']">Payment Method is required.</span>
@@ -161,9 +161,7 @@
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Program Indirect Cost Type</h4>
               <mat-radio-group aria-label="Select an option" formControlName="programIndirectCostType">
-                <mat-radio-button ngDefaultControl value="restricted" name="btnvalue" type="radio">Restricted</mat-radio-button>
-                <mat-radio-button ngDefaultControl value="unrestricted" name="btnvalue" type="radio">Unrestricted</mat-radio-button>
-                <mat-radio-button ngDefaultControl value="training" name="btnvalue" type="radio">Training</mat-radio-button>
+                <mat-radio-button ngDefaultControl value="{{indirectCostType.INDIRECT_COST_TYPE_CD}}" name="btnvalue" type="radio" *ngFor="let indirectCostType of indirectCostTypes">{{indirectCostType.INDIRECT_COST_TYPE}}</mat-radio-button>
               </mat-radio-group>
             </section>
             <section fxFlex="5%"></section>

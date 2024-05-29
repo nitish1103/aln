@@ -25,6 +25,7 @@ export class CreateSubAlnProgramComponent {
     alnNumber: new FormControl('', [Validators.required]),
     subProgramId: new FormControl('', [Validators.required]),
     awardType: new FormControl('', [Validators.required]),
+    subProgramActionType: new FormControl('', [Validators.required])
   });
 
   selectedDesignatorCode = '84';
@@ -62,13 +63,15 @@ export class CreateSubAlnProgramComponent {
 
   save() {
     this.submitted = true;
-    const { fiscalYear, alnCode, alnNumber, subProgramId, awardType } =
+    const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =
       this.createSubALNForm.value;
+    console.log("========subProgramActionType", subProgramActionType)
     this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
     this.subALnService.createSubALN.alnCode = alnCode ?? '';
     this.subALnService.createSubALN.alnNumber = alnNumber ?? '';
     this.subALnService.createSubALN.subProgramId = subProgramId ?? '';
     this.subALnService.createSubALN.awardType = awardType ?? '';
+    this.subALnService.createSubALN.subProgramActionType = subProgramActionType ?? '';
 
     AWARD_TYPES.map((award:any) => {
       if (award.AWARD_TYPE_CD === awardType) {
@@ -77,6 +80,12 @@ export class CreateSubAlnProgramComponent {
     })
 
     this.createSubAlnComponent.tabActive = 'general';
+  }
+
+  setSubProgramActionType(subProgramActionType:string) {
+    this.createSubALNForm.patchValue({
+      subProgramActionType: subProgramActionType
+    })
   }
 
   getALN() {

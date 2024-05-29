@@ -192,3 +192,56 @@ export const REVIEW_METHODS = [
     REVIEW_METHOD: 'Team',
   },
 ];
+
+export const PERFORMANCE_REPORT_TYPES = [
+  {
+    PERF_RPT_TYPE_CD: 'AN',
+    PERF_RPT_TYPE: 'Annual',
+  },
+  {
+    PERF_RPT_TYPE_CD: 'IN',
+    PERF_RPT_TYPE: 'Interim',
+  },
+  {
+    PERF_RPT_TYPE_CD: 'NO',
+    PERF_RPT_TYPE: 'None',
+  },
+  {
+    PERF_RPT_TYPE_CD: 'QU',
+    PERF_RPT_TYPE: 'Quarterly',
+  },
+  {
+    PERF_RPT_TYPE_CD: 'SA',
+    PERF_RPT_TYPE: 'Semi-Annual',
+  },
+];
+
+export const PAYMENT_METHODS = [
+  {
+    PAYMENT_METHOD_CD: 'DD',
+    PAYMENT_METHOD: 'Draw Dawn'
+  },
+  {
+    PAYMENT_METHOD_CD: 'OP',
+    PAYMENT_METHOD: 'Obligate and Pay'
+  }
+]
+
+export const INDIRECT_COST_TYPES = [
+  {
+    INDIRECT_COST_TYPE_CD: 'NA',
+    INDIRECT_COST_TYPE: 'No Indirect Cost Allowed'
+  },
+  {
+    INDIRECT_COST_TYPE_CD: 'RE',
+    INDIRECT_COST_TYPE: 'Restricted'
+  },
+  {
+    INDIRECT_COST_TYPE_CD: 'TR',
+    INDIRECT_COST_TYPE: 'Training'
+  },
+  {
+    INDIRECT_COST_TYPE_CD: 'UR',
+    INDIRECT_COST_TYPE: 'Unrestricted'
+  }
+]

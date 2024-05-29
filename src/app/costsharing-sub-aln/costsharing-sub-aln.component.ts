@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import { INDIRECT_COST_TYPES, PAYMENT_METHODS } from '../services/aln-sub.interface';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -10,7 +11,8 @@ import { SubAlnComponent } from '../sub-aln/sub-aln.component';
   styleUrl: './costsharing-sub-aln.component.scss',
 })
 export class CostsharingSubAlnComponent {
-  paymentMethods = ['Method1', 'Method2', 'Method3'];
+  paymentMethods = PAYMENT_METHODS;
+  indirectCostTypes = INDIRECT_COST_TYPES;
 
   costSharingSubALNForm = new FormGroup({
     fiscalYear: new FormControl('2024', [Validators.required]),
@@ -19,7 +21,7 @@ export class CostsharingSubAlnComponent {
     paymentMethod: new FormControl('', Validators.required),
     costSharePercentage: new FormControl('', Validators.required),
     costShareMethod: new FormControl('restricted', Validators.required),
-    programIndirectCostType: new FormControl(1, Validators.required),
+    programIndirectCostType: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ1: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ2: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ3: new FormControl('', Validators.required),
@@ -46,6 +48,7 @@ export class CostsharingSubAlnComponent {
   }
 
   save() {
+    console.log("==indirectCostType", this.costSharingSubALNForm.value.programIndirectCostType)
     this.subALnService.costSharingSubAln.paymentMethod =
       this.costSharingSubALNForm.value.paymentMethod ?? '';
     this.subALnService.costSharingSubAln.costSharePercentage =
@@ -66,6 +69,8 @@ export class CostsharingSubAlnComponent {
       this.costSharingSubALNForm.value.programIndirectCostRate ?? '';
     this.subALnService.costSharingSubAln.administrativeCostCap =
       this.costSharingSubALNForm.value.administrativeCostCap ?? '';
+    this.subALnService.costSharingSubAln.programIndirectCostType =
+      this.costSharingSubALNForm.value.programIndirectCostType ?? '';
     this.createSubAlnComponent.tabActive = 'law';
   }
 

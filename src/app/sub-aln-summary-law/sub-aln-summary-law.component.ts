@@ -33,7 +33,11 @@ export class SubAlnSummaryLawComponent {
   }
 
   continue() {
-    this.stepper.next();
-    this.subALnProgram.sectionActive = 'confirm';
+    this.subALnService.createSubAln().subscribe((response) => {
+      this.stepper.next();
+      this.subALnProgram.sectionActive = 'confirm';
+    }, (error:any) => {
+      console.log("===error", error)
+    })
   }
 }

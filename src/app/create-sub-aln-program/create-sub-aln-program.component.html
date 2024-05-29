@@ -91,7 +91,7 @@
 
           <div class="info-text" fxLayout="column">
             <h4>Sub Program Action Type*</h4>
-            <mat-checkbox color="primary" value="{{actionType.SUB_PROGRAM_ACTION_TYPE_CD}}" *ngFor="let actionType of subProgramActionTypes">
+            <mat-checkbox color="primary" value="{{actionType.SUB_PROGRAM_ACTION_TYPE_CD}}" *ngFor="let actionType of subProgramActionTypes" (change)="setSubProgramActionType(actionType.SUB_PROGRAM_ACTION_TYPE_CD)">
               {{actionType.SUB_PROGRAM_ACTION_TYPE}}
             </mat-checkbox>
           </div>
