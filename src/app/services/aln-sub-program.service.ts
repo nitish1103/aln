@@ -82,7 +82,7 @@ export class AlnSubProgramService {
    * method to create sub program ALN
    */
   public createSubAln(): Observable<any> {
-    let awardType = AWARD_TYPES.filter((award:any) => award.AWARD_TYPE === this.createSubALN.awardType)[0];
+    let awardType = AWARD_TYPES.filter((award:any) => award.AWARD_TYPE_CD === this.createSubALN.awardType)[0];
     let subProgramActionType = SUB_PROGRAM_ACTION_TYPES.filter((program:any) => program.SUB_PROGRAM_ACTION_TYPE_CD === this.createSubALN.subProgramActionType)[0];
     let subAwardType = SUB_AWARD_TYPES.filter((subaward:any) => subaward.SUB_AWARD_TYPE_CD === this.generalSubALN.subAwardType)[0];
     let reviewMethod = REVIEW_METHODS.filter((review:any) => review.REVIEW_METHOD_CD === this.generalSubALN.reveiwMethod)[0];
@@ -114,7 +114,7 @@ export class AlnSubProgramService {
       "subprogramTitle": this.generalSubALN.subProgramTitle,
       "subprogramPurpose": this.generalSubALN.subProgramPurpose,
       "programWebsite": this.generalSubALN.programWebsite,
-      "performancePeriod": this.generalSubALN.performancePeriod,
+      "performancePeriod": Number(this.generalSubALN.performancePeriod),
       "subAwardType": {
         "subAwardTypeCd": subAwardType.SUB_AWARD_TYPE_CD,
         "subAwardType": subAwardType.SUB_AWARD_TYPE,
