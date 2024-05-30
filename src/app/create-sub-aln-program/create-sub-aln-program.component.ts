@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
@@ -44,10 +45,27 @@ export class CreateSubAlnProgramComponent {
 
   myControl: FormControl = new FormControl();
   alnNumberList: any[] = [];
+  checkedActionTypes: string[] = [];
   filteredOptions!: Observable<string[]>;
 
   awardTypes = AWARD_TYPES;
-  subProgramActionTypes = SUB_PROGRAM_ACTION_TYPES;
+  subProgramActionTypes = [
+    {
+      SUB_PROGRAM_ACTION_TYPE_CD: 'NC',
+      SUB_PROGRAM_ACTION_TYPE: 'New',
+      checked: false
+    },
+    {
+      SUB_PROGRAM_ACTION_TYPE_CD: 'NCC',
+      SUB_PROGRAM_ACTION_TYPE: 'Non-Competing Continuation',
+      checked: false
+    },
+    {
+      SUB_PROGRAM_ACTION_TYPE_CD: 'FDS',
+      SUB_PROGRAM_ACTION_TYPE: 'Funding Down the Slate',
+      checked: false
+    },
+  ];
 
   constructor(
     private readonly subAln: SubAlnComponent,
@@ -82,11 +100,49 @@ export class CreateSubAlnProgramComponent {
     this.createSubAlnComponent.tabActive = 'general';
   }
 
-  setSubProgramActionType(subProgramActionType:string) {
-    this.createSubALNForm.patchValue({
-      subProgramActionType: subProgramActionType
-    })
+  setSubProgramActionType(subProgramActionType:string, event: MatCheckboxChange) {
+    if (event.checked) {
+      this.checkedActionTypes.push(subProgramActionType);
+    } else {
+      this.checkedActionTypes = this.checkedActionTypes.filter((type:string) => type !== subProgramActionType);
+    }
+
+    this.setActionType();
   }
+
+  setActionType() {
+    if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'AL'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'NW'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'CC'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'FS'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'CF'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'NC'
+      })
+    } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'NF'
+      })
+    }
+  }
+
+  
 
   getALN() {
     this.alnService.getALNList().subscribe(
