@@ -57,6 +57,8 @@ export class AlnSubProgramService {
     paymentMethod: '',
     costSharePercentage: '',
     costShareMethod: '',
+    costShareRequired: '',
+    costShareAdjustmentAllowed: '',
     maximumDrawDownPercentageQ1: '',
     maximumDrawDownPercentageQ2: '',
     maximumDrawDownPercentageQ3: '',
@@ -175,19 +177,19 @@ export class AlnSubProgramService {
           "paymentMethod": paymentMethod.PAYMENT_METHOD,
           "validId": "1"
         },
-        "costShareRequired": "N",
+        "costShareRequired": this.costSharingSubAln.costShareRequired,
         "costSharePercentage": this.costSharingSubAln.costSharePercentage,
-        "costShareAidAllowed": "Y",
+        "costShareAdjAllowed": this.costSharingSubAln.costShareAdjustmentAllowed,
         "costShareMethodCd": {
-          "costShareMethodCd": "CF",
-          "costSharing": "Cost-Matching of the Federal Amount",
+          "costShareMethodCd": this.costSharingSubAln.costShareMethod,
+          "costSharing": this.costSharingSubAln.costShareMethod === 'CF' ? "Cost-Matching of the Federal Amount" : "Cost Sharing of total project cost",
           "validId": "1"
         },
         "maxDrawdownPct1": this.costSharingSubAln.maximumDrawDownPercentageQ1,
         "maxDrawdownPct2": this.costSharingSubAln.maximumDrawDownPercentageQ2,
         "maxDrawdownPct3": this.costSharingSubAln.maximumDrawDownPercentageQ3,
         "maxDrawdownPct4": this.costSharingSubAln.maximumDrawDownPercentageQ4,
-        "indirectCostAllowed": "Y",
+        "indirectCostAllowed": this.costSharingSubAln.indirectCostAllowed,
         "programIndirectCostType": {
           "programIndirectCostTypeCd": indirectCostType.INDIRECT_COST_TYPE_CD,
           "programIndirectCostType": indirectCostType.INDIRECT_COST_TYPE,

@@ -54,7 +54,7 @@
             fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Cost Share Required</h4>
-              <mat-checkbox color="primary" value="1">
+              <mat-checkbox color="primary" value="1" (change)="setCostShareRequired($event)">
                 Cost Share Required
               </mat-checkbox>
             </section>
@@ -76,7 +76,7 @@
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Cost Share Adjustment Allowed</h4>
-              <mat-checkbox color="primary" value="1">
+              <mat-checkbox color="primary" value="1" (change)="setCostShareAdjAllowed($event)">
                 Cost Share Adjustment Allowed
               </mat-checkbox>
             </section>           
@@ -85,9 +85,9 @@
             <section fxLayout="column" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Cost Share Method</h4>
               <mat-radio-group aria-label="Select an option" formControlName="costShareMethod">
-                <mat-radio-button ngDefaultControl [value]="1" name="btnvalue" type="radio">Cost Matching of the Federal
+                <mat-radio-button ngDefaultControl value="CF" name="btnvalue" type="radio">Cost Matching of the Federal
                   Amount</mat-radio-button>
-                <mat-radio-button ngDefaultControl [value]="0" name="btnvalue" type="radio">Cost Sharing of total project
+                <mat-radio-button ngDefaultControl value="CC" name="btnvalue" type="radio">Cost Sharing of total project
                   cost</mat-radio-button>
               </mat-radio-group>
             </section>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { INDIRECT_COST_TYPES, PAYMENT_METHODS } from '../services/aln-sub.interface';
@@ -19,8 +20,10 @@ export class CostsharingSubAlnComponent {
     alnSubProgram: new FormControl('84.002A', [Validators.required]),
     awardType: new FormControl('Discretinary', Validators.required),
     paymentMethod: new FormControl('', Validators.required),
+    costShareRequired:  new FormControl('N', Validators.required),
     costSharePercentage: new FormControl('', Validators.required),
     costShareMethod: new FormControl('restricted', Validators.required),
+    costShareAdjustmentAllowed: new FormControl('N', Validators.required),
     programIndirectCostType: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ1: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ2: new FormControl('', Validators.required),
@@ -48,13 +51,16 @@ export class CostsharingSubAlnComponent {
   }
 
   save() {
-    console.log("==indirectCostType", this.costSharingSubALNForm.value.programIndirectCostType)
     this.subALnService.costSharingSubAln.paymentMethod =
       this.costSharingSubALNForm.value.paymentMethod ?? '';
     this.subALnService.costSharingSubAln.costSharePercentage =
       this.costSharingSubALNForm.value.costSharePercentage ?? '';
     this.subALnService.costSharingSubAln.costShareMethod =
       this.costSharingSubALNForm.value.costShareMethod ?? '';
+    this.subALnService.costSharingSubAln.costShareRequired =
+      this.costSharingSubALNForm.value.costShareRequired ?? '';
+    this.subALnService.costSharingSubAln.costShareAdjustmentAllowed = 
+      this.costSharingSubALNForm.value.costShareAdjustmentAllowed ?? '';
     this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ1 =
       this.costSharingSubALNForm.value.maximumDrawDownPercentageQ1 ?? '';
     this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ2 =
@@ -64,14 +70,39 @@ export class CostsharingSubAlnComponent {
     this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ4 =
       this.costSharingSubALNForm.value.maximumDrawDownPercentageQ4 ?? '';
     this.subALnService.costSharingSubAln.indirectCostAllowed =
-      this.costSharingSubALNForm.value.indirectCostAllowed == 1 ? 'Yes' : 'No';
+      this.costSharingSubALNForm.value.indirectCostAllowed == 1 ? 'Y' : 'N';
     this.subALnService.costSharingSubAln.programIndirectCostRate =
       this.costSharingSubALNForm.value.programIndirectCostRate ?? '';
     this.subALnService.costSharingSubAln.administrativeCostCap =
       this.costSharingSubALNForm.value.administrativeCostCap ?? '';
     this.subALnService.costSharingSubAln.programIndirectCostType =
       this.costSharingSubALNForm.value.programIndirectCostType ?? '';
+      console.log("==value", this.subALnService.costSharingSubAln)
     this.createSubAlnComponent.tabActive = 'law';
+  }
+
+  setCostShareAdjAllowed(event:MatCheckboxChange) {
+    if (event.checked) {
+      this.costSharingSubALNForm.patchValue(({
+        costShareAdjustmentAllowed: 'Y'
+      }))
+    } else {
+      this.costSharingSubALNForm.patchValue(({
+        costShareAdjustmentAllowed: 'N'
+      }))
+    }
+  }
+
+  setCostShareRequired(event:MatCheckboxChange) {
+    if (event.checked) {
+      this.costSharingSubALNForm.patchValue(({
+        costShareRequired: 'Y'
+      }))
+    } else {
+      this.costSharingSubALNForm.patchValue(({
+        costShareRequired: 'N'
+      }))
+    }
   }
 
   previous() {
