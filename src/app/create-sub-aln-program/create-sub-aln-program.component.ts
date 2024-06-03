@@ -72,24 +72,29 @@ export class CreateSubAlnProgramComponent {
     public dialog: MatDialog,
     private readonly alnService: AlnService,
     private readonly createSubAlnComponent: CreateSubAlnComponent,
-    private readonly subALnService: AlnSubProgramService
+    public readonly subALnService: AlnSubProgramService
   ) {}
 
   ngOnInit() {
     this.getALN();
+    if (this.subALnService.createSubALN.fiscalYear) {
+      this.checkedActionTypes = this.subALnService.checkedActionTypes;
+      this.patchValues();
+    }
   }
 
   save() {
     this.submitted = true;
     const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =
       this.createSubALNForm.value;
-    console.log("========subProgramActionType", subProgramActionType)
     this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
     this.subALnService.createSubALN.alnCode = alnCode ?? '';
     this.subALnService.createSubALN.alnNumber = alnNumber ?? '';
     this.subALnService.createSubALN.subProgramId = subProgramId ?? '';
     this.subALnService.createSubALN.awardType = awardType ?? '';
     this.subALnService.createSubALN.subProgramActionType = subProgramActionType ?? '';
+
+    this.subALnService.checkedActionTypes = this.checkedActionTypes;
 
     AWARD_TYPES.map((award:any) => {
       if (award.AWARD_TYPE_CD === awardType) {
@@ -98,6 +103,17 @@ export class CreateSubAlnProgramComponent {
     })
 
     this.createSubAlnComponent.tabActive = 'general';
+  }
+
+  patchValues() {
+    this.createSubALNForm.patchValue({
+      fiscalYear: this.subALnService.createSubALN.fiscalYear,
+      alnCode: this.subALnService.createSubALN.alnCode,
+      alnNumber: this.subALnService.createSubALN.alnNumber,
+      subProgramId: this.subALnService.createSubALN.subProgramId,
+      awardType: this.subALnService.createSubALN.awardType,
+      subProgramActionType: this.subALnService.createSubALN.subProgramActionType
+    })
   }
 
   setSubProgramActionType(subProgramActionType:string, event: MatCheckboxChange) {

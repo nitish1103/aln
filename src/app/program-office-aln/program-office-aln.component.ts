@@ -34,6 +34,15 @@ export class ProgramOfficeAlnComponent {
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
       awardType: this.subALnService.createSubALN.awardType,
     });
+
+    if (this.subALnService.programOfficeSubALN.primaryProgramOffice != '') {
+      this.programOfficeSubALNForm.patchValue({
+        primaryProgramOffice: this.subALnService.programOfficeSubALN.primaryProgramOffice,
+        primaryProgramOfficeDivison: this.subALnService.programOfficeSubALN.primaryProgramOfficeDivison,
+        subProgramContact: this.subALnService.programOfficeSubALN.subProgramContact,
+        secondaryProgramOffice: this.subALnService.programOfficeSubALN.secondaryProgramOffice
+      });
+    }
   }
 
   save() {

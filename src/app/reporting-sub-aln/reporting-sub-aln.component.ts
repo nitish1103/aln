@@ -36,6 +36,14 @@ export class ReportingSubAlnComponent {
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
       awardType: this.subALnService.createSubALN.awardType,
     });
+
+    if (this.subALnService.reportingSubALN.performaceReport != '') {
+      this.reportingSubALNForm.patchValue({
+        performaceReport: this.subALnService.reportingSubALN.performaceReport,
+        numberPerBudgetPeriod: this.subALnService.reportingSubALN.numberPerBudgetPeriod,
+        programFinancialReport: this.subALnService.reportingSubALN.programFinancialReport
+      })
+    }
   }
 
   setFinancialReport(report:string) {

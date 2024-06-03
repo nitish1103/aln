@@ -41,6 +41,17 @@ export class LawSubAlnComponent {
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
       awardType: this.subALnService.createSubALN.awardType,
     });
+
+    if (this.subALnService.lawSubAln.lawName != '') {
+      this.lawSubALNForm.patchValue({
+        lawName: this.subALnService.lawSubAln.lawName,
+        lawPurpose: this.subALnService.lawSubAln.lawPurpose,
+        latestPublicLaw: this.subALnService.lawSubAln.latestPublicLaw,
+        title: this.subALnService.lawSubAln.title,
+        section: this.subALnService.lawSubAln.section,
+        cfrPart: this.subALnService.lawSubAln.cfrPart
+      });
+    }
   }
 
   save() {

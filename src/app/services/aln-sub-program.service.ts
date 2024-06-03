@@ -11,6 +11,7 @@ import { ABSTRACT_TYPES, AWARD_TYPES, INDIRECT_COST_TYPES, PAYMENT_METHODS, PERF
  * This class is for creating services related to aln
  */
 export class AlnSubProgramService {
+  checkedActionTypes:any[] = [];
   createSubALN = {
     fiscalYear: '',
     alnCode: '',

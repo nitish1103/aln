@@ -48,6 +48,24 @@ export class CostsharingSubAlnComponent {
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
       awardType: this.subALnService.createSubALN.awardType,
     });
+
+    if (this.subALnService.costSharingSubAln.paymentMethod != '') {
+      this.costSharingSubALNForm.patchValue({
+        paymentMethod: this.subALnService.costSharingSubAln.paymentMethod,
+        costShareRequired: this.subALnService.costSharingSubAln.costShareRequired,
+        costSharePercentage: this.subALnService.costSharingSubAln.costSharePercentage,
+        costShareMethod: this.subALnService.costSharingSubAln.costShareMethod,
+        costShareAdjustmentAllowed: this.subALnService.costSharingSubAln.costShareAdjustmentAllowed,
+        programIndirectCostType: this.subALnService.costSharingSubAln.programIndirectCostType,
+        maximumDrawDownPercentageQ1: this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ1,
+        maximumDrawDownPercentageQ2: this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ2,
+        maximumDrawDownPercentageQ3: this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ3,
+        maximumDrawDownPercentageQ4: this.subALnService.costSharingSubAln.maximumDrawDownPercentageQ4,
+        indirectCostAllowed: Number(this.subALnService.costSharingSubAln.indirectCostAllowed),
+        programIndirectCostRate:  this.subALnService.costSharingSubAln.programIndirectCostRate,
+        administrativeCostCap:  this.subALnService.costSharingSubAln.administrativeCostCap,
+      })
+    }
   }
 
   save() {
@@ -77,7 +95,6 @@ export class CostsharingSubAlnComponent {
       this.costSharingSubALNForm.value.administrativeCostCap ?? '';
     this.subALnService.costSharingSubAln.programIndirectCostType =
       this.costSharingSubALNForm.value.programIndirectCostType ?? '';
-      console.log("==value", this.subALnService.costSharingSubAln)
     this.createSubAlnComponent.tabActive = 'law';
   }
 

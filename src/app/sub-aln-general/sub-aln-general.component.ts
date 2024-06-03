@@ -54,9 +54,27 @@ export class SubAlnGeneralComponent {
       awardType: this.subALnService.createSubALN.awardType,
     });
 
-    this.fiscalYear = this.subALnService.createSubALN.fiscalYear;
-    this.alnSubProgram = this.subALnService.createSubALN.alnNumber;
-    this.awardType = this.subALnService.createSubALN.awardDescription;
+    if (this.subALnService.createSubALN.fiscalYear) {
+      this.fiscalYear = this.subALnService.createSubALN.fiscalYear;
+      this.alnSubProgram = this.subALnService.createSubALN.alnNumber;
+      this.awardType = this.subALnService.createSubALN.awardDescription;
+
+      this.generalSubALNForm.patchValue({
+        subProgramTitle: this.subALnService.generalSubALN.subProgramTitle,
+        subProgramPurpose: this.subALnService.generalSubALN.subProgramPurpose,
+        programWebsite: this.subALnService.generalSubALN.programWebsite,
+        subAwardType: this.subALnService.generalSubALN.subAwardType,
+        reveiwMethod: this.subALnService.generalSubALN.reveiwMethod,
+        abstractType: this.subALnService.generalSubALN.abstractType,
+        performancePeriod: this.subALnService.generalSubALN.performancePeriod,
+        budgetPeriod: this.subALnService.generalSubALN.budgetPeriod,
+        liquidationPeriod: this.subALnService.generalSubALN.liquidationPeriod,
+        suspensionPeriod: this.subALnService.generalSubALN.suspensionPeriod,
+        percentageThreshold: this.subALnService.generalSubALN.percentageThreshold,
+        categoryCode: this.subALnService.generalSubALN.categoryCode,
+        grantAwardType: this.subALnService.generalSubALN.grantAwardType,
+      })
+    }
   }
 
   save() {
