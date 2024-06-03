@@ -245,3 +245,104 @@ export const INDIRECT_COST_TYPES = [
     INDIRECT_COST_TYPE: 'Unrestricted'
   }
 ]
+
+export const FED_OFFICE_CODES = [
+  {
+    FED_OFFICE_ID: 1,
+    FED_OFFICE_CD: 'Z',
+    FED_OFFICE_NM: 'Default Program Office(Conversion)',
+    FED_OFFICE_SHORT_NM: 'EZ'
+  },
+  {
+    FED_OFFICE_ID: 2,
+    FED_OFFICE_CD: 'H',
+    FED_OFFICE_NM: 'Office of Special Eductaion and Rehabilitattive Services',
+    FED_OFFICE_SHORT_NM: 'OSERS'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_CD: 'L',
+    FED_OFFICE_NM: 'Office of the Chief Financial Officer',
+    FED_OFFICE_SHORT_NM: 'OCFO'
+  },
+]
+
+export const FED_OFFICE_DIV_CODES = [
+  {
+    FED_OFFICE_ID: 1,
+    FED_OFFICE_DIV_ID: 2,
+    FED_OFFICE_CD: 'Z',
+    FED_OFFICE_NM: 'Entered during Official Coversion',
+    FED_OFFICE_DIV_SHORT_NM: 'EZZ'
+  },
+  {
+    FED_OFFICE_ID: 2,
+    FED_OFFICE_DIV_ID: 8,
+    FED_OFFICE_CD: 'E',
+    FED_OFFICE_NM: 'Office of Special Education Programs',
+    FED_OFFICE_DIV_SHORT_NM: 'SEP'
+  },
+  {
+    FED_OFFICE_ID: 2,
+    FED_OFFICE_DIV_ID: 9,
+    FED_OFFICE_CD: 'N',
+    FED_OFFICE_NM: 'National Institite of Disability and Rehabilitation Research',
+    FED_OFFICE_DIV_SHORT_NM: 'NIDRR'
+  },
+  {
+    FED_OFFICE_ID: 2,
+    FED_OFFICE_DIV_ID: 10,
+    FED_OFFICE_CD: 'R',
+    FED_OFFICE_NM: 'Rehabilitation Services Administration',
+    FED_OFFICE_DIV_SHORT_NM: 'RSA'
+  },
+  {
+    FED_OFFICE_ID: 1,
+    FED_OFFICE_DIV_ID: 50,
+    FED_OFFICE_CD: 'Z',
+    FED_OFFICE_NM: 'Office of the Assistant Secretary',
+    FED_OFFICE_DIV_SHORT_NM: 'OAS'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 11,
+    FED_OFFICE_CD: 'C',
+    FED_OFFICE_NM: 'Contracts and Purchasing Operations',
+    FED_OFFICE_DIV_SHORT_NM: 'CPO'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 12,
+    FED_OFFICE_CD: 'Z',
+    FED_OFFICE_NM: 'Financial Improvements, Receivables and Post Audit Operations',
+    FED_OFFICE_DIV_SHORT_NM: 'FIRPAO'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 13,
+    FED_OFFICE_CD: 'F',
+    FED_OFFICE_NM: 'Grant Policy and Oversight Staff',
+    FED_OFFICE_DIV_SHORT_NM: 'GPOS'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 14,
+    FED_OFFICE_CD: 'P',
+    FED_OFFICE_NM: 'Financial Payments and Cash Management Operations',
+    FED_OFFICE_DIV_SHORT_NM: 'FPCMO'
+  },{
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 15,
+    FED_OFFICE_CD: 'R',
+    FED_OFFICE_NM: 'Financial Reporting and Systems Operations',
+    FED_OFFICE_DIV_SHORT_NM: 'FRSO'
+  },
+  {
+    FED_OFFICE_ID: 3,
+    FED_OFFICE_DIV_ID: 48,
+    FED_OFFICE_CD: 'Z',
+    FED_OFFICE_NM: 'The Chief Financial Officer\'s\ Immediate Office',
+    FED_OFFICE_DIV_SHORT_NM: 'CFO'
+  }
+  
+]

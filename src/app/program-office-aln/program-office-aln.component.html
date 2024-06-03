@@ -40,10 +40,12 @@
               <h4>Primary Program Office*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Primary Program Office</mat-label>
-                <input matInput placeholder="Primary Program Office" name="primaryProgramOffice" formControlName="primaryProgramOffice" required autocomplete="off">
+                <mat-select formControlName="primaryProgramOffice" (selectionChange)="setPrimaryProgramOfficeDivision()">
+                  <mat-option *ngFor="let programOffices of PRIMARY_PRGRM_OFFICES" value="{{programOffices.FED_OFFICE_SHORT_NM}}">{{ programOffices.FED_OFFICE_NM }}</mat-option>
+                </mat-select>
                 <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['primaryProgramOffice'].touched || submitted">
-                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOffice'].errors?.['required']">
-                    Primary Program Office is required.</span>
+                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOffice'].errors?.['required']">Primary Program Office is
+                    required.</span>
                 </mat-hint>
               </mat-form-field>
             </section>
@@ -54,11 +56,13 @@
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Primary Program Office Divison</h4>
               <mat-form-field appearance="outline">
-                <mat-label>Primary Program Office Divison</mat-label>
-                <input matInput placeholder="Primary Program Office Divison" name="primaryProgramOfficeDivison"
-                  formControlName="primaryProgramOfficeDivison" required autocomplete="off">
+                <mat-label>Primary Program Office Division</mat-label>
+                <mat-select formControlName="primaryProgramOfficeDivison">
+                  <mat-option *ngFor="let programOfficesDiv of PRIMARY_PRGRM_OFFICES_DIV" value="{{programOfficesDiv.FED_OFFICE_DIV_SHORT_NM}}">{{ programOfficesDiv.FED_OFFICE_NM }}</mat-option>
+                </mat-select>
                 <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['primaryProgramOfficeDivison'].touched || submitted">
-                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOfficeDivison'].errors?.['required']">Sub Primary Program Office Divison is required.</span>
+                  <span *ngIf="programOfficeSubALNForm.controls['primaryProgramOfficeDivison'].errors?.['required']">Primary Program Office Division is
+                    required.</span>
                 </mat-hint>
               </mat-form-field>
             </section>

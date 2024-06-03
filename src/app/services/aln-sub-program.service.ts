@@ -79,6 +79,74 @@ export class AlnSubProgramService {
     cfrPart: '',
   };
 
+  resetValues() {
+    this.createSubALN = {
+      fiscalYear: '',
+      alnCode: '',
+      alnNumber: '',
+      subProgramId: '',
+      awardType: '',
+      awardDescription: '',
+      subProgramActionType: ''
+    }
+
+    this.generalSubALN = {
+      fiscalYear: '',
+      alnSubProgram: '',
+      awardType: '',
+      subProgramTitle: '',
+      subProgramPurpose: '',
+      programWebsite: '',
+      subAwardType: '',
+      reveiwMethod: '',
+      abstractType: '',
+      performancePeriod: '',
+      budgetPeriod: '',
+      liquidationPeriod: '',
+      suspensionPeriod: '',
+      percentageThreshold: '',
+      categoryCode: '',
+      grantAwardType: '',
+    }
+    this.programOfficeSubALN = {
+      primaryProgramOffice: '',
+      primaryProgramOfficeDivison: '',
+      subProgramContact: '',
+      secondaryProgramOffice: '',
+    };
+  
+    this.reportingSubALN = {
+      performaceReport: '',
+      numberPerBudgetPeriod: '',
+      programFinancialReport: ''
+    };
+  
+    this.costSharingSubAln = {
+      paymentMethod: '',
+      costSharePercentage: '',
+      costShareMethod: '',
+      costShareRequired: '',
+      costShareAdjustmentAllowed: '',
+      maximumDrawDownPercentageQ1: '',
+      maximumDrawDownPercentageQ2: '',
+      maximumDrawDownPercentageQ3: '',
+      maximumDrawDownPercentageQ4: '',
+      indirectCostAllowed: '',
+      programIndirectCostRate: '',
+      administrativeCostCap: '',
+      programIndirectCostType: ''
+    };
+  
+    this.lawSubAln = {
+      lawName: '',
+      lawPurpose: '',
+      latestPublicLaw: '',
+      title: '',
+      section: '',
+      cfrPart: '',
+    };
+  }
+
   constructor(private readonly httpClient: HttpClient) {}
 
   /**

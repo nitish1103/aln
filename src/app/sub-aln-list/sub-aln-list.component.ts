@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { AlnService } from '../services/aln-service';
+import { AlnSubProgramService } from '../services/aln-sub-program.service';
 
 @Component({
   selector: 'app-sub-aln-list',
@@ -71,9 +72,11 @@ export class SubAlnListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private alnService: AlnService, public dialog: MatDialog) {}
+  constructor(private alnService: AlnService, public dialog: MatDialog, private subALnService: AlnSubProgramService) {}
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    this.subALnService.resetValues();
+  }
 
   getALN() {
     this.TABLE_DATA = this.ELEMENT_DATA;

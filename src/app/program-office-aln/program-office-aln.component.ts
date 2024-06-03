@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import { FED_OFFICE_CODES, FED_OFFICE_DIV_CODES } from '../services/aln-sub.interface';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -21,6 +22,9 @@ export class ProgramOfficeAlnComponent {
   });
 
   submitted = false;
+
+  PRIMARY_PRGRM_OFFICES = FED_OFFICE_CODES;
+  PRIMARY_PRGRM_OFFICES_DIV:any[] = [];
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
@@ -43,6 +47,12 @@ export class ProgramOfficeAlnComponent {
         secondaryProgramOffice: this.subALnService.programOfficeSubALN.secondaryProgramOffice
       });
     }
+  }
+
+  setPrimaryProgramOfficeDivision() {
+    let fedOfficeCode:any = FED_OFFICE_CODES.filter((fed:any) => fed.FED_OFFICE_SHORT_NM === this.programOfficeSubALNForm.value.primaryProgramOffice)[0];
+    this.PRIMARY_PRGRM_OFFICES_DIV = FED_OFFICE_DIV_CODES.filter((fedDiv:any) => fedDiv.FED_OFFICE_ID === fedOfficeCode.FED_OFFICE_ID);
+
   }
 
   save() {
