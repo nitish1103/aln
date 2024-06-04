@@ -87,6 +87,13 @@ export class CreateSubAlnProgramComponent {
     this.submitted = true;
     const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =
       this.createSubALNForm.value;
+    if (awardType === 'DS' || awardType === 'FM') {
+      this.subALnService.isDiscretionary = true;
+      this.createSubAlnComponent.isDiscretionary = true;
+    } else {
+      this.subALnService.isDiscretionary = false;
+      this.createSubAlnComponent.isDiscretionary = false;
+    }
     this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
     this.subALnService.createSubALN.alnCode = alnCode ?? '';
     this.subALnService.createSubALN.alnNumber = alnNumber ?? '';

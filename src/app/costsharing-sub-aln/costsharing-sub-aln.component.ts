@@ -95,7 +95,7 @@ export class CostsharingSubAlnComponent {
       this.costSharingSubALNForm.value.administrativeCostCap ?? '';
     this.subALnService.costSharingSubAln.programIndirectCostType =
       this.costSharingSubALNForm.value.programIndirectCostType ?? '';
-    this.createSubAlnComponent.tabActive = 'law';
+    this.createSubAlnComponent.tabActive = this.subALnService.isDiscretionary ? 'law' : 'accounting';
   }
 
   setCostShareAdjAllowed(event:MatCheckboxChange) {

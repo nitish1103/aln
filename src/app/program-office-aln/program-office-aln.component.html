@@ -71,10 +71,12 @@
               <h4>Sub Program Contact*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Sub Program Contact</mat-label>
-                <input matInput placeholder="Program Website" name="subProgramContact" formControlName="subProgramContact"
-                  required autocomplete="off">
+                <mat-select formControlName="subProgramContact">
+                  <mat-option *ngFor="let person of divPersons" value="{{person.progOfficeDivPersonalId.progOfficeDivPersonId}}">{{ person.programOfficeDivPersonName }}</mat-option>
+                </mat-select>
                 <mat-hint align="end" *ngIf="programOfficeSubALNForm.controls['subProgramContact'].touched || submitted">
-                  <span *ngIf="programOfficeSubALNForm.controls['subProgramContact'].errors?.['required']">Sub Program Contact is required.</span>
+                  <span *ngIf="programOfficeSubALNForm.controls['subProgramContact'].errors?.['required']">Primary Program Office Division is
+                    required.</span>
                 </mat-hint>
               </mat-form-field>
             </section>

@@ -22,6 +22,7 @@ export class CreateSubAlnComponent {
   trackingNumber = '';
   submitted = false;
   tabActive = '';
+  isDiscretionary = true;
 
   constructor(
     private readonly subAln: SubAlnComponent,
@@ -30,7 +31,9 @@ export class CreateSubAlnComponent {
     private readonly subAlnService: AlnSubProgramService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   save() {
     this.submitted = true;

@@ -4,11 +4,13 @@
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='programOffice'}" (click)="tabActive = 'programOffice'">Program Office</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='reporting'}" (click)="tabActive = 'reporting'">Reporting</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='costSharing'}" (click)="tabActive = 'costSharing'">Cost Sharing</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='accounting'}" (click)="tabActive = 'accounting'" *ngIf="!isDiscretionary">Accounting</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}" (click)="tabActive = 'law'">Law</span>
   </div>
   <app-sub-aln-summary-general *ngIf="tabActive == 'general'"></app-sub-aln-summary-general>
   <app-sub-aln-summary-program-office *ngIf="tabActive == 'programOffice'"></app-sub-aln-summary-program-office>
   <app-sub-aln-summary-reporting *ngIf="tabActive == 'reporting'"></app-sub-aln-summary-reporting>
   <app-sub-aln-summary-cost-sharing *ngIf="tabActive == 'costSharing'"></app-sub-aln-summary-cost-sharing>
+  <app-sub-aln-summary-accounting *ngIf="tabActive == 'accounting'"></app-sub-aln-summary-accounting>
   <app-sub-aln-summary-law *ngIf="tabActive == 'law'" [stepper]="stepper"></app-sub-aln-summary-law>
 </div>

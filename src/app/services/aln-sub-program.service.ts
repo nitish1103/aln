@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ABSTRACT_TYPES, AWARD_TYPES, INDIRECT_COST_TYPES, PAYMENT_METHODS, PERFORMANCE_REPORT_TYPES, REVIEW_METHODS, SUB_AWARD_TYPES, SUB_PROGRAM_ACTION_TYPES } from './aln-sub.interface';
+import { ABSTRACT_TYPES, AWARD_TYPES, FED_OFFICE_CODES, FED_OFFICE_DIV_CODES, INDIRECT_COST_TYPES, PAYMENT_METHODS, PERFORMANCE_REPORT_TYPES, REVIEW_METHODS, SUB_AWARD_TYPES, SUB_PROGRAM_ACTION_TYPES } from './aln-sub.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +12,8 @@ import { ABSTRACT_TYPES, AWARD_TYPES, INDIRECT_COST_TYPES, PAYMENT_METHODS, PERF
  */
 export class AlnSubProgramService {
   checkedActionTypes:any[] = [];
+  divPersons:any[] = [];
+  isDiscretionary = false;
   createSubALN = {
     fiscalYear: '',
     alnCode: '',
@@ -78,6 +80,20 @@ export class AlnSubProgramService {
     section: '',
     cfrPart: '',
   };
+
+  accouting = {
+    fundCode: '',
+    category: '',
+    budgetFY: '',
+    organization: '',
+    limitation: '',
+    objectClass: '',
+    fundControlLevel: '',
+    activity: '',
+    aln: '',
+    sector: '',
+    cohort: ''
+  }
 
   resetValues() {
     this.createSubALN = {
@@ -161,6 +177,9 @@ export class AlnSubProgramService {
     let performaceReport = PERFORMANCE_REPORT_TYPES.filter((report:any) => report.PERF_RPT_TYPE_CD === this.reportingSubALN.performaceReport)[0];
     let paymentMethod = PAYMENT_METHODS.filter((payment:any) => payment.PAYMENT_METHOD_CD === this.costSharingSubAln.paymentMethod)[0];
     let indirectCostType = INDIRECT_COST_TYPES.filter((cost:any) => cost.INDIRECT_COST_TYPE_CD === this.costSharingSubAln.programIndirectCostType)[0];
+    let primaryProgramOffice = FED_OFFICE_CODES.filter((fedCode:any) => fedCode.FED_OFFICE_SHORT_NM === this.programOfficeSubALN.primaryProgramOffice)[0];
+    let primaryProgramOfficeDiv = FED_OFFICE_DIV_CODES.filter((fedCode:any) => fedCode.FED_OFFICE_DIV_SHORT_NM === this.programOfficeSubALN.primaryProgramOfficeDivison)[0];
+    let subProgramContact = this.divPersons.filter((person:any) => person.progOfficeDivPersonalId.progOfficeDivPersonId === this.programOfficeSubALN.subProgramContact)[0];
 
 
 
@@ -244,7 +263,7 @@ export class AlnSubProgramService {
         "paymentMethodCd": {
           "paymentMethodCd": paymentMethod.PAYMENT_METHOD_CD,
           "paymentMethod": paymentMethod.PAYMENT_METHOD,
-          "validId": "1"
+          "validInd": "1"
         },
         "costShareRequired": this.costSharingSubAln.costShareRequired,
         "costSharePercentage": this.costSharingSubAln.costSharePercentage,
@@ -252,7 +271,7 @@ export class AlnSubProgramService {
         "costShareMethodCd": {
           "costShareMethodCd": this.costSharingSubAln.costShareMethod,
           "costSharing": this.costSharingSubAln.costShareMethod === 'CF' ? "Cost-Matching of the Federal Amount" : "Cost Sharing of total project cost",
-          "validId": "1"
+          "validInd": "1"
         },
         "maxDrawdownPct1": this.costSharingSubAln.maximumDrawDownPercentageQ1,
         "maxDrawdownPct2": this.costSharingSubAln.maximumDrawDownPercentageQ2,
@@ -262,7 +281,7 @@ export class AlnSubProgramService {
         "programIndirectCostType": {
           "programIndirectCostTypeCd": indirectCostType.INDIRECT_COST_TYPE_CD,
           "programIndirectCostType": indirectCostType.INDIRECT_COST_TYPE,
-          "validId": "1"
+          "validInd": "1"
         },
         "programIndirectCostRate": "",
         "adminCostCap": this.costSharingSubAln.administrativeCostCap,
@@ -271,7 +290,7 @@ export class AlnSubProgramService {
         "actionTypeCode": {
           "actionTypeCd": "1",
           "actionType": "1",
-          "validId": "1"
+          "validInd": "1"
         }
       },
       "law": {
@@ -292,7 +311,35 @@ export class AlnSubProgramService {
         "actionTypeCode": {
           "actionTypeCd": "1",
           "actionType": "1",
-          "validId": "1"
+          "validInd": "1"
+        }
+      },
+      "officeDetails": {
+        "subprogramId": {
+          "fiscalYear": Number(this.createSubALN.fiscalYear),
+          "agencyCd": Number(this.createSubALN.alnCode),
+          "aln": this.createSubALN.alnNumber,
+          "subprogramCd": "NW"
+        },
+        "programOfficeCd": {
+          "programOfficeCd": primaryProgramOffice.FED_OFFICE_CD,
+          "programOfficeId": primaryProgramOffice.FED_OFFICE_ID,
+          "programOfficeShortName": primaryProgramOffice.FED_OFFICE_SHORT_NM
+        },
+        "programOfficeDiv": {
+          "programOfficeDivId": primaryProgramOfficeDiv.FED_OFFICE_DIV_ID,
+          "programOfficeId": primaryProgramOfficeDiv.FED_OFFICE_ID,
+          "programOfficeDivName": primaryProgramOfficeDiv.FED_OFFICE_NM,
+          "programOfficeDivShortName": primaryProgramOfficeDiv.FED_OFFICE_DIV_SHORT_NM
+        },
+        "programContactId": this.programOfficeSubALN.subProgramContact,
+        "programOfficeInd": "",
+        "actionDateTime": new Date().toISOString(),
+        "actionUserId": "",
+        "actionTypeCode": {
+          "actionTypeCd": "1",
+          "actionType": "U",
+          "validInd": ""
         }
       }
     }
@@ -300,5 +347,12 @@ export class AlnSubProgramService {
       'http://localhost:8080/subprogram/create',
       data
     );
+  }
+
+  /**
+   * method to get div person
+   */
+  public getAllProgramOfficeNames(): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:8080/findAllDivPersons');
   }
 }

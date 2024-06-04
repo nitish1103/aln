@@ -25,6 +25,7 @@ export class ProgramOfficeAlnComponent {
 
   PRIMARY_PRGRM_OFFICES = FED_OFFICE_CODES;
   PRIMARY_PRGRM_OFFICES_DIV:any[] = [];
+  divPersons:any[] = [];
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
@@ -33,6 +34,7 @@ export class ProgramOfficeAlnComponent {
   ) {}
 
   ngOnInit() {
+    this.getDivPersons();
     this.programOfficeSubALNForm.patchValue({
       fiscalYear: this.subALnService.createSubALN.fiscalYear,
       alnSubProgram: this.subALnService.createSubALN.alnNumber,
@@ -55,7 +57,36 @@ export class ProgramOfficeAlnComponent {
 
   }
 
+  getDivPersons() {
+    this.subALnService.getAllProgramOfficeNames().subscribe((response:any) => {
+      this.divPersons = response;
+    }, (error:any) => {
+      this.divPersons = [
+        {
+          "progOfficeDivPersonalId" : {
+            "progOfficeDivPersonId" : 1,
+            "programOfficeCd": {
+              "programOfficeCd": "A",
+              "programOfficeId": 23,
+              "programOfficeNm": "Office of the Secretary",
+              "programOfficeWebsite": "",
+              "programOfficeShortNm": "OS",
+              "agencyCd": 84,
+              "validInd": 0
+            },
+            "programOfficeDivId": 1
+          },
+          "programOfficeDivPersonName": 'Ben Rogers',
+          "programOfficeDivCd": "",
+          "programOfficeDivName": 'ABC',
+          "programOfficeShortName": 'AB'
+        }
+      ]
+    })
+  }
+
   save() {
+    this.subALnService.divPersons = this.divPersons;
     this.subALnService.programOfficeSubALN.primaryProgramOffice =
       this.programOfficeSubALNForm.value.primaryProgramOffice ?? '';
     this.subALnService.programOfficeSubALN.primaryProgramOfficeDivison =

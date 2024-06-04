@@ -1,0 +1,94 @@
+<div class="admin-mgmt-container">
+    <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+      class="admin-mgmt-body">
+      <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+        <div class="indicator-container" fxLayout="column">
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Fiscal Year</p>
+              <p class="value">{{fiscalYear}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Agency Code</p>
+              <p class="value">{{ alnSubProgram }}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Award Type</p>
+              <p class="value">{{ awardType }}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Fund Code</p>
+              <p class="value">{{ summaryAccountingData.fundCode}}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Category</p>
+              <p class="value">{{ summaryAccountingData.category}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Budget FY</p>
+              <p class="value">{{ summaryAccountingData.budgetFY}}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Organization</p>
+              <p class="value">{{ summaryAccountingData.organization}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Limitation</p>
+              <p class="value">{{ summaryAccountingData.limitation }}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Object Class</p>
+              <p class="value">{{ summaryAccountingData.objectClass}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Fund Control Level</p>
+              <p class="value">{{ summaryAccountingData.fundControlLevel }}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Activity</p>
+              <p class="value">{{ summaryAccountingData.activity}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">ALN</p>
+              <p class="value">{{ summaryAccountingData.aln }}</p>
+            </section>
+          </div>
+  
+          <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Sector</p>
+              <p class="value">{{ summaryAccountingData.sector}}</p>
+            </section>
+            <section fxFlex="5%"></section>
+            <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+              <p class="key">Cohort</p>
+              <p class="value">{{ summaryAccountingData.cohort }}</p>
+            </section>
+          </div>
+        </div>
+  
+        
+      </div>
+    </div>
+  </div>

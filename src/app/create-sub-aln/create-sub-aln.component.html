@@ -4,6 +4,7 @@
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='programOffice'}">Program Office</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='reporting'}">Reporting</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='costSharing'}">Cost Sharing</span>
+    <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='accounting'}" *ngIf="!isDiscretionary">Accouting</span>
     <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}">Law</span>
   </div>
   <app-create-sub-aln-program *ngIf="tabActive == ''"></app-create-sub-aln-program>
@@ -11,5 +12,6 @@
   <app-program-office-aln *ngIf="tabActive == 'programOffice'"></app-program-office-aln>
   <app-reporting-sub-aln *ngIf="tabActive == 'reporting'"></app-reporting-sub-aln>
   <app-costsharing-sub-aln *ngIf="tabActive == 'costSharing'"></app-costsharing-sub-aln>
+  <app-accouting-sub-aln *ngIf="tabActive == 'accounting' && !isDiscretionary"></app-accouting-sub-aln>
   <app-law-sub-aln *ngIf="tabActive == 'law'" [stepper]="stepper"></app-law-sub-aln>
 </div>

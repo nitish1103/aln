@@ -53,6 +53,8 @@ import { SubAlnConfirmProgramOfficeComponent } from './sub-aln-confirm-program-o
 import { SubAlnConfirmReportingComponent } from './sub-aln-confirm-reporting/sub-aln-confirm-reporting.component';
 import { SubAlnConfirmCostSharingComponent } from './sub-aln-confirm-cost-sharing/sub-aln-confirm-cost-sharing.component';
 import { SubAlnConfirmLawComponent } from './sub-aln-confirm-law/sub-aln-confirm-law.component';
+import { AccoutingSubAlnComponent } from './accouting-sub-aln/accouting-sub-aln.component';
+import { SubAlnSummaryAccountingComponent } from './sub-aln-summary-accounting/sub-aln-summary-accounting.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +104,8 @@ import { SubAlnConfirmLawComponent } from './sub-aln-confirm-law/sub-aln-confirm
     SubAlnConfirmReportingComponent,
     SubAlnConfirmCostSharingComponent,
     SubAlnConfirmLawComponent,
+    AccoutingSubAlnComponent,
+    SubAlnSummaryAccountingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

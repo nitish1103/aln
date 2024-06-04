@@ -12,6 +12,7 @@ export class SubAlnSummaryProgramOfficeComponent {
 
   primaryProgramOffice = '';
   primaryProgramOfficeDiv = '';
+  subProgramContact = '';
 
   constructor(private alnSubService: AlnSubProgramService) {}
 
@@ -19,6 +20,6 @@ export class SubAlnSummaryProgramOfficeComponent {
     this.summaryProgramOfficeData = this.alnSubService.programOfficeSubALN;
     this.primaryProgramOffice = FED_OFFICE_CODES.filter((fedCode:any) => fedCode.FED_OFFICE_SHORT_NM === this.alnSubService.programOfficeSubALN.primaryProgramOffice)[0].FED_OFFICE_NM;
     this.primaryProgramOfficeDiv = FED_OFFICE_DIV_CODES.filter((fedCode:any) => fedCode.FED_OFFICE_DIV_SHORT_NM === this.alnSubService.programOfficeSubALN.primaryProgramOfficeDivison)[0].FED_OFFICE_NM;
-
+    this.subProgramContact = this.alnSubService.divPersons.filter((person:any) => person.progOfficeDivPersonalId.progOfficeDivPersonId == this.alnSubService.programOfficeSubALN.subProgramContact)[0].programOfficeDivPersonName;
   }
 }
