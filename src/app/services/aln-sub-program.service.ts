@@ -355,4 +355,11 @@ export class AlnSubProgramService {
   public getAllProgramOfficeNames(): Observable<any> {
     return this.httpClient.get<any>('http://localhost:8080/findAllDivPersons');
   }
+
+   /**
+   * method to get all sub alns
+   */
+   public getAllSubAlns(): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:808/findAll');
+  }
 }

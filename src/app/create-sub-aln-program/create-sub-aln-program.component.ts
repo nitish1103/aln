@@ -45,8 +45,10 @@ export class CreateSubAlnProgramComponent {
 
   myControl: FormControl = new FormControl();
   alnNumberList: any[] = [];
+  subALns: any[] = [];
   checkedActionTypes: string[] = [];
   filteredOptions!: Observable<string[]>;
+  subAlnAlreadyExists = false;
 
   awardTypes = AWARD_TYPES;
   subProgramActionTypes = [
@@ -77,6 +79,7 @@ export class CreateSubAlnProgramComponent {
 
   ngOnInit() {
     this.getALN();
+    this.getSubALNList();
     if (this.subALnService.createSubALN.fiscalYear) {
       this.checkedActionTypes = this.subALnService.checkedActionTypes;
       this.patchValues();
@@ -87,29 +90,34 @@ export class CreateSubAlnProgramComponent {
     this.submitted = true;
     const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =
       this.createSubALNForm.value;
-    if (awardType === 'DS' || awardType === 'FM') {
-      this.subALnService.isDiscretionary = true;
-      this.createSubAlnComponent.isDiscretionary = true;
+    if (this.subALns.filter((aln:any) => aln.subprogramId.aln == alnNumber && aln.subprogramId.subprogramCd == subProgramId).length > 0) {
+      this.subAlnAlreadyExists = true;
     } else {
-      this.subALnService.isDiscretionary = false;
-      this.createSubAlnComponent.isDiscretionary = false;
-    }
-    this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
-    this.subALnService.createSubALN.alnCode = alnCode ?? '';
-    this.subALnService.createSubALN.alnNumber = alnNumber ?? '';
-    this.subALnService.createSubALN.subProgramId = subProgramId ?? '';
-    this.subALnService.createSubALN.awardType = awardType ?? '';
-    this.subALnService.createSubALN.subProgramActionType = subProgramActionType ?? '';
-
-    this.subALnService.checkedActionTypes = this.checkedActionTypes;
-
-    AWARD_TYPES.map((award:any) => {
-      if (award.AWARD_TYPE_CD === awardType) {
-        this.subALnService.createSubALN.awardDescription = award.AWARD_TYPE;
+      if (awardType === 'DS' || awardType === 'FM') {
+        this.subALnService.isDiscretionary = true;
+        this.createSubAlnComponent.isDiscretionary = true;
+      } else {
+        this.subALnService.isDiscretionary = false;
+        this.createSubAlnComponent.isDiscretionary = false;
       }
-    })
-
-    this.createSubAlnComponent.tabActive = 'general';
+      this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
+      this.subALnService.createSubALN.alnCode = alnCode ?? '';
+      this.subALnService.createSubALN.alnNumber = alnNumber ?? '';
+      this.subALnService.createSubALN.subProgramId = subProgramId ?? '';
+      this.subALnService.createSubALN.awardType = awardType ?? '';
+      this.subALnService.createSubALN.subProgramActionType = subProgramActionType ?? '';
+  
+      this.subALnService.checkedActionTypes = this.checkedActionTypes;
+  
+      AWARD_TYPES.map((award:any) => {
+        if (award.AWARD_TYPE_CD === awardType) {
+          this.subALnService.createSubALN.awardDescription = award.AWARD_TYPE;
+        }
+      })
+  
+      this.createSubAlnComponent.tabActive = 'general';
+    }
+    
   }
 
   patchValues() {
@@ -191,13 +199,31 @@ export class CreateSubAlnProgramComponent {
         
       },
       (error: any) => {
-        this.alnNumberList = ['24', '36', '42', '56'];
+        this.alnNumberList = ['24', '36', '42', '0049'];
         setTimeout(() => {
           this.filteredOptions = this.myControl.valueChanges.pipe(
             startWith(''),
             map((value) => this._filter(value))
           );
         }, 50);
+      }
+    );
+  }
+
+  getSubALNList() {
+    this.subALnService.getAllSubAlns().subscribe(
+      (response: any) => {
+        this.subALns = response;
+      },
+      (error: any) => {
+       this.subALns = [{
+        "subprogramId": {
+          "fiscalYear": 2021,
+          "agencyCd": "84",
+          "aln": "0049",
+          "subprogramCd": "A"
+        }
+       }]
       }
     );
   }
