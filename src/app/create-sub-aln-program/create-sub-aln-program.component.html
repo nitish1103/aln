@@ -48,23 +48,14 @@
                   </mat-option>
                 </mat-autocomplete>
               </mat-form-field>
-              <!--<mat-form-field appearance="outline">
-                <mat-label>ALN Number</mat-label>
-                <input matInput placeholder="Enter ALN Number" name="purpose" required formControlName="alnNumber"
-                  autocomplete="off">
-                <mat-hint align="end" *ngIf="createSubALNForm.controls['alnNumber'].touched || submitted">
-                  <span *ngIf="createSubALNForm.controls['alnNumber'].errors?.['required']">ALN Number is
-                    required.</span>
-                </mat-hint>
-              </mat-form-field>-->
             </section>
             <section fxFlex="5%"></section>
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Subprogram ID*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Subprogram ID</mat-label>
-                <input matInput placeholder="Enter Subprogram ID" name="subProgramId" formControlName="subProgramId"
-                  required autocomplete="off">
+                <input matInput placeholder="Enter Subprogram ID" name="subProgramId" maxlength="1" formControlName="subProgramId"
+                  required autocomplete="off" (keypress)="onlyNumberKey($event)">
                 <mat-hint align="end" *ngIf="createSubALNForm.controls['subProgramId'].touched || submitted">
                   <span *ngIf="createSubALNForm.controls['subProgramId'].errors?.['required']">Subprogram ID is
                     required.</span>

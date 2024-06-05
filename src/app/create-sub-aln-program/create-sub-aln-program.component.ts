@@ -121,6 +121,9 @@ export class CreateSubAlnProgramComponent {
       awardType: this.subALnService.createSubALN.awardType,
       subProgramActionType: this.subALnService.createSubALN.subProgramActionType
     })
+    if (this.subALnService.createSubALN.alnNumber) {
+      this.myControl.patchValue(this.subALnService.createSubALN.alnNumber);
+    }
   }
 
   setSubProgramActionType(subProgramActionType:string, event: MatCheckboxChange) {
@@ -165,6 +168,10 @@ export class CreateSubAlnProgramComponent {
     }
   }
 
+  onlyNumberKey(event:any) {
+    return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 65 && event.charCode <= 122;
+  }
+
   
 
   getALN() {
@@ -197,7 +204,7 @@ export class CreateSubAlnProgramComponent {
 
   private _filter(value: string): string[] {
     this.createSubALNForm.patchValue({
-      alnNumber: value
+      alnNumber: value ? value : this.subALnService.createSubALN.alnNumber
     });
     const filterValue = value.toLowerCase();
     return this.alnNumberList.filter((aln) =>

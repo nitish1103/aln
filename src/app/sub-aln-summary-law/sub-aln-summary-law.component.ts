@@ -3,6 +3,7 @@ import { MatStepper } from '@angular/material/stepper';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
+import { SubAlnSummaryComponent } from '../sub-aln-summary/sub-aln-summary.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
@@ -17,7 +18,8 @@ export class SubAlnSummaryLawComponent {
   constructor(
     private readonly subAlnComponent: SubAlnComponent,
     private readonly subALnService: AlnSubProgramService,
-    private readonly subALnProgram: SubAlnProgramComponent
+    private readonly subALnProgram: SubAlnProgramComponent,
+    private readonly summaryComponent: SubAlnSummaryComponent
   ) {}
 
   ngOnInit() {
@@ -25,7 +27,12 @@ export class SubAlnSummaryLawComponent {
   }
 
   previous() {
-    this.stepper.previous();
+    if (this.subALnService.isDiscretionary) {
+      this.summaryComponent.tabActive = 'costSharing';
+    } else {
+      this.summaryComponent.tabActive = 'accounting';
+    }
+
   }
 
   goBack() {
@@ -37,7 +44,8 @@ export class SubAlnSummaryLawComponent {
       this.stepper.next();
       this.subALnProgram.sectionActive = 'confirm';
     }, (error:any) => {
-      console.log("===error", error)
+      this.stepper.next();
+      this.subALnProgram.sectionActive = 'confirm';
     })
   }
 }

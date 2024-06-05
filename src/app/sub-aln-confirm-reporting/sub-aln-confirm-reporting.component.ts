@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
+import { SubAlnConfirmComponent } from '../sub-aln-confirm/sub-aln-confirm.component';
 
 @Component({
   selector: 'app-sub-aln-confirm-reporting',
@@ -9,9 +10,17 @@ import { AlnSubProgramService } from '../services/aln-sub-program.service';
 export class SubAlnConfirmReportingComponent {
   confirmReportingData: any = {};
 
-  constructor(private alnSubService: AlnSubProgramService) {}
+  constructor(private alnSubService: AlnSubProgramService,private readonly subALnConfirmComponent: SubAlnConfirmComponent) {}
 
   ngOnInit() {
     this.confirmReportingData = this.alnSubService.reportingSubALN;
+  }
+
+  previous() {
+    this.subALnConfirmComponent.tabActive = 'programOffice';
+  }
+
+  next() {
+    this.subALnConfirmComponent.tabActive = 'costSharing';
   }
 }

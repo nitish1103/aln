@@ -67,7 +67,6 @@ export class LawSubAlnComponent {
     this.subALnService.lawSubAln.cfrPart =
       this.lawSubALNForm.value.cfrPart ?? '';
     this.subALnProgram.sectionActive = 'summary';
-    this.createSubAlnComponent.tabActive = '';
     this.stepper.next();
   }
 
