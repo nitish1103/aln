@@ -32,7 +32,9 @@ export class CreateSubAlnComponent {
   ) {}
 
   ngOnInit() {
-    
+      if (this.subAlnService.lawSubAln.lawName != '') {
+        this.tabActive = 'law';
+      }
   }
 
   save() {
