@@ -80,14 +80,16 @@
             </section>
           </div>
 
-          <div class="text-center error" *ngIf="subAlnAlreadyExists"> SubAln record exists with same aln number and subprogram id</div>
-
           <div class="info-text" fxLayout="column">
             <h4>Sub Program Action Type*</h4>
             <mat-checkbox color="primary" value="{{actionType.SUB_PROGRAM_ACTION_TYPE_CD}}" *ngFor="let actionType of subProgramActionTypes" [checked]="checkedActionTypes.indexOf(actionType.SUB_PROGRAM_ACTION_TYPE_CD) > -1" (change)="setSubProgramActionType(actionType.SUB_PROGRAM_ACTION_TYPE_CD, $event)">
               {{actionType.SUB_PROGRAM_ACTION_TYPE}}
             </mat-checkbox>
+            <mat-hint align="end" class="error action-type-error" *ngIf="checkedActionTypes.length == 0 && submitted">
+              <span>Sub Program Action Type is required.</span>
+            </mat-hint>
           </div>
+          <div class="text-center error" *ngIf="subAlnAlreadyExists"> SubAln record exists with same aln number and subprogram id</div>
           <div fxLayout="row" class="mt-2">
             <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
               <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
