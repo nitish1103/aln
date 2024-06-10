@@ -226,3 +226,8 @@ body {
 .mt-2 {
   margin-top: 2rem;
 }
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

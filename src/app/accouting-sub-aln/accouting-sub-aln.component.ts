@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { SUB_AWARD_TYPES, REVIEW_METHODS, ABSTRACT_TYPES } from '../services/aln-sub.interface';
@@ -14,6 +17,8 @@ export class AccoutingSubAlnComponent {
   fiscalYear = '';
   alnSubProgram = '';
   awardType = '';
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   accountingSubALNForm = new FormGroup({
     fundCode: new FormControl('', Validators.required),
@@ -34,6 +39,9 @@ export class AccoutingSubAlnComponent {
   awardTypes = SUB_AWARD_TYPES;
   reviewMethods = REVIEW_METHODS;
   abstractTypes = ABSTRACT_TYPES;
+  ELEMENT_DATA: any[] = [];
+  displayedColumns: string[] = ['accstd', 'classificationCode'];
+  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
@@ -65,6 +73,7 @@ export class AccoutingSubAlnComponent {
   }
 
   save() {
+    this.subALnService.accountingData = this.ELEMENT_DATA;
     this.subALnService.accouting.fundCode =
       this.accountingSubALNForm.value.fundCode ?? '';
     this.subALnService.accouting.category =

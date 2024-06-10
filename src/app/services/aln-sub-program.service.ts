@@ -13,6 +13,7 @@ import { ABSTRACT_TYPES, AWARD_TYPES, FED_OFFICE_CODES, FED_OFFICE_DIV_CODES, IN
 export class AlnSubProgramService {
   checkedActionTypes:any[] = [];
   divPersons:any[] = [];
+  accountingData:any[] = [];
   isDiscretionary = false;
   createSubALN = {
     fiscalYear: '',

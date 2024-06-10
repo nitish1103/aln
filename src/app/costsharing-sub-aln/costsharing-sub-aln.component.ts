@@ -21,8 +21,8 @@ export class CostsharingSubAlnComponent {
     awardType: new FormControl('Discretinary', Validators.required),
     paymentMethod: new FormControl('', Validators.required),
     costShareRequired:  new FormControl('N', Validators.required),
-    costSharePercentage: new FormControl('', Validators.required),
-    costShareMethod: new FormControl('restricted', Validators.required),
+    costSharePercentage: new FormControl(''),
+    costShareMethod: new FormControl(''),
     costShareAdjustmentAllowed: new FormControl('N', Validators.required),
     programIndirectCostType: new FormControl('', Validators.required),
     maximumDrawDownPercentageQ1: new FormControl('', Validators.required),
@@ -31,10 +31,14 @@ export class CostsharingSubAlnComponent {
     maximumDrawDownPercentageQ4: new FormControl('', Validators.required),
     indirectCostAllowed: new FormControl(1, Validators.required),
     programIndirectCostRate: new FormControl('', Validators.required),
-    administrativeCostCap: new FormControl('', Validators.required),
+    administrativeCostCap: new FormControl(''),
   });
 
   submitted = false;
+  isCostShareRequired = false;
+  isIndirectCostAllowed = true;
+  isCostSharedAdjAllowed = false;
+  admCostCapAllowed = false;
 
   constructor(
     private readonly createSubAlnComponent: CreateSubAlnComponent,
@@ -100,10 +104,27 @@ export class CostsharingSubAlnComponent {
 
   setCostShareAdjAllowed(event:MatCheckboxChange) {
     if (event.checked) {
+      this.isCostSharedAdjAllowed = true;
       this.costSharingSubALNForm.patchValue(({
         costShareAdjustmentAllowed: 'Y'
       }))
     } else {
+      this.isCostSharedAdjAllowed = false;
+      this.costSharingSubALNForm.patchValue(({
+        costShareAdjustmentAllowed: 'N'
+      }))
+      
+    }
+  }
+
+  setAdminCostCapAllowed(event:MatCheckboxChange) {
+    if (event.checked) {
+      this.admCostCapAllowed = true;
+      this.costSharingSubALNForm.patchValue(({
+        costShareAdjustmentAllowed: 'Y'
+      }))
+    } else {
+      this.admCostCapAllowed = false;
       this.costSharingSubALNForm.patchValue(({
         costShareAdjustmentAllowed: 'N'
       }))
@@ -112,10 +133,12 @@ export class CostsharingSubAlnComponent {
 
   setCostShareRequired(event:MatCheckboxChange) {
     if (event.checked) {
+      this.isCostShareRequired = true;
       this.costSharingSubALNForm.patchValue(({
         costShareRequired: 'Y'
       }))
     } else {
+      this.isCostShareRequired = false;
       this.costSharingSubALNForm.patchValue(({
         costShareRequired: 'N'
       }))
@@ -129,5 +152,21 @@ export class CostsharingSubAlnComponent {
   goBack() {
     this.createSubAlnComponent.tabActive = '';
     this.subAlnComponent.sectionActive = 'list';
+  }
+
+  setIndirectCostType(indirectCostAllowed: string) {
+    if (indirectCostAllowed === 'Y') {
+      this.isIndirectCostAllowed = true;
+      this.costSharingSubALNForm.get('programIndirectCostRate')?.addValidators(Validators.required);
+      this.costSharingSubALNForm.get('programIndirectCostType')?.addValidators(Validators.required);
+      this.costSharingSubALNForm.get('programIndirectCostRate')?.updateValueAndValidity();
+      this.costSharingSubALNForm.get('programIndirectCostType')?.updateValueAndValidity();
+    } else {
+      this.isIndirectCostAllowed = false;
+      this.costSharingSubALNForm.get('programIndirectCostRate')?.removeValidators(Validators.required);
+      this.costSharingSubALNForm.get('programIndirectCostType')?.removeValidators(Validators.required);
+      this.costSharingSubALNForm.get('programIndirectCostRate')?.updateValueAndValidity();
+      this.costSharingSubALNForm.get('programIndirectCostType')?.updateValueAndValidity();
+    }
   }
 }
