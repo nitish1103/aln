@@ -54,7 +54,7 @@
             fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Cost Share Required</h4>
-              <mat-checkbox color="primary" value="1" (change)="setCostShareRequired($event)">
+              <mat-checkbox color="primary" value="1" (change)="setCostShareRequired($event)" [checked]="isCostShareRequired">
                 Cost Share Required
               </mat-checkbox>
             </section>
@@ -72,7 +72,7 @@
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Cost Share Adjustment Allowed</h4>
-              <mat-checkbox color="primary" value="1" (change)="setCostShareAdjAllowed($event)">
+              <mat-checkbox color="primary" value="1" [checked]="isCostSharedAdjAllowed" (change)="setCostShareAdjAllowed($event)">
                 Cost Share Adjustment Allowed
               </mat-checkbox>
             </section>           
@@ -147,8 +147,8 @@
             <section fxLayout="column" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Indirect Cost Allowed</h4>
               <mat-radio-group aria-label="Select an option" formControlName="indirectCostAllowed">
-                <mat-radio-button ngDefaultControl [value]="1" name="btnvalue" type="radio" (change)="setIndirectCostType('Y')">Yes</mat-radio-button>
-                <mat-radio-button ngDefaultControl [value]="0" name="btnvalue" type="radio" (change)="setIndirectCostType('N')">No</mat-radio-button>
+                <mat-radio-button ngDefaultControl [value]="1" [checked]="isIndirectCostAllowed" name="btnvalue" type="radio" (change)="setIndirectCostType('Y')">Yes</mat-radio-button>
+                <mat-radio-button ngDefaultControl [value]="0" [checked]="!isIndirectCostAllowed" name="btnvalue" type="radio" (change)="setIndirectCostType('N')">No</mat-radio-button>
               </mat-radio-group>
             </section>
           </div>
@@ -178,7 +178,7 @@
           <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Administrative Cost Cap Allowed</h4>
-              <mat-checkbox color="primary" value="1" (change)="setAdminCostCapAllowed($event)">
+              <mat-checkbox color="primary" value="1" [checked]="admCostCapAllowed" (change)="setAdminCostCapAllowed($event)">
                 Administrative Cost Cap Allowed
               </mat-checkbox>
             </section>

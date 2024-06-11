@@ -69,6 +69,23 @@ export class CostsharingSubAlnComponent {
         programIndirectCostRate:  this.subALnService.costSharingSubAln.programIndirectCostRate,
         administrativeCostCap:  this.subALnService.costSharingSubAln.administrativeCostCap,
       })
+
+      this.isCostShareRequired = this.subALnService.costSharingSubAln.isCostShareRequired;
+      this.isIndirectCostAllowed = this.subALnService.costSharingSubAln.isIndirectCostAllowed;
+      this.isCostSharedAdjAllowed = this.subALnService.costSharingSubAln.isCostSharedAdjAllowed;
+      this.admCostCapAllowed = this.subALnService.costSharingSubAln.admCostCapAllowed;
+
+      if (this.isIndirectCostAllowed) {
+        this.costSharingSubALNForm.get('programIndirectCostRate')?.addValidators(Validators.required);
+        this.costSharingSubALNForm.get('programIndirectCostType')?.addValidators(Validators.required);
+        this.costSharingSubALNForm.get('programIndirectCostRate')?.updateValueAndValidity();
+        this.costSharingSubALNForm.get('programIndirectCostType')?.updateValueAndValidity();
+      } else {
+        this.costSharingSubALNForm.get('programIndirectCostRate')?.removeValidators(Validators.required);
+        this.costSharingSubALNForm.get('programIndirectCostType')?.removeValidators(Validators.required);
+        this.costSharingSubALNForm.get('programIndirectCostRate')?.updateValueAndValidity();
+        this.costSharingSubALNForm.get('programIndirectCostType')?.updateValueAndValidity();
+      }
     }
   }
 
@@ -99,6 +116,10 @@ export class CostsharingSubAlnComponent {
       this.costSharingSubALNForm.value.administrativeCostCap ?? '';
     this.subALnService.costSharingSubAln.programIndirectCostType =
       this.costSharingSubALNForm.value.programIndirectCostType ?? '';
+    this.subALnService.costSharingSubAln.isCostShareRequired = this.isCostShareRequired;
+    this.subALnService.costSharingSubAln.isIndirectCostAllowed = this.isIndirectCostAllowed;
+    this.subALnService.costSharingSubAln.isCostSharedAdjAllowed = this.isCostSharedAdjAllowed;
+    this.subALnService.costSharingSubAln.admCostCapAllowed = this.admCostCapAllowed;
     this.createSubAlnComponent.tabActive = this.subALnService.isDiscretionary ? 'law' : 'accounting';
   }
 

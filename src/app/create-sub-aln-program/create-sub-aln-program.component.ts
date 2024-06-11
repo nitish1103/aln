@@ -86,6 +86,42 @@ export class CreateSubAlnProgramComponent {
     }
   }
 
+  setSubProgramActionTypeValue() {
+    const awardType  = this.createSubALNForm.value.awardType;
+    if (awardType === 'DS' || awardType === 'FM') {
+      this.checkedActionTypes = [];
+      this.subProgramActionTypes = [
+        {
+          SUB_PROGRAM_ACTION_TYPE_CD: 'NC',
+          SUB_PROGRAM_ACTION_TYPE: 'New',
+          checked: false
+        },
+        {
+          SUB_PROGRAM_ACTION_TYPE_CD: 'NCC',
+          SUB_PROGRAM_ACTION_TYPE: 'Non-Competing Continuation',
+          checked: false
+        },
+        {
+          SUB_PROGRAM_ACTION_TYPE_CD: 'FDS',
+          SUB_PROGRAM_ACTION_TYPE: 'Funding Down the Slate',
+          checked: false
+        }
+      ]
+    } else {
+      this.createSubALNForm.patchValue({
+        subProgramActionType: 'NW'
+      })
+      this.checkedActionTypes = ['NC']
+      this.subProgramActionTypes = [
+        {
+          SUB_PROGRAM_ACTION_TYPE_CD: 'NC',
+          SUB_PROGRAM_ACTION_TYPE: 'New',
+          checked: true
+        }
+      ] 
+    }
+  }
+
   save() {
     this.submitted = true;
     const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =

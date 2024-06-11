@@ -69,7 +69,7 @@
               <h4>Award Type*</h4>
               <mat-form-field appearance="outline">
                 <mat-label>Award Type</mat-label>
-                <mat-select formControlName="awardType">
+                <mat-select formControlName="awardType" (selectionChange)="setSubProgramActionTypeValue()">
                   <mat-option *ngFor="let award of awardTypes" value="{{award.AWARD_TYPE_CD}}">{{ award.AWARD_TYPE }}</mat-option>
                 </mat-select>
                 <mat-hint align="end" *ngIf="createSubALNForm.controls['awardType'].touched || submitted">
@@ -82,7 +82,10 @@
 
           <div class="info-text" fxLayout="column">
             <h4>Sub Program Action Type*</h4>
-            <mat-checkbox color="primary" value="{{actionType.SUB_PROGRAM_ACTION_TYPE_CD}}" *ngFor="let actionType of subProgramActionTypes" [checked]="checkedActionTypes.indexOf(actionType.SUB_PROGRAM_ACTION_TYPE_CD) > -1" (change)="setSubProgramActionType(actionType.SUB_PROGRAM_ACTION_TYPE_CD, $event)">
+            <mat-checkbox color="primary" value="{{actionType.SUB_PROGRAM_ACTION_TYPE_CD}}" 
+              *ngFor="let actionType of subProgramActionTypes" 
+              [checked]="checkedActionTypes.indexOf(actionType.SUB_PROGRAM_ACTION_TYPE_CD) > -1" 
+              (change)="setSubProgramActionType(actionType.SUB_PROGRAM_ACTION_TYPE_CD, $event)">
               {{actionType.SUB_PROGRAM_ACTION_TYPE}}
             </mat-checkbox>
             <mat-hint align="end" class="error action-type-error" *ngIf="checkedActionTypes.length == 0 && submitted">

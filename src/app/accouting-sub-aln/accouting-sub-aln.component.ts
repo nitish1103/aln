@@ -100,7 +100,7 @@ export class AccoutingSubAlnComponent {
   }
 
   previous() {
-    this.createSubAlnComponent.tabActive = 'programOffice';
+    this.createSubAlnComponent.tabActive = 'costSharing';
   }
 
   goBack() {

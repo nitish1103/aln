@@ -70,7 +70,11 @@ export class AlnSubProgramService {
     indirectCostAllowed: '',
     programIndirectCostRate: '',
     administrativeCostCap: '',
-    programIndirectCostType: ''
+    programIndirectCostType: '',
+    isCostShareRequired : false,
+    isIndirectCostAllowed : true,
+    isCostSharedAdjAllowed : false,
+    admCostCapAllowed : false
   };
 
   lawSubAln = {
@@ -151,7 +155,11 @@ export class AlnSubProgramService {
       indirectCostAllowed: '',
       programIndirectCostRate: '',
       administrativeCostCap: '',
-      programIndirectCostType: ''
+      programIndirectCostType: '',
+      isCostShareRequired : false,
+      isIndirectCostAllowed : true,
+      isCostSharedAdjAllowed : false,
+      admCostCapAllowed : false
     };
   
     this.lawSubAln = {
