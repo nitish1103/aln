@@ -70,7 +70,7 @@
             <section fxFlex="5%"></section>
             <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
               <h4>Final Performance Report</h4>
-              <mat-checkbox color="primary" value="1">
+              <mat-checkbox color="primary" value="1" [checked]="finalPerformceReport" (change)="setFinalPerformanceReport($event)">
                 Final Performace Report
               </mat-checkbox>
             </section>
@@ -78,13 +78,13 @@
 
           <div class="info-text" fxLayout="column">
             <h4>Program Financial Reports</h4>
-            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Annual')">
+            <mat-checkbox color="primary" value="1" [checked]="programFinancialReports.indexOf('Annual') > -1" (change)="setFinancialReport('Annual', $event)">
               Annual
             </mat-checkbox>
-            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Final')">
+            <mat-checkbox color="primary" value="1" [checked]="programFinancialReports.indexOf('Final') > -1" (change)="setFinancialReport('Final', $event)">
               Final
             </mat-checkbox>
-            <mat-checkbox color="primary" value="1" (change)="setFinancialReport('Quarterly')">
+            <mat-checkbox color="primary" value="1" [checked]="programFinancialReports.indexOf('Quarterly') > -1" (change)="setFinancialReport('Quarterly', $event)">
               Quarterly
             </mat-checkbox>
           </div>

@@ -11,10 +11,12 @@ import { ABSTRACT_TYPES, AWARD_TYPES, FED_OFFICE_CODES, FED_OFFICE_DIV_CODES, IN
  * This class is for creating services related to aln
  */
 export class AlnSubProgramService {
+  programFinancialReports:any[] = [];
   checkedActionTypes:any[] = [];
   divPersons:any[] = [];
   accountingData:any[] = [];
   isDiscretionary = false;
+  finalPerformceReport = false;
   createSubALN = {
     fiscalYear: '',
     alnCode: '',
