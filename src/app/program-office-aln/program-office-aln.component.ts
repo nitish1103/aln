@@ -60,6 +60,11 @@ export class ProgramOfficeAlnComponent {
   getDivPersons() {
     this.subALnService.getAllProgramOfficeNames().subscribe((response:any) => {
       this.divPersons = response;
+      if (this.subALnService.programOfficeSubALN.subProgramContact != '') {
+        this.programOfficeSubALNForm.patchValue({
+          subProgramContact: this.subALnService.programOfficeSubALN.subProgramContact
+        });
+      }
     }, (error:any) => {
       this.divPersons = [
         {

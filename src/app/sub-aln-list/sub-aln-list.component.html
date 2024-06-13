@@ -1,3 +1,52 @@
+<div fxLayout="row" fxLayoutAlign="start" fxLayoutAlign.xs="start" fxLayoutAlign.sm="start" class="admin-mgmt-header filter-row">
+  <section class="mr-1" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <mat-form-field appearance="outline" class="user-search">
+      <mat-label>Fiscal Year</mat-label>
+      <input type="text" id="search-query" matInput [(ngModel)]='fiscalYearQuery'>
+    </mat-form-field>
+  </section>
+  <section class="mr-1" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <mat-form-field appearance="outline">
+      <mat-label>Agency Code</mat-label>
+      <mat-select [(ngModel)]="agencyDesignatorCodeQuery">
+        <mat-option value="{{code}}" *ngFor="let code of agencyDesignatorCodes">{{code}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+  <section class="mr-1" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <mat-form-field appearance="outline" class="user-search">
+      <mat-label>CFDA Number</mat-label>
+      <input type="text" id="search-query" matInput [(ngModel)]='alnNumberQuery'>
+    </mat-form-field>
+  </section>
+  <section class="mr-1" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <mat-form-field appearance="outline" class="user-search">
+      <mat-label>Sub Program Id</mat-label>
+      <input type="text" id="search-query" matInput [(ngModel)]='subProgramIdQuery'>
+    </mat-form-field>
+  </section>
+  <section class="mr-1" fxLayout="column" fxFlex="10%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <mat-form-field appearance="outline" class="user-search">
+      <mat-label>Sub Program Title</mat-label>
+      <input type="text" id="search-query" matInput [(ngModel)]='subProgramTitleQuery'>
+    </mat-form-field>
+  </section>
+  <section fxLayout="column" fxFlex="50%" fxFlex.sm="40%" fxFlex.xs="40%"></section>
+  <section class="mr-1" fxLayout="column" fxFlex="5%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <div class="users-btn">
+      <button mat-stroked-button color="primary" (click)="search()">
+        Search
+      </button>
+    </div>
+  </section>
+  <section fxLayout="column" fxFlex="5%" fxFlex.sm="10%" fxFlex.xs="10%">
+    <div class="users-btn">
+      <button mat-stroked-button color="primary" (click)="clear()">
+        Clear
+      </button>
+    </div>
+  </section>
+</div>
 <div class="tbl-data user">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="desc"
     aria-describedby="dataSource" matSortDisableClear>
@@ -110,8 +159,7 @@
     </ng-container>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell no-user">No ALN Found<span class="no-user-label" *ngIf="searchQuery.length > 0">for
-          <strong>{{searchQuery}}</strong></span></td>
+      <td class="mat-cell no-user">No ALN Found</td>
     </tr>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

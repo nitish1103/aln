@@ -131,3 +131,15 @@ small {
   background-color: #dadada !important;
   color: black !important;
 }
+
+.filter-row {
+  background-color: white;
+}
+
+.mr-1 {
+  margin-right: 1rem;
+}
+
+input::placeholder {
+  font-size: 10px;
+}
