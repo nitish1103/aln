@@ -16,6 +16,24 @@ export class SubAlnListComponent {
 
   userRole = '';
 
+  fiscalYearQuery = '';
+  agencyDesignatorCodeQuery = '';
+  alnNumberQuery = '';
+  subProgramIdQuery = '';
+  subProgramTitleQuery = '';
+  agencyDesignatorCodes = [
+    '10',
+    '11',
+    '15',
+    '16',
+    '17',
+    '23',
+    '45',
+    '47',
+    '84',
+    '93',
+  ];
+
   ELEMENT_DATA: any[] = [
     {
       trackingNumber: 12345,
@@ -103,6 +121,11 @@ export class SubAlnListComponent {
   }
 
   search() {
+    this.ELEMENT_DATA = this.TABLE_DATA.filter(
+      (data) => data.subprogramId.fiscalYear.includes(parseInt(this.fiscalYearQuery)) && data.subprogramId.agencyCd.includes(parseInt(this.agencyDesignatorCodeQuery)) 
+                && data.subprogramId.aln.includes(this.alnNumberQuery) && data.subprogramTitle.includes(this.subProgramTitleQuery)
+    );  
+
     this.dataSource = new MatTableDataSource();
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
     setTimeout(() => {
@@ -111,7 +134,11 @@ export class SubAlnListComponent {
   }
 
   clear() {
-    this.searchQuery = '';
+    this.fiscalYearQuery = '';
+    this.agencyDesignatorCodeQuery = '';
+    this.alnNumberQuery = '';
+    this.subProgramIdQuery = '';
+    this.subProgramTitleQuery = '';
     this.ELEMENT_DATA = this.TABLE_DATA;
     this.dataSource = new MatTableDataSource();
     this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
@@ -119,4 +146,5 @@ export class SubAlnListComponent {
       this.timeOutFunction();
     }, 50);
   }
+
 }
