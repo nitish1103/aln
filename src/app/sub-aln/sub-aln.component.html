@@ -16,12 +16,16 @@
           <p [ngClass]="{'active' : sectionActive === 'create'}" (click)="sectionActive = 'create'">
             Create
           </p>
+          <p [ngClass]="{'active' : sectionActive === 'update'}">
+            Update
+          </p>
         </section>
       </section>
     </div>
     <div fxFlex.xs="100%" fxFlex.sm="100%" [fxFlex]="'85%'" class="right-panel">
       <app-sub-aln-list *ngIf="sectionActive === 'list'"></app-sub-aln-list>
       <app-sub-aln-program *ngIf="sectionActive === 'create'"></app-sub-aln-program>
+      <app-update-sub-aln *ngIf="sectionActive === 'update'"></app-update-sub-aln>
     </div>
   </div>
 </div>

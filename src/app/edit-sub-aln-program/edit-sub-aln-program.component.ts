@@ -1,26 +1,22 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
-import { CreateSubAlnComponent } from '../create-sub-aln/create-sub-aln.component';
+import { EditSubAlnComponent } from '../edit-sub-aln/edit-sub-aln.component';
 import { AlnService } from '../services/aln-service';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
-import {
-  AWARD_TYPES,
-  SUB_PROGRAM_ACTION_TYPES,
-} from '../services/aln-sub.interface';
-import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
+import { AWARD_TYPES } from '../services/aln-sub.interface';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 
 @Component({
-  selector: 'app-create-sub-aln-program',
-  templateUrl: './create-sub-aln-program.component.html',
-  styleUrl: './create-sub-aln-program.component.scss',
+  selector: 'app-edit-sub-aln-program',
+  templateUrl: './edit-sub-aln-program.component.html',
+  styleUrl: './edit-sub-aln-program.component.scss'
 })
-export class CreateSubAlnProgramComponent {
+export class EditSubAlnProgramComponent {
   submitted = false;
-  createSubALNForm = new FormGroup({
+  updateSubALNForm = new FormGroup({
     fiscalYear: new FormControl('', [Validators.required]),
     alnCode: new FormControl('', [Validators.required]),
     alnNumber: new FormControl('', [Validators.required]),
@@ -73,21 +69,21 @@ export class CreateSubAlnProgramComponent {
     private readonly subAln: SubAlnComponent,
     public dialog: MatDialog,
     private readonly alnService: AlnService,
-    private readonly createSubAlnComponent: CreateSubAlnComponent,
+    private readonly editSubAlnComponent: EditSubAlnComponent,
     public readonly subALnService: AlnSubProgramService
   ) {}
 
   ngOnInit() {
     this.getALN();
     this.getSubALNList();
-    if (this.subALnService.createSubALN.fiscalYear) {
-      this.checkedActionTypes = this.subALnService.checkedActionTypes;
+    if (this.subALnService.subAlnData.subprogramId.fiscalYear) {
+      //this.checkedActionTypes = this.subALnService.checkedActionTypes;
       this.patchValues();
     }
   }
 
   setSubProgramActionTypeValue() {
-    const awardType  = this.createSubALNForm.value.awardType;
+    const awardType  = this.updateSubALNForm.value.awardType;
     if (awardType === 'DS' || awardType === 'FM') {
       this.checkedActionTypes = [];
       this.subProgramActionTypes = [
@@ -108,7 +104,7 @@ export class CreateSubAlnProgramComponent {
         }
       ]
     } else {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'NW'
       })
       this.checkedActionTypes = ['NC']
@@ -125,16 +121,14 @@ export class CreateSubAlnProgramComponent {
   save() {
     this.submitted = true;
     const { fiscalYear, alnCode, alnNumber, subProgramId, awardType, subProgramActionType } =
-      this.createSubALNForm.value;
+      this.updateSubALNForm.value;
     if (this.subALns.filter((aln:any) => aln.subprogramId.aln == alnNumber && aln.subprogramId.subprogramCd == subProgramId).length > 0) {
       this.subAlnAlreadyExists = true;
     } else {
       if (awardType === 'DS' || awardType === 'FM') {
         this.subALnService.isDiscretionary = true;
-        this.createSubAlnComponent.isDiscretionary = true;
       } else {
         this.subALnService.isDiscretionary = false;
-        this.createSubAlnComponent.isDiscretionary = false;
       }
       this.subALnService.createSubALN.fiscalYear = fiscalYear ?? '';
       this.subALnService.createSubALN.alnCode = alnCode ?? '';
@@ -151,22 +145,22 @@ export class CreateSubAlnProgramComponent {
         }
       })
   
-      this.createSubAlnComponent.tabActive = 'general';
+      this.editSubAlnComponent.tabActive = 'general';
     }
     
   }
 
   patchValues() {
-    this.createSubALNForm.patchValue({
-      fiscalYear: this.subALnService.createSubALN.fiscalYear,
-      alnCode: this.subALnService.createSubALN.alnCode,
-      alnNumber: this.subALnService.createSubALN.alnNumber,
-      subProgramId: this.subALnService.createSubALN.subProgramId,
-      awardType: this.subALnService.createSubALN.awardType,
-      subProgramActionType: this.subALnService.createSubALN.subProgramActionType
+    this.updateSubALNForm.patchValue({
+      fiscalYear: this.subALnService.subAlnData.subprogramId.fiscalYear,
+      alnCode: this.subALnService.subAlnData.subprogramId.agencyCd.toString(),
+      alnNumber: this.subALnService.subAlnData.subprogramId.aln,
+      subProgramId: this.subALnService.subAlnData.subprogramId.subprogramCd,
+      awardType: this.subALnService.subAlnData.awardType.awardTypeCd,
+      subProgramActionType: this.subALnService.subAlnData.subprogramActionType.subprogramActionTypeCd
     })
-    if (this.subALnService.createSubALN.alnNumber) {
-      this.myControl.patchValue(this.subALnService.createSubALN.alnNumber);
+    if (this.subALnService.subAlnData.subprogramId.aln) {
+      this.myControl.patchValue(this.subALnService.subAlnData.subprogramId.aln);
     }
   }
 
@@ -182,31 +176,31 @@ export class CreateSubAlnProgramComponent {
 
   setActionType() {
     if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'AL'
       })
     } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'NW'
       })
     } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'CC'
       })
     } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'FS'
       })
     } else if (this.checkedActionTypes.indexOf('NC') === -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'CF'
       })
     } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') > -1 && this.checkedActionTypes.indexOf('FDS') === -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'NC'
       })
     } else if (this.checkedActionTypes.indexOf('NC') > -1 && this.checkedActionTypes.indexOf('NCC') === -1 && this.checkedActionTypes.indexOf('FDS') > -1) {
-      this.createSubALNForm.patchValue({
+      this.updateSubALNForm.patchValue({
         subProgramActionType: 'NF'
       })
     }
@@ -265,8 +259,8 @@ export class CreateSubAlnProgramComponent {
   }
 
   private _filter(value: string): string[] {
-    this.createSubALNForm.patchValue({
-      alnNumber: value ? value : this.subALnService.createSubALN.alnNumber
+    this.updateSubALNForm.patchValue({
+      alnNumber: value ? value : this.subALnService.subAlnData.subprogramId.aln
     });
     const filterValue = value.toLowerCase();
     return this.alnNumberList.filter((aln) =>

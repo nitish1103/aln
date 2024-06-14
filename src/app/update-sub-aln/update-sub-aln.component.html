@@ -1,0 +1,12 @@
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <ng-template matStepLabel>Update Sub Aln</ng-template>
+        <app-edit-sub-aln [stepper]="stepper" *ngIf="sectionActive == 'update'"></app-edit-sub-aln>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>Summary</ng-template>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Confirm</ng-template>
+    </mat-step>
+</mat-stepper>

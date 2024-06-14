@@ -17,6 +17,8 @@ export class AlnSubProgramService {
   accountingData:any[] = [];
   isDiscretionary = false;
   finalPerformceReport = false;
+  isEditing = false;
+  subAlnData:any;
   createSubALN = {
     fiscalYear: '',
     alnCode: '',

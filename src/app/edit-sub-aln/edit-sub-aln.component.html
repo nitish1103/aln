@@ -1,0 +1,11 @@
+<div class="admin-mgmt-container">
+    <div class="tab" fxLayout="row" *ngIf="tabActive !== ''">
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='general'}">General</span>
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='programOffice'}">Program Office</span>
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='reporting'}">Reporting</span>
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='costSharing'}">Cost Sharing</span>
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='accounting'}">Accouting</span>
+      <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}">Law</span>
+    </div>
+    <app-edit-sub-aln-program *ngIf="tabActive == ''"></app-edit-sub-aln-program>
+  </div>

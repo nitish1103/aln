@@ -69,6 +69,10 @@ export class AccoutingSubAlnComponent {
         sector: this.subALnService.accouting.sector,
         cohort: this.subALnService.accouting.cohort
       })
+
+      if (this.subALnService.accountingData.length > 0) {
+        this.ELEMENT_DATA = this.subALnService.accountingData;
+      }
     }
   }
 
