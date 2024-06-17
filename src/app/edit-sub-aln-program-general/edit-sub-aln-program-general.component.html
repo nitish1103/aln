@@ -1,0 +1,272 @@
+<div class="admin-mgmt-container">
+    <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+      class="admin-mgmt-body">
+      <form [formGroup]="updateGeneralSubALNForm" (ngSubmit)="updateGeneralSubALNForm.valid && save();submitted=true;" novalidate>
+        <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+          <div class="indicator-container" fxLayout="column">
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Fiscal Year</p>
+                <p class="value">{{ fiscalYear }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Aln Sub Program</p>
+                <p class="value">{{ alnSubProgram }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Award Type</p>
+                <p class="value">{{ awardType }}</p>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Sub Program Title*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Sub Program Title</mat-label>
+                  <input matInput placeholder="Sub Program Title" name="subProgramTitle" formControlName="subProgramTitle"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['subProgramTitle'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['subProgramTitle'].errors?.['required']">Sub Program Title is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Sub Program Purpose</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Sub Program Purpose</mat-label>
+                  <input matInput placeholder="Sub Program Purpose" name="subProgramPurpose" formControlName="subProgramPurpose" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['subProgramPurpose'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['subProgramPurpose'].errors?.['required']">Sub Program Purpose is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Program Website*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Program Website</mat-label>
+                  <input matInput placeholder="Program Website" name="programWebsite" formControlName="programWebsite" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['programWebsite'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['programWebsite'].errors?.['required']">Program Website is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Sub Award Type*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Sub Award Type</mat-label>
+                  <mat-select formControlName="subAwardType">
+                    <mat-option *ngFor="let award of awardTypes" value="{{award.SUB_AWARD_TYPE_CD}}">{{ award.SUB_AWARD_TYPE }}</mat-option>
+                  </mat-select>
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['subAwardType'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['subAwardType'].errors?.['required']">Award Type is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Review Method*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Review Method</mat-label>
+                  <mat-select formControlName="reveiwMethod">
+                    <mat-option *ngFor="let review of reviewMethods" value="{{review.REVIEW_METHOD_CD}}">{{ review.REVIEW_METHOD }}</mat-option>
+                  </mat-select>
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['reveiwMethod'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['reveiwMethod'].errors?.['required']">Award Type is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Sub Program Purpose</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Sub Program Purpose</mat-label>
+                  <input matInput placeholder="Sub Program Purpose" name="subProgramPurpose" formControlName="subProgramPurpose"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['subProgramPurpose'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['subProgramPurpose'].errors?.['required']">Sub Program Purpose is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Program Website*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Program Website</mat-label>
+                  <input matInput placeholder="Program Website" name="programWebsite" formControlName="programWebsite" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['programWebsite'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['programWebsite'].errors?.['required']">Program Website is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Abstract Type*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Abstract Type</mat-label>
+                  <mat-select formControlName="abstractType">
+                    <mat-option *ngFor="let abstractType of abstractTypes" value="{{abstractType.ABSTRACT_TYPE_CD}}">{{ abstractType.ABSTRACT_TYPE }}</mat-option>
+                  </mat-select>
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['abstractType'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['abstractType'].errors?.['required']">Abstract Type is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                
+              </section>
+            </div>
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Performance Period*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Performance Period</mat-label>
+                  <input matInput placeholder="Performance Period" name="performancePeriod" formControlName="performancePeriod"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['performancePeriod'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['performancePeriod'].errors?.['required']">Performance Period is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Number of Budget Periods*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Number of Budget Periods</mat-label>
+                  <input matInput placeholder="Number of Budget Periods" name="budgetPeriod" formControlName="budgetPeriod"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['budgetPeriod'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['budgetPeriod'].errors?.['required']">Performance Period is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Liquidation Period*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Liquidation Period</mat-label>
+                  <input matInput placeholder="Liquidation Period" name="liquidationPeriod" formControlName="liquidationPeriod"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['liquidationPeriod'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['liquidationPeriod'].errors?.['required']">Performance Period is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Suspension Periods*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Suspension Periods</mat-label>
+                  <input matInput placeholder="Number of Budget Periods" name="suspensionPeriod" formControlName="suspensionPeriod" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['suspensionPeriod'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['suspensionPeriod'].errors?.['required']">Performance Period is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <mat-checkbox color="primary" value="1">
+                  Participant Number Indicator
+                </mat-checkbox>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <mat-checkbox color="primary" value="1">
+                  Balance Remaining Email Notification
+                </mat-checkbox>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Percentage Threshold*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Percentage Threshold</mat-label>
+                  <input matInput placeholder="Percentage Threshold" name="percentageThreshold" formControlName="percentageThreshold" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['percentageThreshold'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['percentageThreshold'].errors?.['required']">Percentage Threshold is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Category Code*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Category Code</mat-label>
+                  <input matInput placeholder="Category Code" name="categoryCode" formControlName="categoryCode" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['categoryCode'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['categoryCode'].errors?.['required']">Performance Period is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Grant Award Type*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Grant Award Type</mat-label>
+                  <input matInput placeholder="Grant Award Type" name="grantAwardType"
+                    formControlName="grantAwardType" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateGeneralSubALNForm.controls['grantAwardType'].touched || submitted">
+                    <span *ngIf="updateGeneralSubALNForm.controls['grantAwardType'].errors?.['required']">Grant Award Type is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+            
+  
+            <div fxLayout="row" class="mt-2">
+              <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+                <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+                <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                  <span>Cancel</span>
+                </button>
+              </section>
+              <section fxFlxex="5%"></section>
+              <section fxFlex="50%" fxLayoutAlign="space-between">
+            
+                <button type="submit" mat-raised-button color="primary" class="medium">
+                  <span>Continue</span>
+                </button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

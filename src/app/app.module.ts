@@ -58,6 +58,12 @@ import { SubAlnSummaryAccountingComponent } from './sub-aln-summary-accounting/s
 import { UpdateSubAlnComponent } from './update-sub-aln/update-sub-aln.component';
 import { EditSubAlnComponent } from './edit-sub-aln/edit-sub-aln.component';
 import { EditSubAlnProgramComponent } from './edit-sub-aln-program/edit-sub-aln-program.component';
+import { EditSubAlnProgramGeneralComponent } from './edit-sub-aln-program-general/edit-sub-aln-program-general.component';
+import { EditSubAlnProgramProgramOfficeComponent } from './edit-sub-aln-program-program-office/edit-sub-aln-program-program-office.component';
+import { EditSubAlnProgramReportingComponent } from './edit-sub-aln-program-reporting/edit-sub-aln-program-reporting.component';
+import { EditSubAlnProgramCostSharingComponent } from './edit-sub-aln-program-cost-sharing/edit-sub-aln-program-cost-sharing.component';
+import { EditSubAlnProgramAccountingComponent } from './edit-sub-aln-program-accounting/edit-sub-aln-program-accounting.component';
+import { EditSubAlnProgramLawComponent } from './edit-sub-aln-program-law/edit-sub-aln-program-law.component';
 
 @NgModule({
   declarations: [
@@ -112,6 +118,12 @@ import { EditSubAlnProgramComponent } from './edit-sub-aln-program/edit-sub-aln-
     UpdateSubAlnComponent,
     EditSubAlnComponent,
     EditSubAlnProgramComponent,
+    EditSubAlnProgramGeneralComponent,
+    EditSubAlnProgramProgramOfficeComponent,
+    EditSubAlnProgramReportingComponent,
+    EditSubAlnProgramCostSharingComponent,
+    EditSubAlnProgramAccountingComponent,
+    EditSubAlnProgramLawComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
   providers: [AuthGuard, AlnService, DatePipe],

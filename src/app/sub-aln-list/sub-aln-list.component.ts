@@ -49,11 +49,11 @@ export class SubAlnListComponent {
         "validInd": "1"
       },
       "subprogramActionType": {
-        "subprogramActionTypeCd": "FS",
+        "subprogramActionTypeCd": "FDS",
         "subprogramActionType": "Funding Down the Slate", 
         "validind": "1"
       },
-      "subprogramtitle": "Test Discretionary",
+      "subprogramTitle": "Test Discretionary",
       "subprogramPurpose": "Purpose",
       "programWebsite":'',
       "performancePeriod": 30,
@@ -99,7 +99,7 @@ export class SubAlnListComponent {
           "programOfficeld": 23,
           "programOfficeNm": "Office of the Secretary",
           "programOfficeWebsite": "",
-          "programOfficeShortNm": "OS",
+          "programOfficeShortNm": "OSERS",
           "agencyCd": 0,
           "validInd": null
         },
@@ -112,7 +112,7 @@ export class SubAlnListComponent {
             "programOfficeld": 24,
             "programOfficeNm": "Office of Inspector General",
             "programOfficeWebsite": "",
-            "programOfficeShortNm": "OIG",
+            "programOfficeShortNm": "FRSO",
             "agencyCd": 84,
             "validInd": null
           },

@@ -19,13 +19,9 @@
                 <h4>Agency Designator Code*</h4>
                 <mat-form-field appearance="outline">
                   <mat-label>Select an option</mat-label>
-                  <mat-select formControlName="alnCode">
+                  <mat-select formControlName="alnCode" [disabled]="true">
                     <mat-option *ngFor="let code of agencyDesignatorCodes" value="{{code}}">{{ code }}</mat-option>
                   </mat-select>
-                  <mat-hint align="end" *ngIf="updateSubALNForm.controls['alnCode'].touched || submitted">
-                    <span *ngIf="updateSubALNForm.controls['alnCode'].errors?.['required']">Agency Designator Code is
-                      required.</span>
-                  </mat-hint>
                 </mat-form-field>
               </section>
             </div>
@@ -37,7 +33,7 @@
                   <mat-label>Search By Aln Number</mat-label>
                   <mat-icon matPrefix>search</mat-icon>
                   <input type="text" aria-label="Search by Name" id="search-query" matInput [formControl]="myControl"
-                    [matAutocomplete]="auto" #autoCompleteInput>
+                    [matAutocomplete]="auto" #autoCompleteInput readonly>
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
                       {{option}}
@@ -51,11 +47,7 @@
                 <mat-form-field appearance="outline">
                   <mat-label>Subprogram ID</mat-label>
                   <input matInput placeholder="Enter Subprogram ID" name="subProgramId" maxlength="1" formControlName="subProgramId"
-                    required autocomplete="off" (keypress)="onlyNumberKey($event)">
-                  <mat-hint align="end" *ngIf="updateSubALNForm.controls['subProgramId'].touched || submitted">
-                    <span *ngIf="updateSubALNForm.controls['subProgramId'].errors?.['required']">Subprogram ID is
-                      required.</span>
-                  </mat-hint>
+                    required autocomplete="off" (keypress)="onlyNumberKey($event)" readonly>
                 </mat-form-field>
               </section>
             </div>
@@ -65,13 +57,9 @@
                 <h4>Award Type*</h4>
                 <mat-form-field appearance="outline">
                   <mat-label>Award Type</mat-label>
-                  <mat-select formControlName="awardType" (selectionChange)="setSubProgramActionTypeValue()">
+                  <mat-select formControlName="awardType" (selectionChange)="setSubProgramActionTypeValue()" [disabled]="true">
                     <mat-option *ngFor="let award of awardTypes" value="{{award.AWARD_TYPE_CD}}">{{ award.AWARD_TYPE }}</mat-option>
                   </mat-select>
-                  <mat-hint align="end" *ngIf="updateSubALNForm.controls['awardType'].touched || submitted">
-                    <span *ngIf="updateSubALNForm.controls['awardType'].errors?.['required']">Award Type is
-                      required.</span>
-                  </mat-hint>
                 </mat-form-field>
               </section>
             </div>

@@ -5,8 +5,10 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup">
         <ng-template matStepLabel>Summary</ng-template>
+        <app-sub-aln-summary [stepper]="stepper" *ngIf="sectionActive == 'summary'"></app-sub-aln-summary>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Confirm</ng-template>
+        <app-sub-aln-confirm [stepper]="stepper" *ngIf="sectionActive == 'confirm'"></app-sub-aln-confirm>
     </mat-step>
 </mat-stepper>

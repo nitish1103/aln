@@ -1,0 +1,203 @@
+<div class="admin-mgmt-container">
+    <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+      class="admin-mgmt-body">
+      <form [formGroup]="updateCostSharingSubALNForm" (ngSubmit)="updateCostSharingSubALNForm.valid && save();submitted=true;" novalidate>
+        <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+          <div class="indicator-container" fxLayout="column">
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+                <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                    <p class="key">Fiscal Year</p>
+                    <p class="value">{{ fiscalYear }}</p>
+                </section>
+                <section fxFlex="5%"></section>
+                <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                    <p class="key">Aln Sub Program</p>
+                    <p class="value">{{ alnSubProgram }}</p>
+                </section>
+                <section fxFlex="5%"></section>
+                <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                    <p class="key">Award Type</p>
+                    <p class="value">{{ awardType }}</p>
+                </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+              fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Pament Method*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Select an option</mat-label>
+                  <mat-select formControlName="paymentMethod">
+                    <mat-option *ngFor="let method of paymentMethods" value="{{method.PAYMENT_METHOD_CD}}">{{ method.PAYMENT_METHOD }}</mat-option>
+                  </mat-select>
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['paymentMethod'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['paymentMethod'].errors?.['required']">Payment Method is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+              fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Cost Share Required</h4>
+                <mat-checkbox color="primary" value="1" (change)="setCostShareRequired($event)" [checked]="isCostShareRequired">
+                  Cost Share Required
+                </mat-checkbox>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%" *ngIf="isCostShareRequired">
+                <h4>Cost Share Percentage</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Cost Share Percentage</mat-label>
+                  <input matInput placeholder="Cost Share Percentage" name="costSharePercentage"
+                    formControlName="costSharePercentage" autocomplete="off">
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Cost Share Adjustment Allowed</h4>
+                <mat-checkbox color="primary" value="1" [checked]="isCostSharedAdjAllowed" (change)="setCostShareAdjAllowed($event)">
+                  Cost Share Adjustment Allowed
+                </mat-checkbox>
+              </section>           
+            </div>
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%" *ngIf="isCostSharedAdjAllowed">
+              <section fxLayout="column" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Cost Share Method</h4>
+                <mat-radio-group aria-label="Select an option" formControlName="costShareMethod">
+                  <mat-radio-button ngDefaultControl value="CF" name="btnvalue" type="radio">Cost Matching of the Federal
+                    Amount</mat-radio-button>
+                  <mat-radio-button ngDefaultControl value="CC" name="btnvalue" type="radio">Cost Sharing of total project
+                    cost</mat-radio-button>
+                </mat-radio-group>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Maximum Drawdown Percentage Q1</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Maximum Drawdown Percentage Q1</mat-label>
+                  <input matInput placeholder="Cost Share Percentage" name="maximumDrawDownPercentageQ1"
+                    formControlName="maximumDrawDownPercentageQ1" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ1'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ1'].errors?.['required']">Sub
+                      Maximum Drawdown Percentage Q1 is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Maximum Drawdown Percentage Q2</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Maximum Drawdown Percentage Q2</mat-label>
+                  <input matInput placeholder="Cost Share Percentage" name="maximumDrawDownPercentageQ2" formControlName="maximumDrawDownPercentageQ2"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ2'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ2'].errors?.['required']">Sub
+                      Maximum Drawdown Percentage Q2 is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Maximum Drawdown Percentage Q3</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Maximum Drawdown Percentage Q3</mat-label>
+                  <input matInput placeholder="Cost Share Percentage" name="maximumDrawDownPercentageQ3" formControlName="maximumDrawDownPercentageQ3"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ3'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ3'].errors?.['required']">Sub
+                      Maximum Drawdown Percentage Q3 is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="20%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Maximum Drawdown Percentage Q4</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Maximum Drawdown Percentage Q4</mat-label>
+                  <input matInput placeholder="Cost Share Percentage" name="maximumDrawDownPercentageQ4" formControlName="maximumDrawDownPercentageQ4"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ4'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['maximumDrawDownPercentageQ4'].errors?.['required']">Sub
+                      Maximum Drawdown Percentage Q4 is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="100%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Indirect Cost Allowed</h4>
+                <mat-radio-group aria-label="Select an option" formControlName="indirectCostAllowed">
+                  <mat-radio-button ngDefaultControl [value]="1" [checked]="isIndirectCostAllowed" name="btnvalue" type="radio" (change)="setIndirectCostType('Y')">Yes</mat-radio-button>
+                  <mat-radio-button ngDefaultControl [value]="0" [checked]="!isIndirectCostAllowed" name="btnvalue" type="radio" (change)="setIndirectCostType('N')">No</mat-radio-button>
+                </mat-radio-group>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%" *ngIf="isIndirectCostAllowed">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Program Indirect Cost Type</h4>
+                <mat-radio-group aria-label="Select an option" formControlName="programIndirectCostType">
+                  <mat-radio-button ngDefaultControl value="{{indirectCostType.INDIRECT_COST_TYPE_CD}}" name="btnvalue" type="radio" *ngFor="let indirectCostType of indirectCostTypes">{{indirectCostType.INDIRECT_COST_TYPE}}</mat-radio-button>
+                </mat-radio-group>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Program Indirect Cost Rate</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Program Indirect Cost Rate</mat-label>
+                  <input matInput placeholder="Program Indirect Cost Rate" name="programIndirectCostRate"
+                    formControlName="programIndirectCostRate" autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateCostSharingSubALNForm.controls['programIndirectCostRate'].touched || submitted">
+                    <span *ngIf="updateCostSharingSubALNForm.controls['programIndirectCostRate'].errors?.['required']">Sub
+                      Program Indirect Cost Rate is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Administrative Cost Cap Allowed</h4>
+                <mat-checkbox color="primary" value="1" [checked]="admCostCapAllowed" (change)="setAdminCostCapAllowed($event)">
+                  Administrative Cost Cap Allowed
+                </mat-checkbox>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%" *ngIf="admCostCapAllowed">
+                <h4>Administrative Cost Cap</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Administrative Cost Cap</mat-label>
+                  <input matInput placeholder="Administrative Cost Cap" name="administrativeCostCap"
+                    formControlName="administrativeCostCap" autocomplete="off">
+                </mat-form-field>
+              </section>
+            </div>
+  
+  
+            <div fxLayout="row" class="mt-2">
+              <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+                <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+                <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                  <span>Cancel</span>
+                </button>
+              </section>
+              <section fxFlxex="5%"></section>
+              <section fxFlex="50%" fxLayoutAlign="space-between">
+  
+                <button type="submit" mat-raised-button color="primary" class="medium">
+                  <span>Continue</span>
+                </button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

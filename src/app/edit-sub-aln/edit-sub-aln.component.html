@@ -8,4 +8,10 @@
       <span class="tab-item" fxFlex="20%" [ngClass]="{'active' : tabActive =='law'}">Law</span>
     </div>
     <app-edit-sub-aln-program *ngIf="tabActive == ''"></app-edit-sub-aln-program>
+    <app-edit-sub-aln-program-general *ngIf="tabActive == 'general'"></app-edit-sub-aln-program-general>
+    <app-edit-sub-aln-program-program-office *ngIf="tabActive == 'programOffice'"></app-edit-sub-aln-program-program-office>
+    <app-edit-sub-aln-program-reporting *ngIf="tabActive == 'reporting'"></app-edit-sub-aln-program-reporting>
+    <app-edit-sub-aln-program-cost-sharing *ngIf="tabActive == 'costSharing'"></app-edit-sub-aln-program-cost-sharing>
+    <app-edit-sub-aln-program-accounting *ngIf="tabActive == 'accounting'"></app-edit-sub-aln-program-accounting>
+    <app-edit-sub-aln-program-law *ngIf="tabActive == 'law'" [stepper]="stepper"></app-edit-sub-aln-program-law>
   </div>

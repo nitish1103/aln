@@ -1,0 +1,196 @@
+<div class="admin-mgmt-container">
+    <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+      class="admin-mgmt-body">
+      <form [formGroup]="updateAccountingSubALNForm" (ngSubmit)="updateAccountingSubALNForm.valid && save();submitted=true;" novalidate>
+        <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+          <div class="indicator-container" fxLayout="column">
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Fiscal Year</p>
+                <p class="value">{{ fiscalYear }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Aln Sub Program</p>
+                <p class="value">{{ alnSubProgram }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Award Type</p>
+                <p class="value">{{ awardType }}</p>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Fund Code*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Fund Code</mat-label>
+                  <input matInput placeholder="Fund Code" name="fundCode" formControlName="fundCode"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['fundCode'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['fundCode'].errors?.['required']">Fund Code is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Category</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Category</mat-label>
+                  <input matInput placeholder="Category" name="category" formControlName="category" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['category'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['category'].errors?.['required']">Category is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Budget FY*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Budget FY</mat-label>
+                  <input matInput placeholder="Budget FY" name="budgetFY" formControlName="budgetFY" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['budgetFY'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['budgetFY'].errors?.['required']">Budget FY is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Organization*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Organization</mat-label>
+                  <input matInput placeholder="Organization" name="organization" formControlName="organization" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['organization'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['organization'].errors?.['required']">Organization is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Limitation*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Limitation</mat-label>
+                  <input matInput placeholder="Limitation" name="limitation" formControlName="limitation" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['limitation'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['limitation'].errors?.['required']">Limitation is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Object Class</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Object Class</mat-label>
+                  <input matInput placeholder="Object Class" name="objectClass" formControlName="objectClass"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['objectClass'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['objectClass'].errors?.['required']">Object Class is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Fund Control Level*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Fund Control Level</mat-label>
+                  <input matInput placeholder="Fund Control Level" name="fundControlLevel" formControlName="fundControlLevel" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['fundControlLevel'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['fundControlLevel'].errors?.['required']">Fund Control Level is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Activity*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Activity</mat-label>
+                  <input matInput placeholder="Activity" name="activity" formControlName="activity" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['activity'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['activity'].errors?.['required']">Activity is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>ALN*</h4>
+                <mat-form-field appearance="outline">
+                    <mat-label>ALN</mat-label>
+                    <input matInput placeholder="ALN" name="aln" formControlName="aln" required
+                      autocomplete="off">
+                    <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['aln'].touched || submitted">
+                      <span *ngIf="updateAccountingSubALNForm.controls['aln'].errors?.['required']">ALN is
+                        required.</span>
+                    </mat-hint>
+                  </mat-form-field>
+              </section>
+            </div>
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Sector*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Sector</mat-label>
+                  <input matInput placeholder="Sector" name="sector" formControlName="sector"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['sector'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['sector'].errors?.['required']">Sector is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Cohort*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Cohort</mat-label>
+                  <input matInput placeholder="Cohort" name="cohort" formControlName="cohort"
+                    required autocomplete="off">
+                  <mat-hint align="end" *ngIf="updateAccountingSubALNForm.controls['cohort'].touched || submitted">
+                    <span *ngIf="updateAccountingSubALNForm.controls['cohort'].errors?.['required']">Cohort is
+                      required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+            
+  
+            <div fxLayout="row" class="mt-2">
+              <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+                <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+                <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                  <span>Cancel</span>
+                </button>
+              </section>
+              <section fxFlxex="5%"></section>
+              <section fxFlex="50%" fxLayoutAlign="space-between">
+            
+                <button type="submit" mat-raised-button color="primary" class="medium">
+                  <span>Continue</span>
+                </button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

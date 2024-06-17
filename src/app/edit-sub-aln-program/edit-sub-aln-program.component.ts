@@ -151,6 +151,7 @@ export class EditSubAlnProgramComponent {
   }
 
   patchValues() {
+    this.checkedActionTypes.push(this.subALnService.subAlnData.subprogramActionType.subprogramActionTypeCd);
     this.updateSubALNForm.patchValue({
       fiscalYear: this.subALnService.subAlnData.subprogramId.fiscalYear,
       alnCode: this.subALnService.subAlnData.subprogramId.agencyCd.toString(),

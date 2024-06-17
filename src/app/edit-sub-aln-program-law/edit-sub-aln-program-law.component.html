@@ -1,0 +1,130 @@
+<div class="admin-mgmt-container">
+    <div fxLayout="row" fxLayoutWrap fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="left"
+      class="admin-mgmt-body">
+      <form [formGroup]="lawUpdateSubALNForm" (ngSubmit)="lawUpdateSubALNForm.valid && save();submitted=true;" novalidate>
+        <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
+          <div class="indicator-container" fxLayout="column">
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Fiscal Year</p>
+                <p class="value">{{ fiscalYear }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Aln Sub Program</p>
+                <p class="value">{{ alnSubProgram }}</p>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <p class="key">Award Type</p>
+                <p class="value">{{ awardType }}</p>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+              fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Law Name*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Law Name</mat-label>
+                  <input matInput placeholder="Law Name" name="lawName"
+                    formControlName="lawName" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['lawName'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['lawName'].errors?.['required']">Sub
+                      Law Name is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section"
+              fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Law Purpose*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Law Purpose</mat-label>
+                  <input matInput placeholder="Law Purpose" name="lawPurpose" formControlName="lawPurpose" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['lawPurpose'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['lawPurpose'].errors?.['required']">Sub
+                      Law Purpose is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Latest Public Law*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Latest Public Law</mat-label>
+                  <input matInput placeholder="Latest Public Law" name="latestPublicLaw" formControlName="latestPublicLaw" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['latestPublicLaw'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['latestPublicLaw'].errors?.['required']">Sub
+                      Latest Public Law is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Title*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Title</mat-label>
+                  <input matInput placeholder="Title" name="title" formControlName="title" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['title'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['title'].errors?.['required']">Sub
+                      Title is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+              <section fxFlex="5%"></section>
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>Section*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>Section</mat-label>
+                  <input matInput placeholder="Section" name="section" formControlName="section" required
+                    autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['section'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['section'].errors?.['required']">Sub
+                      Section is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+            <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
+              <section fxLayout="column" fxFlex="45%" fxFlex.sm="100%" fxFlex.xs="100%">
+                <h4>CFR Part*</h4>
+                <mat-form-field appearance="outline">
+                  <mat-label>CFR Part</mat-label>
+                  <input matInput placeholder="CFR Part" name="cfrPart" formControlName="cfrPart" required autocomplete="off">
+                  <mat-hint align="end" *ngIf="lawUpdateSubALNForm.controls['cfrPart'].touched || submitted">
+                    <span *ngIf="lawUpdateSubALNForm.controls['cfrPart'].errors?.['required']">Sub
+                      CFR Part is required.</span>
+                  </mat-hint>
+                </mat-form-field>
+              </section>
+            </div>
+  
+  
+            <div fxLayout="row" class="mt-2">
+              <section fxFlex="45%" fxLayoutAlign="space-between" class="btn-spacing">
+                <button type="button" mat-raised-button color="primary" (click)="previous()">Previous</button>
+                <button type="button" mat-raised-button color="primary" class="medium" (click)="goBack()">
+                  <span>Cancel</span>
+                </button>
+              </section>
+              <section fxFlxex="5%"></section>
+              <section fxFlex="50%" fxLayoutAlign="space-between">
+  
+                <button type="submit" mat-raised-button color="primary" class="medium">
+                  <span>Continue</span>
+                </button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

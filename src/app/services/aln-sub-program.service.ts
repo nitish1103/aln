@@ -30,6 +30,7 @@ export class AlnSubProgramService {
   };
 
   generalSubALN = {
+    isEditing: false,
     fiscalYear: '',
     alnSubProgram: '',
     awardType: '',
@@ -49,6 +50,7 @@ export class AlnSubProgramService {
   };
 
   programOfficeSubALN = {
+    isEditing: false,
     primaryProgramOffice: '',
     primaryProgramOfficeDivison: '',
     subProgramContact: '',
@@ -56,12 +58,14 @@ export class AlnSubProgramService {
   };
 
   reportingSubALN = {
+    isEditing: false,
     performaceReport: '',
     numberPerBudgetPeriod: '',
     programFinancialReport: ''
   };
 
   costSharingSubAln = {
+    isEditing: false,
     paymentMethod: '',
     costSharePercentage: '',
     costShareMethod: '',
@@ -82,6 +86,7 @@ export class AlnSubProgramService {
   };
 
   lawSubAln = {
+    isEditing: false,
     lawName: '',
     lawPurpose: '',
     latestPublicLaw: '',
@@ -91,6 +96,7 @@ export class AlnSubProgramService {
   };
 
   accouting = {
+    isEditing : false,
     fundCode: '',
     category: '',
     budgetFY: '',
@@ -116,6 +122,7 @@ export class AlnSubProgramService {
     }
 
     this.generalSubALN = {
+      isEditing: false,
       fiscalYear: '',
       alnSubProgram: '',
       awardType: '',
@@ -134,6 +141,7 @@ export class AlnSubProgramService {
       grantAwardType: '',
     }
     this.programOfficeSubALN = {
+      isEditing: false,
       primaryProgramOffice: '',
       primaryProgramOfficeDivison: '',
       subProgramContact: '',
@@ -141,12 +149,14 @@ export class AlnSubProgramService {
     };
   
     this.reportingSubALN = {
+      isEditing: false,
       performaceReport: '',
       numberPerBudgetPeriod: '',
       programFinancialReport: ''
     };
   
     this.costSharingSubAln = {
+      isEditing: false,
       paymentMethod: '',
       costSharePercentage: '',
       costShareMethod: '',
@@ -167,6 +177,7 @@ export class AlnSubProgramService {
     };
   
     this.lawSubAln = {
+      isEditing: false,
       lawName: '',
       lawPurpose: '',
       latestPublicLaw: '',
