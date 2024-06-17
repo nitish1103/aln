@@ -132,7 +132,7 @@ export class SubAlnListComponent {
           "subprogramCd": "A"
         },
         "performanceReports": {
-          "performanceReportsCd": "A",
+          "performanceReportsCd": "AN",
           "performanceReport": "Annual",
           "validInd": null
         },

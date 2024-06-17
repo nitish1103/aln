@@ -6,6 +6,7 @@ import { EditSubAlnComponent } from '../edit-sub-aln/edit-sub-aln.component';
 import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
 import { SubAlnComponent } from '../sub-aln/sub-aln.component';
+import { UpdateSubAlnComponent } from '../update-sub-aln/update-sub-aln.component';
 
 @Component({
   selector: 'app-edit-sub-aln-program-law',
@@ -36,7 +37,8 @@ export class EditSubAlnProgramLawComponent {
   constructor(
     private readonly subAln: SubAlnComponent,
     private readonly editSubAlnComponent: EditSubAlnComponent,
-    public readonly subALnService: AlnSubProgramService
+    public readonly subALnService: AlnSubProgramService,
+    private readonly updateSUbALn: UpdateSubAlnComponent
   ) {}
 
   ngOnInit() {
@@ -78,7 +80,7 @@ export class EditSubAlnProgramLawComponent {
       this.lawUpdateSubALNForm.value.section ?? '';
     this.subALnService.lawSubAln.cfrPart =
       this.lawUpdateSubALNForm.value.cfrPart ?? '';
-    this.subAln.sectionActive = 'summary';
+    this.updateSUbALn.sectionActive = 'summary';
     this.stepper.next();
   }
 

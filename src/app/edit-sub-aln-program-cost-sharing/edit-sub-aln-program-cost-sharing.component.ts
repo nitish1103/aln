@@ -160,7 +160,7 @@ export class EditSubAlnProgramCostSharingComponent {
     this.subALnService.costSharingSubAln.isIndirectCostAllowed = this.isIndirectCostAllowed;
     this.subALnService.costSharingSubAln.isCostSharedAdjAllowed = this.isCostSharedAdjAllowed;
     this.subALnService.costSharingSubAln.admCostCapAllowed = this.admCostCapAllowed;
-    this.editSubAlnComponent.tabActive = this.subALnService.isDiscretionary ? 'law' : 'accounting';
+    this.editSubAlnComponent.tabActive = this.subALnService.isDiscretionary ? 'accounting' : 'law';
   }
 
   setCostShareAdjAllowed(event:MatCheckboxChange) {
