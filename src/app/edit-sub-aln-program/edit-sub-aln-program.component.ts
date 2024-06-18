@@ -163,6 +163,7 @@ export class EditSubAlnProgramComponent {
     if (this.subALnService.subAlnData.subprogramId.aln) {
       this.myControl.patchValue(this.subALnService.subAlnData.subprogramId.aln);
     }
+    this.setActionType();
   }
 
   setSubProgramActionType(subProgramActionType:string, event: MatCheckboxChange) {

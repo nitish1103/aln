@@ -3,7 +3,7 @@
     class="admin-mgmt-body">
     <div fxFlex.xs="100%" fxFlex.sm="100%" fxFlex="100%" class="right-panel">
       <div class="indicator-container" fxLayout="column">
-        <h4>The ALN below was succesfully Created</h4>
+        <h4>The ALN below was succesfully <span *ngIf="isEditing">Updated</span><span *ngIf="!isEditing">Created</span></h4>
         <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="section-spacing sub-section" fxFlex="100%">
           <section fxLayout="column" fxFlex="25%" fxFlex.sm="100%" fxFlex.xs="100%">
             <p class="key">Primary Program Office : </p>

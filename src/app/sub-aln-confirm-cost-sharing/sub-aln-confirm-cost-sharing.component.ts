@@ -9,10 +9,12 @@ import { SubAlnConfirmComponent } from '../sub-aln-confirm/sub-aln-confirm.compo
 })
 export class SubAlnConfirmCostSharingComponent {
   confirmCostSharingData: any = {};
+  isEditing = false;
 
   constructor(private alnSubService: AlnSubProgramService, private readonly subALnConfirmComponent: SubAlnConfirmComponent) {}
 
   ngOnInit() {
+    this.isEditing = this.alnSubService.isEditing;
     this.confirmCostSharingData = this.alnSubService.costSharingSubAln;
   }
 

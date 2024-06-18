@@ -9,10 +9,12 @@ import { SubAlnConfirmComponent } from '../sub-aln-confirm/sub-aln-confirm.compo
 })
 export class SubAlnConfirmProgramOfficeComponent {
   confirmProgramOfficeData: any = {};
+  isEditing = false;
 
   constructor(private alnSubService: AlnSubProgramService,private readonly subALnConfirmComponent: SubAlnConfirmComponent) {}
 
   ngOnInit() {
+    this.isEditing = this.alnSubService.isEditing;
     this.confirmProgramOfficeData = this.alnSubService.programOfficeSubALN;
   }
 

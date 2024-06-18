@@ -12,6 +12,7 @@ import { SubAlnComponent } from '../sub-aln/sub-aln.component';
 })
 export class SubAlnConfirmLawComponent {
   confirmLawData: any = {};
+  isEditing = false;
 
   constructor(
     private alnSubService: AlnSubProgramService,
@@ -21,6 +22,7 @@ export class SubAlnConfirmLawComponent {
   ) {}
 
   ngOnInit() {
+    this.isEditing = this.alnSubService.isEditing;
     this.confirmLawData = this.alnSubService.lawSubAln;
   }
 

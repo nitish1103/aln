@@ -111,6 +111,7 @@ export class AlnSubProgramService {
   }
 
   resetValues() {
+    this.isEditing = false;
     this.createSubALN = {
       fiscalYear: '',
       alnCode: '',
@@ -367,10 +368,18 @@ export class AlnSubProgramService {
         }
       }
     }
-    return this.httpClient.post<any>(
-      'http://localhost:8080/subprogram/create',
-      data
-    );
+    if (this.isEditing) {
+      return this.httpClient.post<any>(
+        'http://localhost:8080/subprogram/udpate',
+        data
+      );
+    } else {
+      return this.httpClient.post<any>(
+        'http://localhost:8080/subprogram/create',
+        data
+      );
+    }
+   
   }
 
   /**

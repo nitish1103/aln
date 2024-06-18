@@ -126,7 +126,7 @@ import { EditSubAlnProgramLawComponent } from './edit-sub-aln-program-law/edit-s
     EditSubAlnProgramLawComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
-  providers: [AuthGuard, AlnService, DatePipe, SubAlnProgramComponent, EditSubAlnComponent, UpdateSubAlnComponent, CreateSubAlnComponent],
+  providers: [AuthGuard, AlnService, DatePipe, SubAlnProgramComponent, EditSubAlnComponent, UpdateSubAlnComponent, CreateSubAlnComponent, SubAlnSummaryComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
