@@ -85,7 +85,12 @@ export class EditSubAlnProgramLawComponent {
   }
 
   previous() {
-    this.editSubAlnComponent.tabActive = 'costSharing';
+    if (this.subALnService.isDiscretionary) {
+      this.editSubAlnComponent.tabActive = 'accounting';
+    } else {
+      this.editSubAlnComponent.tabActive = 'costSharing';
+    }
+    
   }
 
   goBack() {

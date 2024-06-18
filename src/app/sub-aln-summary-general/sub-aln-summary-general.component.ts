@@ -3,6 +3,8 @@ import { AlnSubProgramService } from '../services/aln-sub-program.service';
 import { ABSTRACT_TYPES, REVIEW_METHODS, SUB_AWARD_TYPES } from '../services/aln-sub.interface';
 import { SubAlnSummaryComponent } from '../sub-aln-summary/sub-aln-summary.component';
 import { SubAlnProgramComponent } from '../sub-aln-program/sub-aln-program.component';
+import { UpdateSubAlnComponent } from '../update-sub-aln/update-sub-aln.component';
+import { EditSubAlnComponent } from '../edit-sub-aln/edit-sub-aln.component';
 
 @Component({
   selector: 'app-sub-aln-summary-general',
@@ -19,6 +21,8 @@ export class SubAlnSummaryGeneralComponent {
 
   constructor(private alnSubService: AlnSubProgramService, 
     private readonly subALnProgram: SubAlnProgramComponent,
+    private readonly updateSubALn: UpdateSubAlnComponent,
+    private readonly editSUbALn: EditSubAlnComponent,
     private readonly summaryComponent: SubAlnSummaryComponent) {}
 
   ngOnInit() {
@@ -30,7 +34,13 @@ export class SubAlnSummaryGeneralComponent {
   }
 
   previous() {
-    this.subALnProgram.sectionActive = 'create';
+    if (this.alnSubService.isEditing) {
+      this.editSUbALn.tabActive = 'law';
+      this.updateSubALn.sectionActive = 'update';
+    } else {
+      this.subALnProgram.sectionActive = 'create';
+    }
+    
     this.summaryComponent.stepper.previous();
   }
 
