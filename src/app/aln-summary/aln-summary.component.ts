@@ -70,7 +70,7 @@ export class AlnSummaryComponent {
       (response: any) => {
         this.isSaving = false;
         this.alnService.confirmALnResponse = response;
-        this.uploadFile(response.trackingNumber);
+        this.uploadFile(response.trackingNumber, this.alnService.createALN.descriptionDocument);
       },
       (error: any) => {
         this.isSaving = false;
@@ -80,8 +80,8 @@ export class AlnSummaryComponent {
     );
   }
 
-  uploadFile(id: any) {
-    this.alnService.uploadDocument(id).subscribe(
+  uploadFile(id: any, filename: string) {
+    this.alnService.uploadDocument(id, filename).subscribe(
       (response: any) => {
         console.log('===response of upload', response);
         this.alnService.createALN.alnCode = '';

@@ -91,7 +91,7 @@ export class AlnService {
   /**
    * method to upload document
    */
-  public uploadDocument(id: any): Observable<any> {
+  public uploadDocument(id: any, filename: string): Observable<any> {
     let formData = new FormData();
     formData.append('file', this.file);
 
@@ -100,7 +100,7 @@ export class AlnService {
     headers.append('Accept', 'application/json');
 
     return this.httpClient.post<any>(
-      'http://localhost:8080/file/upload',
+      'http://localhost:8080/file/upload?filename='+filename+'&trackingNumber'+id,
       formData,
       {
         responseType: 'text' as 'json',
