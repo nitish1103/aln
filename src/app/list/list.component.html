@@ -1,4 +1,4 @@
-<div class="tbl-data user" *ngIf="!isLoading">
+<div class="tbl-data user">
   <table mat-table [dataSource]="dataSource" matSort matSortActive="trackingNumber" matSortDirection="desc"
     aria-describedby="dataSource" matSortDisableClear>
     <!-- Name Column -->
@@ -137,8 +137,12 @@
     </ng-container>
 
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell no-user">No ALN Found<span class="no-user-label" *ngIf="searchQuery.length > 0">for
-          <strong>{{searchQuery}}</strong></span></td>
+      <td class="no-user" *ngIf="!isLoading" colspan="4">
+        {{message}}
+      </td>
+      <td *ngIf="isLoading" colspan="4" class="no-user">
+        Loading ...
+      </td>
     </tr>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
