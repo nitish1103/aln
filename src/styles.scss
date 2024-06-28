@@ -31,6 +31,9 @@ $aln-theme: mat.define-light-theme((color: (primary: $aln-primary,
 // that you are using.
 @include mat.all-component-themes($aln-theme);
 
+@import 'ngx-toastr/toastr';
+
+
 html,
 body {
   height: 100%;

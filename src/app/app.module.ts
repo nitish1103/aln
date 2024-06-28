@@ -64,6 +64,7 @@ import { EditSubAlnProgramReportingComponent } from './edit-sub-aln-program-repo
 import { EditSubAlnProgramCostSharingComponent } from './edit-sub-aln-program-cost-sharing/edit-sub-aln-program-cost-sharing.component';
 import { EditSubAlnProgramAccountingComponent } from './edit-sub-aln-program-accounting/edit-sub-aln-program-accounting.component';
 import { EditSubAlnProgramLawComponent } from './edit-sub-aln-program-law/edit-sub-aln-program-law.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { EditSubAlnProgramLawComponent } from './edit-sub-aln-program-law/edit-s
     EditSubAlnProgramAccountingComponent,
     EditSubAlnProgramLawComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SharedModule,ToastrModule.forRoot()
+],
   providers: [AuthGuard, AlnService, DatePipe, SubAlnProgramComponent, EditSubAlnComponent, UpdateSubAlnComponent, CreateSubAlnComponent, SubAlnSummaryComponent],
   bootstrap: [AppComponent],
 })

@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 import { ListAlnComponent } from '../list-aln/list-aln.component';
 import { AlnService } from '../services/aln-service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-list',
@@ -44,7 +46,8 @@ export class ListComponent {
   constructor(
     private alnService: AlnService,
     public dialog: MatDialog,
-    private alnComponent: ListAlnComponent
+    private alnComponent: ListAlnComponent,
+    private toastr: ToastrService
   ) {}
 
   async ngOnInit() {
@@ -73,6 +76,7 @@ export class ListComponent {
       (error: any) => {
         this.isLoading = false;
         this.message = 'Something went wrong';
+        this.toastr.error('Something went wrong', 'Error');
       }
     );
   }
